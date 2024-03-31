@@ -1,0 +1,56 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="DnDice"
+run/main_scene="res://Scenes/game.tscn"
+config/features=PackedStringArray("4.2", "Mobile")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://Scripts/global.gd"
+
+[display]
+
+window/size/viewport_width=576
+window/size/viewport_height=1024
+window/size/window_width_override=432
+window/size/window_height_override=768
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_width"
+window/handheld/orientation=1
+
+[editor]
+
+naming/default_signal_callback_name="_on{NodeName}{SignalName}"
+naming/default_signal_callback_to_self_name="_on{SignalName}"
+naming/scene_name_casing=1
+
+[file_customization]
+
+folder_colors={
+"res://Art/": "red",
+"res://Fonts/": "green",
+"res://Resources/": "pink",
+"res://Scenes/": "blue",
+"res://Scripts/": "yellow"
+}
+
+[filesystem]
+
+import/blender/enabled=false
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

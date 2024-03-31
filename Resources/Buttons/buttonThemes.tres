@@ -1,0 +1,18 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://p3k45kpnfmi7"]
+
+[ext_resource type="StyleBox" uid="uid://b32mp4r7w7s81" path="res://Resources/Buttons/disabledButtonCorRadExpMar.tres" id="1_bsq7g"]
+[ext_resource type="StyleBox" uid="uid://cchxhji1qdqww" path="res://Resources/Buttons/hoverButtonBorderCorRadExpMarShadow.tres" id="2_pihd3"]
+[ext_resource type="StyleBox" uid="uid://bciyatr3ohgxu" path="res://Resources/Buttons/normalButtonBorderCorRadExpMar.tres" id="3_28vhf"]
+[ext_resource type="StyleBox" uid="uid://c4vftsvy2vbi8" path="res://Resources/Buttons/pressedButtonCorRadExpMar.tres" id="4_kv27i"]
+[ext_resource type="FontFile" uid="uid://d4nmlc0ojikdb" path="res://Fonts/712_serif.ttf" id="5_knvso"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0xibr"]
+
+[resource]
+default_font = ExtResource("5_knvso")
+default_font_size = 80
+Button/styles/disabled = ExtResource("1_bsq7g")
+Button/styles/focus = SubResource("StyleBoxEmpty_0xibr")
+Button/styles/hover = ExtResource("2_pihd3")
+Button/styles/normal = ExtResource("3_28vhf")
+Button/styles/pressed = ExtResource("4_kv27i")
