@@ -8,14 +8,14 @@ extends Control
 @export var creditsButton: Button
 var swoopDur: Array[int] = [3,2]
 
-func StartRolling(firstObject: Node,secondObject: Node,targetPos: Vector4,mainStarted: bool = false) -> void:
+func StartRolling(firstObject: Node,secondObject: Node,targetPosFirst: Vector2,targetPosSecond: Vector2,mainStarted: bool = false) -> void:
 	startButton.disabled = true
 	creditsButton.disabled = true
 	var tween: Tween = create_tween().bind_node(self)
 	tween.set_parallel()
 	tween.set_trans(Tween.TRANS_QUART)
-	tween.tween_property(firstObject,"position",Vector2(targetPos.x,targetPos.y),swoopDur[0])
-	tween.tween_property(secondObject,"position",Vector2(targetPos.z,targetPos.w),swoopDur[1])
+	tween.tween_property(firstObject,"position",targetPosFirst,swoopDur[0])
+	tween.tween_property(secondObject,"position",targetPosSecond,swoopDur[1])
 	
 	if mainStarted:
 		tween.chain().tween_callback(RollingStarted)
@@ -25,7 +25,10 @@ func RollingStarted() -> void:
 	queue_free()
 
 func _onStartPressed() -> void:
-	StartRolling(self,gameMenuControl,Vector4(-Global.defaultWidth * 4,position.y,position.x,position.y),true)
+	StartRolling(self,gameMenuControl,Vector2(-Global.defaultWidth * 4,position.y),position,true)
 
 func _onCreditsPressed() -> void:
-	StartRolling(self,creditsMenu,Vector4(0,-Global.defaultHeight,0,0))
+	StartRolling(self,creditsMenu,Vector2(0,-Global.defaultHeight),Vector2.ZERO)
+
+func _onCreditsStartPressed() -> void:
+	StartRolling(creditsMenu,gameMenuControl,Vector2(-Global.defaultWidth * 4,creditsMenu.position.y),creditsMenu.position,true)
