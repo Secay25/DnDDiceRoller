@@ -1,29 +1,20 @@
-[gd_scene load_steps=17 format=3 uid="uid://c8b5c468jx7e3"]
+[gd_scene load_steps=16 format=3 uid="uid://c8b5c468jx7e3"]
 
 [ext_resource type="Script" path="res://Scenes/startMenu.gd" id="1_7a75a"]
 [ext_resource type="Texture2D" uid="uid://c55uyci3e3rp5" path="res://Art/Background/Background.png" id="1_q573a"]
-[ext_resource type="LabelSettings" uid="uid://dtrir8icwvxv7" path="res://Fonts/712serif128grey25blackshadow30-5-5.tres" id="1_wkxan"]
+[ext_resource type="LabelSettings" uid="uid://dtrir8icwvxv7" path="res://Fonts/712serif128white25blackshadow30-5-5.tres" id="1_wkxan"]
 [ext_resource type="Theme" uid="uid://p3k45kpnfmi7" path="res://Resources/Buttons/buttonThemes.tres" id="2_6eeqn"]
 [ext_resource type="Theme" uid="uid://dsedf33rtjse7" path="res://Resources/Buttons/creditsTheme.tres" id="4_3sai3"]
 [ext_resource type="Script" path="res://Scenes/gameMenu.gd" id="4_kp3ou"]
-[ext_resource type="FontFile" uid="uid://d4nmlc0ojikdb" path="res://Fonts/712_serif.ttf" id="6_24kvb"]
 [ext_resource type="Texture2D" uid="uid://cebxqhxb5xi1o" path="res://Art/Settings/Cogwheel/Cogwheel.png" id="6_e5p7b"]
 [ext_resource type="Script" path="res://Scenes/settings.gd" id="7_fnk7n"]
+[ext_resource type="LabelSettings" uid="uid://b4thldv6pi1tw" path="res://Fonts/712serif49white10black20-0-2.tres" id="7_kldmu"]
 [ext_resource type="Texture2D" uid="uid://p7stgxxs6kcf" path="res://Art/Settings/Speaker/Speaker.png" id="8_q0ek3"]
 [ext_resource type="Texture2D" uid="uid://dyw43lus04np5" path="res://Art/Settings/Speaker/DisabledSpeaker.png" id="8_vut64"]
 [ext_resource type="Texture2D" uid="uid://uj0fodyn5s3d" path="res://Art/Settings/Book/Book.png" id="9_h8um5"]
 [ext_resource type="Texture2D" uid="uid://cu47og2si3d1p" path="res://Art/Settings/Book/Book Dark.png" id="9_qt6e2"]
 [ext_resource type="Texture2D" uid="uid://cqv3rx704irn1" path="res://Art/Settings/Speaker/SpeakerHover.png" id="12_b1oju"]
 [ext_resource type="Texture2D" uid="uid://d3j0wwd84m7rh" path="res://Art/Settings/Cogwheel/CogwheelHover.png" id="15_sswkl"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_otmc7"]
-font = ExtResource("6_24kvb")
-font_size = 50
-outline_size = 10
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 20
-shadow_color = Color(0, 0, 0, 0.470588)
-shadow_offset = Vector2(0, 2)
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -113,21 +104,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_kp3ou")
 
-[node name="Title2" type="Label" parent="UI/GameMenu"]
-custom_minimum_size = Vector2(0, 80)
+[node name="ColorRect" type="ColorRect" parent="UI/GameMenu"]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -48.0
-offset_bottom = 48.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "DnDice"
-label_settings = ExtResource("1_wkxan")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="CreditsMenu" type="Control" parent="UI"]
 layout_mode = 1
@@ -168,10 +151,14 @@ grow_horizontal = 2
 grow_vertical = 2
 text = " This program 
  was made by Secay.
+ Thanks Miertoen
+ for letting me
+ use his dice for
+ reference!
  Thank you for 
  using this and
  Enjoy!"
-label_settings = SubResource("LabelSettings_otmc7")
+label_settings = ExtResource("7_kldmu")
 
 [node name="Settings" type="Control" parent="UI" node_paths=PackedStringArray("settingsButton", "historyButton", "muteButton")]
 layout_mode = 1
@@ -189,11 +176,11 @@ muteButton = NodePath("Speaker")
 [node name="Book" type="TextureButton" parent="UI/Settings"]
 visible = false
 layout_mode = 0
-offset_left = 12.0
-offset_top = 12.0
-offset_right = 87.0
-offset_bottom = 87.0
-pivot_offset = Vector2(37, 37)
+offset_left = -10.0
+offset_top = 10.0
+offset_right = 90.0
+offset_bottom = 110.0
+pivot_offset = Vector2(50, 50)
 disabled = true
 toggle_mode = true
 texture_normal = ExtResource("9_h8um5")
@@ -207,15 +194,14 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 25.0
-offset_top = 25.0
-offset_right = 50.0
-offset_bottom = -50.0
+offset_left = -10.0
+offset_top = 10.0
+offset_right = 40.0
+offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(37, 37)
+pivot_offset = Vector2(50, 50)
 disabled = true
-toggle_mode = true
 texture_normal = ExtResource("8_q0ek3")
 texture_hover = ExtResource("12_b1oju")
 texture_disabled = ExtResource("8_vut64")
@@ -235,13 +221,12 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -100.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 100.0
+offset_left = -135.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 135.0
 grow_horizontal = 0
-pivot_offset = Vector2(55, 55)
-toggle_mode = true
+pivot_offset = Vector2(75, 75)
 texture_normal = ExtResource("6_e5p7b")
 texture_hover = ExtResource("15_sswkl")
 ignore_texture_size = true
@@ -250,5 +235,5 @@ stretch_mode = 0
 [connection signal="pressed" from="UI/StartMenu/VBoxContainer/Start" to="UI/StartMenu" method="_onStartPressed"]
 [connection signal="pressed" from="UI/StartMenu/VBoxContainer/Credits" to="UI/StartMenu" method="_onCreditsPressed"]
 [connection signal="pressed" from="UI/CreditsMenu/CreditsStart" to="UI/StartMenu" method="_onCreditsStartPressed"]
-[connection signal="toggled" from="UI/Settings/Speaker" to="UI/Settings" method="_onMuteToggled"]
-[connection signal="toggled" from="UI/Settings/Cogwheel" to="UI/Settings" method="_onToggled"]
+[connection signal="pressed" from="UI/Settings/Speaker" to="UI/Settings" method="_onSpeakerPressed"]
+[connection signal="pressed" from="UI/Settings/Cogwheel" to="UI/Settings" method="_onCogwheelPressed"]

@@ -22,6 +22,7 @@ func StartRolling(firstObject: Node,secondObject: Node,targetPosFirst: Vector2,t
 
 func RollingStarted() -> void:
 	gameMenuControl.MainStarted()
+	creditsMenu.queue_free()
 	queue_free()
 
 func _onStartPressed() -> void:

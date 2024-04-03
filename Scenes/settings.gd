@@ -6,8 +6,8 @@ extends Control
 @export var historyButton: TextureButton
 @export var muteButton: TextureButton
 @onready var buttonOrigins: float = muteButton.position.y
-@onready var historyActivePos: float = buttonOrigins + 100
-@onready var muteActivePos: float = buttonOrigins + 200
+@onready var historyActivePos: float = buttonOrigins + 125
+@onready var muteActivePos: float = buttonOrigins + 225
 
 #region Textures
 var cogwheelNormal: Texture2D = preload("res://Art/Settings/Cogwheel/Cogwheel.png")
@@ -23,6 +23,7 @@ var speakerMutedDisabled: Texture2D = preload("res://Art/Settings/Speaker/Disabl
 #endregion
 
 var fullRot: float = 6 * PI
+var rolledUp: bool = false
 
 func _ready() -> void:
 	if !Global.sfx:
@@ -45,11 +46,12 @@ func ChangeSprites(imageNormal: Texture2D,imageHover: Texture2D,turnOn: bool = t
 		pass
 
 #region Signals
-func _onToggled(toggled_on: bool) -> void:
-	var tween: Tween = create_tween().bind_node(self)
+func _onCogwheelPressed() -> void:
+	var tween: Tween = create_tween()
 	
-	if toggled_on:
+	if !rolledUp:
 		#pressed
+		rolledUp = true
 		settingsButton.disabled = true
 		muteButton.disabled = true
 		historyButton.disabled = true
@@ -62,6 +64,7 @@ func _onToggled(toggled_on: bool) -> void:
 		tween.chain().tween_callback(ChangeSprites.bind(cogwheelPressed,cogwheelPressedHover))
 	else:
 		#not pressed
+		rolledUp = false
 		settingsButton.disabled = true
 		muteButton.disabled = true
 		historyButton.disabled = true
@@ -71,16 +74,18 @@ func _onToggled(toggled_on: bool) -> void:
 		tween.tween_property(settingsButton,"rotation",fullRot,1.5).set_trans(Tween.TRANS_QUINT)
 		tween.chain().tween_callback(ChangeSprites.bind(cogwheelNormal,cogwheelHover,false))
 
-func _onMuteToggled(toggled_on: bool) -> void:
-	if toggled_on:
+func _onSpeakerPressed() -> void:
+	if Global.sfx:
 		#pressed
 		Global.sfx = false
 		muteButton.texture_normal = speakerPressed
 		muteButton.texture_hover = speakerPressedHover
 		muteButton.texture_disabled = speakerMutedDisabled
 	else:
+		#not pressed
 		Global.sfx = true
 		muteButton.texture_normal = speakerNormal
 		muteButton.texture_hover = speakerHover
 		muteButton.texture_disabled = speakerDisabled
 #endregion
+
