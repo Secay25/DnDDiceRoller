@@ -22,9 +22,9 @@ var speakerPressedHover: Texture2D = preload("res://Art/Settings/Speaker/MutedSp
 var speakerMutedDisabled: Texture2D = preload("res://Art/Settings/Speaker/DisabledMutedSpeaker.png")
 #endregion
 
-var fullRot: float = 6 * PI
 var rolledUp: bool = false
-
+const FULLROT: float = 6 * PI
+const ROLLOUTDUR: float = 1.5
 func _ready() -> void:
 	if !Global.sfx:
 		muteButton.set_pressed_no_signal(true)
@@ -47,7 +47,7 @@ func ChangeSprites(imageNormal: Texture2D,imageHover: Texture2D,turnOn: bool = t
 
 #region Signals
 func _onCogwheelPressed() -> void:
-	var tween: Tween = create_tween()
+	var tween: Tween = create_tween().bind_node(self)
 	
 	if !rolledUp:
 		#pressed
@@ -58,9 +58,9 @@ func _onCogwheelPressed() -> void:
 		muteButton.show()
 		historyButton.show()
 		tween.set_parallel()
-		tween.tween_property(muteButton,"position:y",muteActivePos,1.5).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
-		tween.tween_property(historyButton,"position:y",historyActivePos,1.5).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
-		tween.tween_property(settingsButton,"rotation",-fullRot,1.5).set_trans(Tween.TRANS_QUINT)
+		tween.tween_property(muteButton,"position:y",muteActivePos,ROLLOUTDUR).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(historyButton,"position:y",historyActivePos,ROLLOUTDUR).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(settingsButton,"rotation",-FULLROT,ROLLOUTDUR).set_trans(Tween.TRANS_QUINT)
 		tween.chain().tween_callback(ChangeSprites.bind(cogwheelPressed,cogwheelPressedHover))
 	else:
 		#not pressed
@@ -69,9 +69,9 @@ func _onCogwheelPressed() -> void:
 		muteButton.disabled = true
 		historyButton.disabled = true
 		tween.set_parallel()
-		tween.tween_property(muteButton,"position:y",buttonOrigins,1.5).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
-		tween.tween_property(historyButton,"position:y",buttonOrigins,1.5).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
-		tween.tween_property(settingsButton,"rotation",fullRot,1.5).set_trans(Tween.TRANS_QUINT)
+		tween.tween_property(muteButton,"position:y",buttonOrigins,ROLLOUTDUR).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(historyButton,"position:y",buttonOrigins,ROLLOUTDUR).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(settingsButton,"rotation",FULLROT,ROLLOUTDUR).set_trans(Tween.TRANS_QUINT)
 		tween.chain().tween_callback(ChangeSprites.bind(cogwheelNormal,cogwheelHover,false))
 
 func _onSpeakerPressed() -> void:

@@ -104,13 +104,47 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_kp3ou")
 
-[node name="ColorRect" type="ColorRect" parent="UI/GameMenu"]
+[node name="RemoveOnceDone" type="ColorRect" parent="UI/GameMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="DiceTopD10" type="Polygon2D" parent="UI/GameMenu"]
+position = Vector2(150, 462)
+scale = Vector2(1.25, 1.25)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(100, -100, 100, -100, 100, 100, -100, 100, -100, -100)
+
+[node name="DiceTopD100" type="Polygon2D" parent="UI/GameMenu"]
+position = Vector2(426, 462)
+scale = Vector2(1.25, 1.25)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(100, -100, 100, -100, 100, 100, -100, 100, -100, -100)
+
+[node name="DiceMiddleD10" type="Polygon2D" parent="UI/GameMenu"]
+position = Vector2(150, 762)
+scale = Vector2(1.25, 1.25)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(100, -100, 100, -100, 100, 100, -100, 100, -100, -100)
+
+[node name="DiceMiddleD100" type="Polygon2D" parent="UI/GameMenu"]
+position = Vector2(426, 762)
+scale = Vector2(1.25, 1.25)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(100, -100, 100, -100, 100, 100, -100, 100, -100, -100)
+
+[node name="DiceBottomD10" type="Polygon2D" parent="UI/GameMenu"]
+position = Vector2(150, 862)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, -100, 0, -100, 100, 0, 0, 100, -100, 0)
+
+[node name="DiceBottomD100" type="Polygon2D" parent="UI/GameMenu"]
+position = Vector2(426, 862)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, -100, 0, -100, 100, 0, 0, 100, -100, 0)
 
 [node name="CreditsMenu" type="Control" parent="UI"]
 layout_mode = 1
@@ -121,7 +155,6 @@ offset_top = 4096.0
 offset_bottom = 4096.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("4_kp3ou")
 
 [node name="CreditsStart" type="Button" parent="UI/CreditsMenu"]
 layout_mode = 1

@@ -6,7 +6,7 @@ extends Control
 @export var creditsMenu: Control
 @export var startButton: Button
 @export var creditsButton: Button
-var swoopDur: Array[int] = [3,2]
+const SWOOPDUR: Array[int] = [3,2] 
 
 func StartRolling(firstObject: Node,secondObject: Node,targetPosFirst: Vector2,targetPosSecond: Vector2,mainStarted: bool = false) -> void:
 	startButton.disabled = true
@@ -14,8 +14,8 @@ func StartRolling(firstObject: Node,secondObject: Node,targetPosFirst: Vector2,t
 	var tween: Tween = create_tween().bind_node(self)
 	tween.set_parallel()
 	tween.set_trans(Tween.TRANS_QUART)
-	tween.tween_property(firstObject,"position",targetPosFirst,swoopDur[0])
-	tween.tween_property(secondObject,"position",targetPosSecond,swoopDur[1])
+	tween.tween_property(firstObject,"position",targetPosFirst,SWOOPDUR[0])
+	tween.tween_property(secondObject,"position",targetPosSecond,SWOOPDUR[1])
 	
 	if mainStarted:
 		tween.chain().tween_callback(RollingStarted)

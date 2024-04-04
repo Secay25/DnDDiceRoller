@@ -1,0 +1,83 @@
+In active die:
+	dice:
+		PolygonPackedVector2[array]:
+			0: (1,1)
+			1: (1,1)
+			2: (1,-1)
+			3: (-1,-1)
+			4: (-1,1)
+		Position:
+			DiceTopRightD10.position
+		Max Scale: (1,0;1,0)
+One die:
+	D100 - D10:
+		D10:
+			PolygonPackedVector2[array]:
+				0: (0,-100)
+				1: (0,-100)
+				2: (100,0)
+				3: (0,100)
+				4: (-100,0)
+			Transform:
+				Position: (175,512)
+				Max Scale: (1,0;1,0)
+		D100:
+			PolygonPackedVector2[array]:
+				0: (0,-100)
+				1: (0,-100)
+				2: (100,0)
+				3: (0,100)
+				4: (-100,0)
+			Transform:
+				Position: (401,512)
+				Scale: (1,0;1,0)
+	D20:
+		PolygonPackedVector2[array]:
+			0: (0,-100)
+			1: (0,-100)
+			2: (0,-100)
+			3: (100,100)
+			4: (-100,100)
+		Transform:
+			Position: (288,512)
+			Scale: (2,0;2,0)
+	D12:
+		PolygonPackedVector2[array]:
+			0: (0,-112)
+			1: (-124,-18)
+			2: (-80,122)
+			3: (80,122)
+			4: (124,-18)
+		Transform:
+			Position: (288,512)
+			Scale: (1,5;1,5)
+	D10:
+		PolygonPackedVector2[array]:
+			0: (0,-100)
+			1: (0,-100)
+			2: (100,0)
+			3: (0,100)
+			4: (-100,0)
+		Transform:
+			Position: (288,512)
+			Scale: (2,0;2,0)
+	D6:
+		PolygonPackedVector2[array]:
+			0: (100,-100)
+			1: (100,-100)
+			2: (100,100)
+			3: (-100,100)
+			4: (-100,-100)
+		Transform:
+			Position: (288,512)
+			Scale: (1,5;1,5)
+	D4:
+		PolygonPackedVector2[array]:
+			0: (0,-100)
+			1: (0,-100)
+			2: (0,-100)
+			3: (100,100)
+			4: (-100,100)
+		Transform:
+			Position: (288,512)
+			Scale: (2,0;2,0)
