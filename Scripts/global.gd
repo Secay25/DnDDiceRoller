@@ -2,5 +2,7 @@ extends Node
 
 var defaultWidth: int = 576
 var defaultHeight: int = 1024
-var sfx = true
-var rolled = false
+var sfx: bool = true
+var rolled: bool = false
+var animationSkip: bool = false
+var animationPlaying: bool = false

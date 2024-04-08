@@ -1,20 +1,28 @@
-[gd_scene load_steps=16 format=3 uid="uid://c8b5c468jx7e3"]
+[gd_scene load_steps=24 format=3 uid="uid://c8b5c468jx7e3"]
 
-[ext_resource type="Script" path="res://Scenes/startMenu.gd" id="1_7a75a"]
+[ext_resource type="Script" path="res://Scripts/SceneScripts/startMenu.gd" id="1_7a75a"]
 [ext_resource type="Texture2D" uid="uid://c55uyci3e3rp5" path="res://Art/Background/Background.png" id="1_q573a"]
 [ext_resource type="LabelSettings" uid="uid://dtrir8icwvxv7" path="res://Fonts/712serif128white25blackshadow30-5-5.tres" id="1_wkxan"]
 [ext_resource type="Theme" uid="uid://p3k45kpnfmi7" path="res://Resources/Buttons/buttonThemes.tres" id="2_6eeqn"]
 [ext_resource type="Theme" uid="uid://dsedf33rtjse7" path="res://Resources/Buttons/creditsTheme.tres" id="4_3sai3"]
-[ext_resource type="Script" path="res://Scenes/gameMenu.gd" id="4_kp3ou"]
+[ext_resource type="Script" path="res://Scripts/SceneScripts/gameMenu.gd" id="4_kp3ou"]
 [ext_resource type="Texture2D" uid="uid://cebxqhxb5xi1o" path="res://Art/Settings/Cogwheel/Cogwheel.png" id="6_e5p7b"]
-[ext_resource type="Script" path="res://Scenes/settings.gd" id="7_fnk7n"]
+[ext_resource type="Texture2D" uid="uid://cbwn3iuwy4nst" path="res://Art/DiceSettings/DiceMultiplier/DiceMultiplierNormal.png" id="7_a08ih"]
+[ext_resource type="Script" path="res://Scripts/SceneScripts/settings.gd" id="7_fnk7n"]
 [ext_resource type="LabelSettings" uid="uid://b4thldv6pi1tw" path="res://Fonts/712serif49white10black20-0-2.tres" id="7_kldmu"]
 [ext_resource type="Texture2D" uid="uid://p7stgxxs6kcf" path="res://Art/Settings/Speaker/Speaker.png" id="8_q0ek3"]
+[ext_resource type="Texture2D" uid="uid://dwjcy5ypj8e0h" path="res://Art/DiceSettings/DiceMultiplier/DiceMultiplierPressed.png" id="8_t2fpr"]
 [ext_resource type="Texture2D" uid="uid://dyw43lus04np5" path="res://Art/Settings/Speaker/DisabledSpeaker.png" id="8_vut64"]
+[ext_resource type="Texture2D" uid="uid://wyje5gx80pwy" path="res://Art/DiceSettings/DiceMultiplier/DiceMultiplierHover.png" id="9_6dsib"]
 [ext_resource type="Texture2D" uid="uid://uj0fodyn5s3d" path="res://Art/Settings/Book/Book.png" id="9_h8um5"]
 [ext_resource type="Texture2D" uid="uid://cu47og2si3d1p" path="res://Art/Settings/Book/Book Dark.png" id="9_qt6e2"]
+[ext_resource type="Texture2D" uid="uid://dqbij0g42wt5k" path="res://Art/DiceSettings/DiceMultiplier/DiceMultiplierDisabled.png" id="10_j7ajj"]
 [ext_resource type="Texture2D" uid="uid://cqv3rx704irn1" path="res://Art/Settings/Speaker/SpeakerHover.png" id="12_b1oju"]
+[ext_resource type="Texture2D" uid="uid://bp0pt4xmbvpoh" path="res://Art/Settings/Cassette tape/CassetteTapeNormal.png" id="13_a6l0u"]
+[ext_resource type="Texture2D" uid="uid://dj6i2aba3abqu" path="res://Art/Settings/Cassette tape/CassetteTapeNormalHover.png" id="14_vj3rc"]
+[ext_resource type="Texture2D" uid="uid://c3nh1iyjdybpw" path="res://Art/Settings/Cassette tape/CassetteTapeNormalDisabled.png" id="15_0p1mn"]
 [ext_resource type="Texture2D" uid="uid://d3j0wwd84m7rh" path="res://Art/Settings/Cogwheel/CogwheelHover.png" id="15_sswkl"]
+[ext_resource type="StyleBox" uid="uid://42stf2ibsr3a" path="res://Resources/PanelBook.tres" id="23_5yi5t"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -112,6 +120,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="DiceSettings" type="Control" parent="UI/GameMenu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 200.0
+grow_horizontal = 2
+
+[node name="DiceMultiplier" type="TextureButton" parent="UI/GameMenu/DiceSettings"]
+layout_mode = 0
+offset_left = 150.0
+offset_right = 300.0
+offset_bottom = 150.0
+toggle_mode = true
+texture_normal = ExtResource("7_a08ih")
+texture_pressed = ExtResource("8_t2fpr")
+texture_hover = ExtResource("9_6dsib")
+texture_disabled = ExtResource("10_j7ajj")
+ignore_texture_size = true
+stretch_mode = 0
+
 [node name="DiceTopD10" type="Polygon2D" parent="UI/GameMenu"]
 position = Vector2(150, 462)
 scale = Vector2(1.25, 1.25)
@@ -193,7 +221,7 @@ text = " This program
  Enjoy!"
 label_settings = ExtResource("7_kldmu")
 
-[node name="Settings" type="Control" parent="UI" node_paths=PackedStringArray("settingsButton", "historyButton", "muteButton")]
+[node name="Settings" type="Control" parent="UI" node_paths=PackedStringArray("settingsButton", "historyButton", "muteButton", "cassetteTapeButton")]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -205,6 +233,21 @@ script = ExtResource("7_fnk7n")
 settingsButton = NodePath("Cogwheel")
 historyButton = NodePath("Book")
 muteButton = NodePath("Speaker")
+cassetteTapeButton = NodePath("CassetteTape")
+
+[node name="CassetteTape" type="TextureButton" parent="UI/Settings"]
+visible = false
+layout_mode = 0
+offset_left = -10.0
+offset_top = 10.0
+offset_right = 90.0
+offset_bottom = 110.0
+pivot_offset = Vector2(50, 50)
+texture_normal = ExtResource("13_a6l0u")
+texture_hover = ExtResource("14_vj3rc")
+texture_disabled = ExtResource("15_0p1mn")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="Book" type="TextureButton" parent="UI/Settings"]
 visible = false
@@ -265,8 +308,21 @@ texture_hover = ExtResource("15_sswkl")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="Panel" type="Panel" parent="UI/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1069.0
+offset_right = -593.0
+offset_bottom = 724.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("23_5yi5t")
+
 [connection signal="pressed" from="UI/StartMenu/VBoxContainer/Start" to="UI/StartMenu" method="_onStartPressed"]
 [connection signal="pressed" from="UI/StartMenu/VBoxContainer/Credits" to="UI/StartMenu" method="_onCreditsPressed"]
 [connection signal="pressed" from="UI/CreditsMenu/CreditsStart" to="UI/StartMenu" method="_onCreditsStartPressed"]
+[connection signal="pressed" from="UI/Settings/CassetteTape" to="UI/Settings" method="_onCassetteTapePressed"]
 [connection signal="pressed" from="UI/Settings/Speaker" to="UI/Settings" method="_onSpeakerPressed"]
 [connection signal="pressed" from="UI/Settings/Cogwheel" to="UI/Settings" method="_onCogwheelPressed"]
