@@ -6,6 +6,9 @@ extends Control
 @export var historyButton: TextureButton
 @export var muteButton: TextureButton
 @export var cassetteTapeButton: TextureButton
+@export var historyBook: Panel
+@export var bookQuitTop: Button
+@export var bookQuitBottom: Button
 @onready var buttonOrigins: float = muteButton.position.y
 @onready var historyActivePos: float = buttonOrigins + 125
 @onready var muteActivePos: float = buttonOrigins + 225
@@ -56,13 +59,15 @@ func ChangeSprites(imageNormal: Texture2D,imageHover: Texture2D,turnOn: bool = t
 		cassetteTapeButton.disabled = !turnOn
 	
 	if Global.rolled:
-		#INFO Will work on this later!
-		#historyButton.disabled = !turnOn
-		pass
+		historyButton.disabled = !turnOn
 
 #region Signals
 func _onCogwheelPressed() -> void:
+	var rollOutDuration = ROLLOUTDUR
 	var tween: Tween = create_tween()
+	
+	if Global.animationSkip:
+		rollOutDuration = Global.ANIMSKIPDUR
 	
 	if !rolledUp:
 		#pressed
@@ -76,21 +81,15 @@ func _onCogwheelPressed() -> void:
 		muteButton.show()
 		historyButton.show()
 		cassetteTapeButton.show()
-		
-		if !Global.animationSkip:
-			tween.set_parallel()
-			tween.tween_property(muteButton,"position:y",muteActivePos,ROLLOUTDUR).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
-			tween.tween_property(historyButton,"position:y",historyActivePos,ROLLOUTDUR).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
-			tween.tween_property(cassetteTapeButton,"position:y",cassetteTapeActivePos,ROLLOUTDUR).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
-			tween.tween_property(settingsButton,"rotation",-FULLROT,ROLLOUTDUR).set_trans(Tween.TRANS_QUINT)
-			tween.chain().tween_callback(ChangeSprites.bind(cogwheelPressed,cogwheelPressedHover))
-		else:
-			muteButton.position.y = muteActivePos
-			historyButton.position.y = historyActivePos
-			cassetteTapeButton.position.y = cassetteTapeActivePos
-			ChangeSprites(cogwheelPressed,cogwheelPressedHover)
+		tween.set_parallel()
+		tween.tween_property(muteButton,"position:y",muteActivePos,rollOutDuration).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(historyButton,"position:y",historyActivePos,rollOutDuration).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(cassetteTapeButton,"position:y",cassetteTapeActivePos,rollOutDuration).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(settingsButton,"rotation",-FULLROT,rollOutDuration).set_trans(Tween.TRANS_QUINT)
+		tween.chain().tween_callback(ChangeSprites.bind(cogwheelPressed,cogwheelPressedHover))
 	else:
 		#not pressed
+		
 		if !Global.animationPlaying:
 			cassetteTapeButton.disabled = true
 		
@@ -98,19 +97,12 @@ func _onCogwheelPressed() -> void:
 		settingsButton.disabled = true
 		muteButton.disabled = true
 		historyButton.disabled = true
-		
-		if !Global.animationSkip:
-			tween.set_parallel()
-			tween.tween_property(muteButton,"position:y",buttonOrigins,ROLLOUTDUR).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
-			tween.tween_property(historyButton,"position:y",buttonOrigins,ROLLOUTDUR).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
-			tween.tween_property(cassetteTapeButton,"position:y",buttonOrigins,ROLLOUTDUR).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
-			tween.tween_property(settingsButton,"rotation",FULLROT,ROLLOUTDUR).set_trans(Tween.TRANS_QUINT)
-			tween.chain().tween_callback(ChangeSprites.bind(cogwheelNormal,cogwheelHover,false))
-		else:
-			muteButton.position.y = buttonOrigins
-			historyButton.position.y = buttonOrigins
-			cassetteTapeButton.position.y = buttonOrigins
-			ChangeSprites(cogwheelNormal,cogwheelHover,false)
+		tween.set_parallel()
+		tween.tween_property(muteButton,"position:y",buttonOrigins,rollOutDuration).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(historyButton,"position:y",buttonOrigins,rollOutDuration).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(cassetteTapeButton,"position:y",buttonOrigins,rollOutDuration).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(settingsButton,"rotation",FULLROT,rollOutDuration).set_trans(Tween.TRANS_QUINT)
+		tween.chain().tween_callback(ChangeSprites.bind(cogwheelNormal,cogwheelHover,false))
 
 func _onSpeakerPressed() -> void:
 	if Global.sfx:
@@ -138,3 +130,28 @@ func _onCassetteTapePressed() -> void:
 		cassetteTapeButton.texture_hover = cassetteTapeNormalHover
 		cassetteTapeButton.texture_disabled = cassetteTapeNormalHover
 #endregion
+
+func _onBookToggled(toggled_on: bool) -> void:
+	var rollOutDur: float = ROLLOUTDUR
+	var tween: Tween = create_tween()
+	
+	if Global.animationSkip:
+		rollOutDur = Global.ANIMSKIPDUR
+	
+	if toggled_on:
+		cassetteTapeButton.disabled = true
+		muteButton.disabled = true
+		settingsButton.disabled = true
+		bookQuitTop.visible = true
+		bookQuitBottom.visible = true
+		tween.tween_property(historyBook,"position:x",BOOKACTIVEPOS,rollOutDur).set_trans(Tween.TRANS_QUART)
+	else:
+		cassetteTapeButton.disabled = false
+		muteButton.disabled = false
+		settingsButton.disabled = false
+		bookQuitTop.visible = false
+		bookQuitBottom.visible = false
+		tween.tween_property(historyBook,"position:x",BOOKORIGINPOS,rollOutDur).set_trans(Tween.TRANS_QUART)
+
+func _onButtonPressed() -> void:
+	historyButton.button_pressed = false

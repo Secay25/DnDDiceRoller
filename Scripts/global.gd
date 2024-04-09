@@ -6,3 +6,4 @@ var sfx: bool = true
 var rolled: bool = false
 var animationSkip: bool = false
 var animationPlaying: bool = false
+const ANIMSKIPDUR: float = 0.01

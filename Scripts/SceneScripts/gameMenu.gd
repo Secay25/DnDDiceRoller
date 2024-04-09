@@ -8,9 +8,14 @@ class_name GameUI extends Control
 @export var middleHoleD100: Polygon2D
 @export var bottomHoleD10: Polygon2D
 @export var bottomHoleD100: Polygon2D
+@export var settings: Control
 
 func _ready() -> void:
+	#ALERT REMOVE CODE ONCE NODE IS REMOVED!
 	$RemoveOnceDone.visible = false
 
 func MainStarted() -> void:
 	Global.rolled = true
+	
+	if settings.rolledUp:
+		settings.historyButton.disabled = false

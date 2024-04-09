@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cu47og2si3d1p"
-path="res://.godot/imported/Book Dark.png-750ecdf7042b644386ccd42c5650fd47.ctex"
+uid="uid://b2nasoet1tth0"
+path="res://.godot/imported/BookHover.png-1bfc869118dbf845efaa98633cd60de4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Settings/Book/Book Dark.png"
-dest_files=["res://.godot/imported/Book Dark.png-750ecdf7042b644386ccd42c5650fd47.ctex"]
+source_file="res://Art/Settings/Book/BookHover.png"
+dest_files=["res://.godot/imported/BookHover.png-1bfc869118dbf845efaa98633cd60de4.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c8b5c468jx7e3"]
+[gd_scene load_steps=26 format=3 uid="uid://c8b5c468jx7e3"]
 
 [ext_resource type="Script" path="res://Scripts/SceneScripts/startMenu.gd" id="1_7a75a"]
 [ext_resource type="Texture2D" uid="uid://c55uyci3e3rp5" path="res://Art/Background/Background.png" id="1_q573a"]
@@ -15,13 +15,15 @@
 [ext_resource type="Texture2D" uid="uid://dyw43lus04np5" path="res://Art/Settings/Speaker/DisabledSpeaker.png" id="8_vut64"]
 [ext_resource type="Texture2D" uid="uid://wyje5gx80pwy" path="res://Art/DiceSettings/DiceMultiplier/DiceMultiplierHover.png" id="9_6dsib"]
 [ext_resource type="Texture2D" uid="uid://uj0fodyn5s3d" path="res://Art/Settings/Book/Book.png" id="9_h8um5"]
-[ext_resource type="Texture2D" uid="uid://cu47og2si3d1p" path="res://Art/Settings/Book/Book Dark.png" id="9_qt6e2"]
+[ext_resource type="Texture2D" uid="uid://cu47og2si3d1p" path="res://Art/Settings/Book/BookDark.png" id="9_qt6e2"]
 [ext_resource type="Texture2D" uid="uid://dqbij0g42wt5k" path="res://Art/DiceSettings/DiceMultiplier/DiceMultiplierDisabled.png" id="10_j7ajj"]
 [ext_resource type="Texture2D" uid="uid://cqv3rx704irn1" path="res://Art/Settings/Speaker/SpeakerHover.png" id="12_b1oju"]
 [ext_resource type="Texture2D" uid="uid://bp0pt4xmbvpoh" path="res://Art/Settings/Cassette tape/CassetteTapeNormal.png" id="13_a6l0u"]
 [ext_resource type="Texture2D" uid="uid://dj6i2aba3abqu" path="res://Art/Settings/Cassette tape/CassetteTapeNormalHover.png" id="14_vj3rc"]
 [ext_resource type="Texture2D" uid="uid://c3nh1iyjdybpw" path="res://Art/Settings/Cassette tape/CassetteTapeNormalDisabled.png" id="15_0p1mn"]
 [ext_resource type="Texture2D" uid="uid://d3j0wwd84m7rh" path="res://Art/Settings/Cogwheel/CogwheelHover.png" id="15_sswkl"]
+[ext_resource type="Texture2D" uid="uid://b2nasoet1tth0" path="res://Art/Settings/Book/BookHover.png" id="17_3aykt"]
+[ext_resource type="Texture2D" uid="uid://bbgds7136x4x8" path="res://Art/Settings/Book/BookPressed.png" id="17_x3to1"]
 [ext_resource type="StyleBox" uid="uid://42stf2ibsr3a" path="res://Resources/PanelBook.tres" id="23_5yi5t"]
 
 [node name="Main" type="Control"]
@@ -40,6 +42,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Background" type="TextureRect" parent="UI"]
+z_index = -100
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -101,7 +104,7 @@ theme = ExtResource("4_3sai3")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Credits"
 
-[node name="GameMenu" type="Control" parent="UI"]
+[node name="GameMenu" type="Control" parent="UI" node_paths=PackedStringArray("settings")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -111,6 +114,7 @@ offset_right = 3456.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_kp3ou")
+settings = NodePath("../Settings")
 
 [node name="RemoveOnceDone" type="ColorRect" parent="UI/GameMenu"]
 layout_mode = 1
@@ -221,7 +225,7 @@ text = " This program
  Enjoy!"
 label_settings = ExtResource("7_kldmu")
 
-[node name="Settings" type="Control" parent="UI" node_paths=PackedStringArray("settingsButton", "historyButton", "muteButton", "cassetteTapeButton")]
+[node name="Settings" type="Control" parent="UI" node_paths=PackedStringArray("settingsButton", "historyButton", "muteButton", "cassetteTapeButton", "historyBook", "bookQuitTop", "bookQuitBottom")]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -234,6 +238,9 @@ settingsButton = NodePath("Cogwheel")
 historyButton = NodePath("Book")
 muteButton = NodePath("Speaker")
 cassetteTapeButton = NodePath("CassetteTape")
+historyBook = NodePath("History")
+bookQuitTop = NodePath("Book/BookQuitButtonTop")
+bookQuitBottom = NodePath("Book/BookQuitButtonBottom")
 
 [node name="CassetteTape" type="TextureButton" parent="UI/Settings"]
 visible = false
@@ -246,21 +253,6 @@ pivot_offset = Vector2(50, 50)
 texture_normal = ExtResource("13_a6l0u")
 texture_hover = ExtResource("14_vj3rc")
 texture_disabled = ExtResource("15_0p1mn")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="Book" type="TextureButton" parent="UI/Settings"]
-visible = false
-layout_mode = 0
-offset_left = -10.0
-offset_top = 10.0
-offset_right = 90.0
-offset_bottom = 110.0
-pivot_offset = Vector2(50, 50)
-disabled = true
-toggle_mode = true
-texture_normal = ExtResource("9_h8um5")
-texture_disabled = ExtResource("9_qt6e2")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -308,7 +300,42 @@ texture_hover = ExtResource("15_sswkl")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Panel" type="Panel" parent="UI/Settings"]
+[node name="Book" type="TextureButton" parent="UI/Settings"]
+visible = false
+z_index = -1
+layout_mode = 0
+offset_left = -10.0
+offset_top = 10.0
+offset_right = 90.0
+offset_bottom = 110.0
+pivot_offset = Vector2(50, 50)
+disabled = true
+toggle_mode = true
+texture_normal = ExtResource("9_h8um5")
+texture_pressed = ExtResource("17_x3to1")
+texture_hover = ExtResource("17_3aykt")
+texture_disabled = ExtResource("9_qt6e2")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="BookQuitButtonTop" type="Button" parent="UI/Settings/Book"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -11.0
+offset_top = -200.0
+offset_right = 110.0
+
+[node name="BookQuitButtonBottom" type="Button" parent="UI/Settings/Book"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -11.0
+offset_top = 100.0
+offset_right = 110.0
+offset_bottom = 924.0
+
+[node name="History" type="Panel" parent="UI/Settings"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -320,9 +347,73 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("23_5yi5t")
 
+[node name="Book Bendy Part" type="ColorRect" parent="UI/Settings/History"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 188.0
+grow_vertical = 2
+color = Color(0.545098, 0.462745, 0.341176, 1)
+
+[node name="Horizontal Line" type="ColorRect" parent="UI/Settings/History"]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 108.0
+offset_right = 537.0
+offset_bottom = 122.0
+color = Color(0, 0, 0, 1)
+
+[node name="BookTitle" type="Label" parent="UI/Settings/History"]
+layout_mode = 0
+offset_left = 213.0
+offset_top = 32.0
+offset_right = 388.0
+offset_bottom = 70.0
+text = "History"
+label_settings = ExtResource("7_kldmu")
+
+[node name="Entries" type="Control" parent="UI/Settings/History"]
+anchors_preset = 0
+offset_left = 198.0
+offset_top = 132.0
+offset_right = 521.0
+offset_bottom = 959.0
+
+[node name="VScrollBar" type="VScrollBar" parent="UI/Settings/History/Entries"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = 8.0
+offset_right = -3.0
+offset_bottom = -200.0
+grow_horizontal = 0
+grow_vertical = 2
+max_value = 20.0
+step = 1.0
+page = 1.0
+
+[node name="HistoryExplanation" type="Label" parent="UI/Settings/History/Entries"]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 284.0
+text = "You have
+yet to
+roll a
+dice. Roll
+a dice to
+view your
+history."
+label_settings = ExtResource("7_kldmu")
+
 [connection signal="pressed" from="UI/StartMenu/VBoxContainer/Start" to="UI/StartMenu" method="_onStartPressed"]
 [connection signal="pressed" from="UI/StartMenu/VBoxContainer/Credits" to="UI/StartMenu" method="_onCreditsPressed"]
 [connection signal="pressed" from="UI/CreditsMenu/CreditsStart" to="UI/StartMenu" method="_onCreditsStartPressed"]
 [connection signal="pressed" from="UI/Settings/CassetteTape" to="UI/Settings" method="_onCassetteTapePressed"]
 [connection signal="pressed" from="UI/Settings/Speaker" to="UI/Settings" method="_onSpeakerPressed"]
 [connection signal="pressed" from="UI/Settings/Cogwheel" to="UI/Settings" method="_onCogwheelPressed"]
+[connection signal="toggled" from="UI/Settings/Book" to="UI/Settings" method="_onBookToggled"]
+[connection signal="pressed" from="UI/Settings/Book/BookQuitButtonTop" to="UI/Settings" method="_onButtonPressed"]
+[connection signal="pressed" from="UI/Settings/Book/BookQuitButtonBottom" to="UI/Settings" method="_onButtonPressed"]
