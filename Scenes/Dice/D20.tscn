@@ -1,0 +1,131 @@
+[gd_scene load_steps=8 format=3 uid="uid://dkel02nly1c7"]
+
+[ext_resource type="Texture2D" uid="uid://cie8n4j8r50lg" path="res://Art/Dice/D20.png" id="1_yqtj5"]
+[ext_resource type="LabelSettings" uid="uid://c10r1w53nx1n1" path="res://Fonts/D20Rolled.tres" id="2_wakuv"]
+[ext_resource type="LabelSettings" uid="uid://cvtrpnj3mw55p" path="res://Fonts/D20Top.tres" id="3_he8kw"]
+[ext_resource type="LabelSettings" uid="uid://qnl06gb2d5hb" path="res://Fonts/D20Middle.tres" id="4_crgq2"]
+[ext_resource type="LabelSettings" uid="uid://6wumk076m113" path="res://Fonts/D20Bottom.tres" id="5_dbtbs"]
+[ext_resource type="LabelSettings" uid="uid://wwtipe3yq30y" path="res://Fonts/D20Side.tres" id="6_cy8cm"]
+
+[sub_resource type="FontVariation" id="FontVariation_15h3o"]
+
+[node name="D20" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -276.0
+offset_bottom = -724.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Die" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 250.0
+offset_bottom = 250.0
+pivot_offset = Vector2(100, 100)
+texture = ExtResource("1_yqtj5")
+expand_mode = 1
+
+[node name="ModulateControl" type="Control" parent="Die"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RolledNumber" type="Label" parent="Die/ModulateControl"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 80.0
+offset_right = 142.0
+offset_bottom = 140.0
+text = "20"
+label_settings = ExtResource("2_wakuv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TopLeftNumber" type="Label" parent="Die/ModulateControl"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 35.0
+offset_right = 140.0
+offset_bottom = 73.0
+rotation = 2.63575
+text = "?"
+label_settings = ExtResource("3_he8kw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TopRightNumber" type="Label" parent="Die/ModulateControl"]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 55.0
+offset_right = 170.0
+offset_bottom = 93.0
+rotation = 3.77566
+text = "?"
+label_settings = ExtResource("3_he8kw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LeftNumber" type="Label" parent="Die/ModulateControl"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 71.0
+offset_right = 122.0
+offset_bottom = 109.0
+rotation = 2.27626
+text = "?"
+label_settings = ExtResource("4_crgq2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightNumber" type="Label" parent="Die/ModulateControl"]
+layout_mode = 0
+offset_left = 157.0
+offset_top = 106.0
+offset_right = 207.0
+offset_bottom = 144.0
+rotation = 4.02601
+text = "?"
+label_settings = ExtResource("4_crgq2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BottomNumber" type="Label" parent="Die/ModulateControl"]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 180.0
+offset_right = 173.0
+offset_bottom = 218.0
+rotation = 3.14159
+text = "?"
+label_settings = ExtResource("5_dbtbs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SideLeftNumber" type="Label" parent="Die/ModulateControl"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 100.0
+offset_right = 60.0
+offset_bottom = 123.0
+rotation = 1.36915
+theme_override_fonts/font = SubResource("FontVariation_15h3o")
+text = "?"
+label_settings = ExtResource("6_cy8cm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SideRightNumber" type="Label" parent="Die/ModulateControl"]
+layout_mode = 0
+offset_left = 171.0
+offset_top = 136.0
+offset_right = 211.0
+offset_bottom = 159.0
+rotation = -1.31936
+text = "?"
+label_settings = ExtResource("6_cy8cm")
+horizontal_alignment = 1
+vertical_alignment = 1

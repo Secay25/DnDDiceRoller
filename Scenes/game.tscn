@@ -1,14 +1,14 @@
-[gd_scene load_steps=26 format=3 uid="uid://c8b5c468jx7e3"]
+[gd_scene load_steps=27 format=3 uid="uid://c8b5c468jx7e3"]
 
-[ext_resource type="Script" path="res://Scripts/SceneScripts/startMenu.gd" id="1_7a75a"]
+[ext_resource type="Script" path="res://Scripts/Main/startMenu.gd" id="1_7a75a"]
 [ext_resource type="Texture2D" uid="uid://c55uyci3e3rp5" path="res://Art/Background/Background.png" id="1_q573a"]
 [ext_resource type="LabelSettings" uid="uid://dtrir8icwvxv7" path="res://Fonts/712serif128white25blackshadow30-5-5.tres" id="1_wkxan"]
 [ext_resource type="Theme" uid="uid://p3k45kpnfmi7" path="res://Resources/Buttons/buttonThemes.tres" id="2_6eeqn"]
 [ext_resource type="Theme" uid="uid://dsedf33rtjse7" path="res://Resources/Buttons/creditsTheme.tres" id="4_3sai3"]
-[ext_resource type="Script" path="res://Scripts/SceneScripts/gameMenu.gd" id="4_kp3ou"]
+[ext_resource type="Script" path="res://Scripts/Main/gameMenu.gd" id="4_kp3ou"]
 [ext_resource type="Texture2D" uid="uid://cebxqhxb5xi1o" path="res://Art/Settings/Cogwheel/Cogwheel.png" id="6_e5p7b"]
 [ext_resource type="Texture2D" uid="uid://cbwn3iuwy4nst" path="res://Art/DiceSettings/DiceMultiplier/DiceMultiplierNormal.png" id="7_a08ih"]
-[ext_resource type="Script" path="res://Scripts/SceneScripts/settings.gd" id="7_fnk7n"]
+[ext_resource type="Script" path="res://Scripts/Main/settings.gd" id="7_fnk7n"]
 [ext_resource type="LabelSettings" uid="uid://b4thldv6pi1tw" path="res://Fonts/712serif49white10black20-0-2.tres" id="7_kldmu"]
 [ext_resource type="Texture2D" uid="uid://p7stgxxs6kcf" path="res://Art/Settings/Speaker/Speaker.png" id="8_q0ek3"]
 [ext_resource type="Texture2D" uid="uid://dwjcy5ypj8e0h" path="res://Art/DiceSettings/DiceMultiplier/DiceMultiplierPressed.png" id="8_t2fpr"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://b2nasoet1tth0" path="res://Art/Settings/Book/BookHover.png" id="17_3aykt"]
 [ext_resource type="Texture2D" uid="uid://bbgds7136x4x8" path="res://Art/Settings/Book/BookPressed.png" id="17_x3to1"]
 [ext_resource type="StyleBox" uid="uid://42stf2ibsr3a" path="res://Resources/PanelBook.tres" id="23_5yi5t"]
+[ext_resource type="Script" path="res://Scripts/Main/history.gd" id="26_6lol1"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -335,7 +336,7 @@ offset_top = 100.0
 offset_right = 110.0
 offset_bottom = 924.0
 
-[node name="History" type="Panel" parent="UI/Settings"]
+[node name="History" type="Panel" parent="UI/Settings" node_paths=PackedStringArray("noRollsLabel")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -346,6 +347,8 @@ offset_bottom = 724.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("23_5yi5t")
+script = ExtResource("26_6lol1")
+noRollsLabel = NodePath("Entries/HistoryExplanation")
 
 [node name="Book Bendy Part" type="ColorRect" parent="UI/Settings/History"]
 layout_mode = 1
