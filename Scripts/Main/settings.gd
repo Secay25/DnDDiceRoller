@@ -119,13 +119,13 @@ func _onSpeakerPressed() -> void:
 		muteButton.texture_disabled = speakerDisabled
 
 func _onCassetteTapePressed() -> void:
-	if Global.animationSkip:
-		Global.animationSkip = false
+	if !Global.animationSkip:
+		Global.animationSkip = true
 		cassetteTapeButton.texture_normal = cassetteTapePressed
 		cassetteTapeButton.texture_hover = cassetteTapePressedHover
 		cassetteTapeButton.texture_disabled = cassetteTapePressedDisabled
 	else:
-		Global.animationSkip = true
+		Global.animationSkip = false
 		cassetteTapeButton.texture_normal = cassetteTapeNormal
 		cassetteTapeButton.texture_hover = cassetteTapeNormalHover
 		cassetteTapeButton.texture_disabled = cassetteTapeNormalHover

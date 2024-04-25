@@ -1,13 +1,98 @@
-[gd_scene load_steps=8 format=3 uid="uid://dkel02nly1c7"]
+[gd_scene load_steps=20 format=3 uid="uid://dkel02nly1c7"]
 
 [ext_resource type="Texture2D" uid="uid://cie8n4j8r50lg" path="res://Art/Dice/D20.png" id="1_yqtj5"]
-[ext_resource type="LabelSettings" uid="uid://c10r1w53nx1n1" path="res://Fonts/D20Rolled.tres" id="2_wakuv"]
-[ext_resource type="LabelSettings" uid="uid://cvtrpnj3mw55p" path="res://Fonts/D20Top.tres" id="3_he8kw"]
-[ext_resource type="LabelSettings" uid="uid://qnl06gb2d5hb" path="res://Fonts/D20Middle.tres" id="4_crgq2"]
-[ext_resource type="LabelSettings" uid="uid://6wumk076m113" path="res://Fonts/D20Bottom.tres" id="5_dbtbs"]
-[ext_resource type="LabelSettings" uid="uid://wwtipe3yq30y" path="res://Fonts/D20Side.tres" id="6_cy8cm"]
+[ext_resource type="FontFile" uid="uid://d4nmlc0ojikdb" path="res://Fonts/712_serif.ttf" id="2_pipea"]
+[ext_resource type="LabelSettings" uid="uid://bgxs6qftfdboc" path="res://Fonts/D20Rolled.tres" id="2_wakuv"]
+
+[sub_resource type="FontVariation" id="FontVariation_a7fgu"]
+base_font = ExtResource("2_pipea")
+variation_transform = Transform2D(1, 0.5, 0, 1, 0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qlotx"]
+font = SubResource("FontVariation_a7fgu")
+font_size = 15
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[sub_resource type="FontVariation" id="FontVariation_04525"]
+base_font = ExtResource("2_pipea")
+variation_transform = Transform2D(1, -0.5, 0, 1, 0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4vnbe"]
+font = SubResource("FontVariation_04525")
+font_size = 15
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_vdn3e"]
+font = ExtResource("2_pipea")
+font_size = 45
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[sub_resource type="FontVariation" id="FontVariation_f40t5"]
+base_font = ExtResource("2_pipea")
+variation_transform = Transform2D(1, 0, 0, 1, 12, 12)
+
+[sub_resource type="LabelSettings" id="LabelSettings_oqsi5"]
+font = SubResource("FontVariation_f40t5")
+font_size = 49
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
 
 [sub_resource type="FontVariation" id="FontVariation_15h3o"]
+
+[sub_resource type="FontVariation" id="FontVariation_ni16b"]
+base_font = ExtResource("2_pipea")
+variation_transform = Transform2D(1, -1, 0, 1, 0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7lm5j"]
+font = SubResource("FontVariation_ni16b")
+font_size = 15
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[sub_resource type="FontVariation" id="FontVariation_dwaqf"]
+base_font = ExtResource("2_pipea")
+variation_transform = Transform2D(1, 1, 0, 1, 0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jw6as"]
+font = SubResource("FontVariation_dwaqf")
+font_size = 14
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[sub_resource type="FontVariation" id="FontVariation_kc0kl"]
+base_font = ExtResource("2_pipea")
+variation_transform = Transform2D(1, -1, 0, 1, 0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2pp8e"]
+font = SubResource("FontVariation_kc0kl")
+font_size = 10
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.470588)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="FontVariation" id="FontVariation_wbqkc"]
+base_font = ExtResource("2_pipea")
+variation_transform = Transform2D(1, 1, 0, 1, 0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_b25yj"]
+font = SubResource("FontVariation_wbqkc")
+font_size = 10
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.470588)
+shadow_offset = Vector2(0, 2)
 
 [node name="D20" type="Control"]
 layout_mode = 3
@@ -18,6 +103,7 @@ offset_right = -276.0
 offset_bottom = -724.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(150, 150)
 
 [node name="Die" type="TextureRect" parent="."]
 layout_mode = 0
@@ -30,9 +116,12 @@ texture = ExtResource("1_yqtj5")
 expand_mode = 1
 
 [node name="ModulateControl" type="Control" parent="Die"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="RolledNumber" type="Label" parent="Die/ModulateControl"]
 layout_mode = 0
@@ -47,49 +136,49 @@ vertical_alignment = 1
 
 [node name="TopLeftNumber" type="Label" parent="Die/ModulateControl"]
 layout_mode = 0
-offset_left = 100.0
-offset_top = 35.0
-offset_right = 140.0
-offset_bottom = 73.0
-rotation = 2.63575
-text = "?"
-label_settings = ExtResource("3_he8kw")
+offset_left = 53.0
+offset_top = 7.0
+offset_right = 93.0
+offset_bottom = 45.0
+rotation = 0.288408
+text = "18"
+label_settings = SubResource("LabelSettings_qlotx")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TopRightNumber" type="Label" parent="Die/ModulateControl"]
 layout_mode = 0
-offset_left = 130.0
-offset_top = 55.0
-offset_right = 170.0
-offset_bottom = 93.0
-rotation = 3.77566
-text = "?"
-label_settings = ExtResource("3_he8kw")
+offset_left = 114.0
+offset_top = 11.0
+offset_right = 154.0
+offset_bottom = 49.0
+rotation = 6.26663
+text = "4"
+label_settings = SubResource("LabelSettings_4vnbe")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="LeftNumber" type="Label" parent="Die/ModulateControl"]
 layout_mode = 0
-offset_left = 72.0
-offset_top = 71.0
-offset_right = 122.0
-offset_bottom = 109.0
-rotation = 2.27626
-text = "?"
-label_settings = ExtResource("4_crgq2")
+offset_left = 13.0
+offset_top = 82.0
+offset_right = 63.0
+offset_bottom = 120.0
+rotation = 5.4175
+text = "2"
+label_settings = SubResource("LabelSettings_vdn3e")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RightNumber" type="Label" parent="Die/ModulateControl"]
 layout_mode = 0
-offset_left = 157.0
-offset_top = 106.0
-offset_right = 207.0
-offset_bottom = 144.0
-rotation = 4.02601
-text = "?"
-label_settings = ExtResource("4_crgq2")
+offset_left = 154.0
+offset_top = 45.0
+offset_right = 204.0
+offset_bottom = 83.0
+rotation = 7.16807
+text = "14"
+label_settings = SubResource("LabelSettings_vdn3e")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -100,32 +189,56 @@ offset_top = 180.0
 offset_right = 173.0
 offset_bottom = 218.0
 rotation = 3.14159
-text = "?"
-label_settings = ExtResource("5_dbtbs")
+text = "8"
+label_settings = SubResource("LabelSettings_oqsi5")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SideLeftNumber" type="Label" parent="Die/ModulateControl"]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 100.0
-offset_right = 60.0
-offset_bottom = 123.0
-rotation = 1.36915
+offset_left = 4.0
+offset_top = 139.0
+offset_right = 44.0
+offset_bottom = 162.0
+rotation = -1.70042
 theme_override_fonts/font = SubResource("FontVariation_15h3o")
-text = "?"
-label_settings = ExtResource("6_cy8cm")
+text = "12"
+label_settings = SubResource("LabelSettings_7lm5j")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SideRightNumber" type="Label" parent="Die/ModulateControl"]
 layout_mode = 0
-offset_left = 171.0
-offset_top = 136.0
-offset_right = 211.0
-offset_bottom = 159.0
-rotation = -1.31936
-text = "?"
-label_settings = ExtResource("6_cy8cm")
+offset_left = 208.0
+offset_top = 112.0
+offset_right = 248.0
+offset_bottom = 135.0
+rotation = -4.15445
+text = "6."
+label_settings = SubResource("LabelSettings_jw6as")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BottomLeft" type="Label" parent="Die/ModulateControl"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 175.0
+offset_right = 63.0
+offset_bottom = 213.0
+rotation = -1.27634
+text = "10"
+label_settings = SubResource("LabelSettings_2pp8e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BottomRight" type="Label" parent="Die/ModulateControl"]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 148.0
+offset_right = 224.0
+offset_bottom = 186.0
+rotation = -4.27913
+text = "16"
+label_settings = SubResource("LabelSettings_b25yj")
 horizontal_alignment = 1
 vertical_alignment = 1

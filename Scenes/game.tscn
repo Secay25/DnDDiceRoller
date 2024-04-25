@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c8b5c468jx7e3"]
+[gd_scene load_steps=28 format=3 uid="uid://c8b5c468jx7e3"]
 
 [ext_resource type="Script" path="res://Scripts/Main/startMenu.gd" id="1_7a75a"]
 [ext_resource type="Texture2D" uid="uid://c55uyci3e3rp5" path="res://Art/Background/Background.png" id="1_q573a"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://uj0fodyn5s3d" path="res://Art/Settings/Book/Book.png" id="9_h8um5"]
 [ext_resource type="Texture2D" uid="uid://cu47og2si3d1p" path="res://Art/Settings/Book/BookDark.png" id="9_qt6e2"]
 [ext_resource type="Texture2D" uid="uid://dqbij0g42wt5k" path="res://Art/DiceSettings/DiceMultiplier/DiceMultiplierDisabled.png" id="10_j7ajj"]
+[ext_resource type="PackedScene" uid="uid://dkel02nly1c7" path="res://Scenes/Dice/D20.tscn" id="11_8qi10"]
 [ext_resource type="Texture2D" uid="uid://cqv3rx704irn1" path="res://Art/Settings/Speaker/SpeakerHover.png" id="12_b1oju"]
 [ext_resource type="Texture2D" uid="uid://bp0pt4xmbvpoh" path="res://Art/Settings/Cassette tape/CassetteTapeNormal.png" id="13_a6l0u"]
 [ext_resource type="Texture2D" uid="uid://dj6i2aba3abqu" path="res://Art/Settings/Cassette tape/CassetteTapeNormalHover.png" id="14_vj3rc"]
@@ -146,38 +147,43 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="DiceTopD10" type="Polygon2D" parent="UI/GameMenu"]
-position = Vector2(150, 462)
-scale = Vector2(1.25, 1.25)
+position = Vector2(288, 550)
+scale = Vector2(1.5, -1.5)
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(100, -100, 100, -100, 100, 100, -100, 100, -100, -100)
+polygon = PackedVector2Array(0, -100, 0, -100, 0, -100, 100, 100, -100, 100)
 
 [node name="DiceTopD100" type="Polygon2D" parent="UI/GameMenu"]
-position = Vector2(426, 462)
-scale = Vector2(1.25, 1.25)
+position = Vector2(288, 512)
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(100, -100, 100, -100, 100, 100, -100, 100, -100, -100)
+polygon = PackedVector2Array(1, 1, 1, 1, 1, -1, -1, -1, -1, 1)
 
 [node name="DiceMiddleD10" type="Polygon2D" parent="UI/GameMenu"]
-position = Vector2(150, 762)
-scale = Vector2(1.25, 1.25)
+position = Vector2(288, 512)
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(100, -100, 100, -100, 100, 100, -100, 100, -100, -100)
+polygon = PackedVector2Array(1, 1, 1, 1, 1, -1, -1, -1, -1, 1)
 
 [node name="DiceMiddleD100" type="Polygon2D" parent="UI/GameMenu"]
-position = Vector2(426, 762)
-scale = Vector2(1.25, 1.25)
+position = Vector2(288, 512)
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(100, -100, 100, -100, 100, 100, -100, 100, -100, -100)
+polygon = PackedVector2Array(1, 1, 1, 1, 1, -1, -1, -1, -1, 1)
 
 [node name="DiceBottomD10" type="Polygon2D" parent="UI/GameMenu"]
-position = Vector2(150, 862)
+position = Vector2(288, 512)
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(0, -100, 0, -100, 100, 0, 0, 100, -100, 0)
+polygon = PackedVector2Array(1, 1, 1, 1, 1, -1, -1, -1, -1, 1)
 
 [node name="DiceBottomD100" type="Polygon2D" parent="UI/GameMenu"]
-position = Vector2(426, 862)
+position = Vector2(288, 512)
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(0, -100, 0, -100, 100, 0, 0, 100, -100, 0)
+polygon = PackedVector2Array(1, 1, 1, 1, 1, -1, -1, -1, -1, 1)
+
+[node name="D20" parent="UI/GameMenu" instance=ExtResource("11_8qi10")]
+layout_mode = 1
+offset_left = 144.0
+offset_top = 384.0
+offset_right = -132.0
+offset_bottom = -340.0
+scale = Vector2(2, 2)
 
 [node name="CreditsMenu" type="Control" parent="UI"]
 layout_mode = 1
