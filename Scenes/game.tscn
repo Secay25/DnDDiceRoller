@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c8b5c468jx7e3"]
+[gd_scene load_steps=51 format=3 uid="uid://c8b5c468jx7e3"]
 
 [ext_resource type="Script" path="res://Scripts/Main/startMenu.gd" id="1_7a75a"]
 [ext_resource type="Texture2D" uid="uid://c55uyci3e3rp5" path="res://Art/Background/Background.png" id="1_q573a"]
@@ -27,6 +27,124 @@
 [ext_resource type="Texture2D" uid="uid://bbgds7136x4x8" path="res://Art/Settings/Book/BookPressed.png" id="17_x3to1"]
 [ext_resource type="StyleBox" uid="uid://42stf2ibsr3a" path="res://Resources/PanelBook.tres" id="23_5yi5t"]
 [ext_resource type="Script" path="res://Scripts/Main/history.gd" id="26_6lol1"]
+[ext_resource type="Script" path="res://Scripts/Main/CustomRollMenu.gd" id="28_wp88i"]
+[ext_resource type="FontFile" uid="uid://d4nmlc0ojikdb" path="res://Fonts/712_serif.ttf" id="29_5m42f"]
+[ext_resource type="Texture2D" uid="uid://dd3jx5e1wn140" path="res://Art/Dice/D4.png" id="30_u2av3"]
+[ext_resource type="Texture2D" uid="uid://ym5pl65l4ary" path="res://Art/Dice/D6.png" id="31_0ks4u"]
+[ext_resource type="Texture2D" uid="uid://baprf3w76e3v8" path="res://Art/Dice/D8.png" id="32_qrw2c"]
+[ext_resource type="Texture2D" uid="uid://cq8caolatom81" path="res://Art/Dice/D10.png" id="33_h8oa5"]
+[ext_resource type="Texture2D" uid="uid://cv2o8wdj4sejg" path="res://Art/Dice/D12.png" id="34_rh6bl"]
+[ext_resource type="Texture2D" uid="uid://cie8n4j8r50lg" path="res://Art/Dice/D20.png" id="35_hagqd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_s72gc"]
+font = ExtResource("29_5m42f")
+font_size = 35
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.356863)
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jun3c"]
+bg_color = Color(1, 0, 0, 0.717647)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 12
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tehxb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bf4rv"]
+font = ExtResource("29_5m42f")
+font_size = 40
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_q06w1"]
+font = ExtResource("29_5m42f")
+font_size = 40
+font_color = Color(1, 0, 0, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 0.470588)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2cvse"]
+font = ExtResource("29_5m42f")
+font_size = 80
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_n0foa"]
+font = ExtResource("29_5m42f")
+font_size = 160
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_eo0l2"]
+font = ExtResource("29_5m42f")
+font_size = 150
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_trc8l"]
+font = ExtResource("29_5m42f")
+font_size = 150
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_olfd3"]
+font = ExtResource("29_5m42f")
+font_size = 140
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_tqv3o"]
+font = ExtResource("29_5m42f")
+font_size = 80
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_0mx3o"]
+font = ExtResource("29_5m42f")
+font_size = 100
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_4mici"]
+font = ExtResource("29_5m42f")
+font_size = 70
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_0cuuw"]
+font = ExtResource("29_5m42f")
+font_size = 60
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_uiwvj"]
+font = ExtResource("29_5m42f")
+font_size = 35
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -53,7 +171,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_q573a")
 
-[node name="StartMenu" type="Control" parent="UI" node_paths=PackedStringArray("gameMenuControl", "creditsMenu", "startButton", "creditsButton")]
+[node name="StartMenu" type="Control" parent="UI" node_paths=PackedStringArray("gameMenuControl", "creditsMenu", "startButton", "creditsButton", "customButton")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -65,6 +183,7 @@ gameMenuControl = NodePath("../GameMenu")
 creditsMenu = NodePath("../CreditsMenu")
 startButton = NodePath("VBoxContainer/Start")
 creditsButton = NodePath("VBoxContainer/Credits")
+customButton = NodePath("../CustomRollSwitch")
 
 [node name="Title" type="Label" parent="UI/StartMenu"]
 custom_minimum_size = Vector2(0, 80)
@@ -146,6 +265,17 @@ texture_disabled = ExtResource("10_j7ajj")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="TempTextNotWorking" type="Label" parent="UI/GameMenu/DiceSettings/DiceMultiplier"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 150.0
+offset_right = 158.0
+offset_bottom = 207.0
+text = "^Doesn't 
+work"
+label_settings = SubResource("LabelSettings_s72gc")
+horizontal_alignment = 1
+
 [node name="DiceTopD10" type="Polygon2D" parent="UI/GameMenu"]
 position = Vector2(288, 550)
 scale = Vector2(1.5, -1.5)
@@ -179,10 +309,10 @@ polygon = PackedVector2Array(1, 1, 1, 1, 1, -1, -1, -1, -1, 1)
 
 [node name="D20" parent="UI/GameMenu" instance=ExtResource("11_8qi10")]
 layout_mode = 1
-offset_left = 144.0
-offset_top = 384.0
-offset_right = -132.0
-offset_bottom = -340.0
+offset_left = 125.0
+offset_top = 376.0
+offset_right = -151.0
+offset_bottom = -348.0
 scale = Vector2(2, 2)
 
 [node name="CreditsMenu" type="Control" parent="UI"]
@@ -231,6 +361,313 @@ text = " This program
  using this and
  Enjoy!"
 label_settings = ExtResource("7_kldmu")
+
+[node name="CustomRollMenu" type="Control" parent="UI" node_paths=PackedStringArray("otherGroups", "diceButtons", "subWindow", "rollEdit", "errorText", "rollButton", "rolledNumberDisplay", "customButton")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 576.0
+offset_right = 576.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("28_wp88i")
+otherGroups = [NodePath("../GameMenu"), NodePath("../Settings")]
+diceButtons = [NodePath("CustomSub/RollAmount/DiceGrids/Dice468/D4Button"), NodePath("CustomSub/RollAmount/DiceGrids/Dice468/D6Button"), NodePath("CustomSub/RollAmount/DiceGrids/Dice468/D8Button"), NodePath("CustomSub/RollAmount/DiceGrids/Dice101220/D10Button"), NodePath("CustomSub/RollAmount/DiceGrids/Dice101220/D12Button"), NodePath("CustomSub/RollAmount/DiceGrids/Dice101220/D20Button"), NodePath("CustomSub/RollAmount/DiceGrids/Dice100/D100Button")]
+subWindow = NodePath("CustomSub")
+rollEdit = NodePath("CustomSub/RollAmount/RollingAmount")
+errorText = NodePath("CustomSub/RollAmount/ErrorText")
+rollButton = NodePath("CustomSub/RollAmount/CustomRoll")
+rolledNumberDisplay = NodePath("CustomSub/RollAmount/RollDisplay/RolledNumber")
+customButton = NodePath("../CustomRollSwitch")
+
+[node name="CustomSub" type="Control" parent="UI/CustomRollMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TransGround" type="ColorRect" parent="UI/CustomRollMenu/CustomSub"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.807843)
+
+[node name="RollAmount" type="Control" parent="UI/CustomRollMenu/CustomSub"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RollingAmount" type="LineEdit" parent="UI/CustomRollMenu/CustomSub/RollAmount"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 212.0
+offset_right = 575.0
+offset_bottom = 284.0
+pivot_offset = Vector2(285, 36)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/clear_button_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("29_5m42f")
+theme_override_font_sizes/font_size = 84
+theme_override_styles/normal = SubResource("StyleBoxFlat_jun3c")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tehxb")
+placeholder_text = "10 (standard)"
+alignment = 1
+max_length = 3
+expand_to_text_length = true
+virtual_keyboard_type = 4
+clear_button_enabled = true
+middle_mouse_paste_enabled = false
+drag_and_drop_selection_enabled = false
+caret_blink = true
+
+[node name="RollDescription" type="Label" parent="UI/CustomRollMenu/CustomSub/RollAmount"]
+layout_mode = 0
+offset_top = 283.0
+offset_right = 579.0
+offset_bottom = 346.0
+text = "How many times would you 
+like to roll?"
+label_settings = SubResource("LabelSettings_bf4rv")
+horizontal_alignment = 1
+
+[node name="ErrorText" type="Label" parent="UI/CustomRollMenu/CustomSub/RollAmount"]
+visible = false
+layout_mode = 0
+offset_left = 37.0
+offset_top = 174.0
+offset_right = 557.0
+offset_bottom = 204.0
+text = "Please Input numbers only!"
+label_settings = SubResource("LabelSettings_q06w1")
+
+[node name="CustomRoll" type="Button" parent="UI/CustomRollMenu/CustomSub/RollAmount"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 168.0
+offset_top = 338.0
+offset_right = 368.0
+offset_bottom = 408.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_6eeqn")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Roll"
+
+[node name="RollDisplay" type="Label" parent="UI/CustomRollMenu/CustomSub/RollAmount"]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 1.0
+offset_right = 661.0
+offset_bottom = 64.0
+text = "You rolled:"
+label_settings = SubResource("LabelSettings_2cvse")
+horizontal_alignment = 1
+
+[node name="RolledNumber" type="Label" parent="UI/CustomRollMenu/CustomSub/RollAmount/RollDisplay"]
+layout_mode = 0
+offset_left = -82.0
+offset_top = 73.0
+offset_right = 495.0
+offset_bottom = 193.0
+text = "?"
+label_settings = SubResource("LabelSettings_n0foa")
+horizontal_alignment = 1
+
+[node name="DiceGrids" type="VBoxContainer" parent="UI/CustomRollMenu/CustomSub/RollAmount"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 447.0
+offset_right = 575.0
+offset_bottom = 1023.0
+
+[node name="Dice468" type="GridContainer" parent="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 3
+
+[node name="D4Button" type="TextureButton" parent="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice468"]
+self_modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("30_u2av3")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Number4" type="Label" parent="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice468/D4Button"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 66.0
+offset_right = 139.0
+offset_bottom = 179.0
+text = "4"
+label_settings = SubResource("LabelSettings_eo0l2")
+
+[node name="D6Button" type="TextureButton" parent="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice468"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("31_0ks4u")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Number6" type="Label" parent="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice468/D6Button"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 36.0
+offset_right = 135.0
+offset_bottom = 149.0
+text = "6"
+label_settings = SubResource("LabelSettings_trc8l")
+
+[node name="D8Button" type="TextureButton" parent="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice468"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("32_qrw2c")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Number8" type="Label" parent="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice468/D8Button"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 41.0
+offset_right = 141.0
+offset_bottom = 154.0
+text = "8"
+label_settings = SubResource("LabelSettings_olfd3")
+
+[node name="Dice101220" type="GridContainer" parent="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 3
+
+[node name="D10Button" type="TextureButton" parent="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice101220"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("33_h8oa5")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Number10" type="Label" parent="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice101220/D10Button"]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 69.0
+offset_right = 138.0
+offset_bottom = 129.0
+text = "10
+"
+label_settings = SubResource("LabelSettings_tqv3o")
+
+[node name="D12Button" type="TextureButton" parent="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice101220"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("34_rh6bl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Number12" type="Label" parent="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice101220/D12Button"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 47.0
+offset_right = 147.0
+offset_bottom = 123.0
+text = "12"
+label_settings = SubResource("LabelSettings_0mx3o")
+
+[node name="D20Button" type="TextureButton" parent="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice101220"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("35_hagqd")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice101220/D20Button"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 77.0
+offset_right = 131.0
+offset_bottom = 130.0
+text = "20"
+label_settings = SubResource("LabelSettings_4mici")
+
+[node name="Dice100" type="GridContainer" parent="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 3
+
+[node name="Dummy" type="TextureButton" parent="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice100"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+texture_normal = ExtResource("33_h8oa5")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice100/Dummy"]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 80.0
+offset_right = 144.0
+offset_bottom = 126.0
+text = "100"
+label_settings = SubResource("LabelSettings_0cuuw")
+
+[node name="D100Button" type="TextureButton" parent="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice100"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("33_h8oa5")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice100/D100Button"]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 80.0
+offset_right = 144.0
+offset_bottom = 126.0
+text = "100"
+label_settings = SubResource("LabelSettings_0cuuw")
+
+[node name="CustomRollSwitch" type="TextureButton" parent="UI"]
+layout_mode = 0
+offset_left = 3456.0
+offset_right = 3570.0
+offset_bottom = 93.0
+texture_normal = ExtResource("1_q573a")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TempText" type="Label" parent="UI/CustomRollSwitch"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 16.0
+offset_right = 112.0
+offset_bottom = 73.0
+text = "Roll 
+Custom"
+label_settings = SubResource("LabelSettings_uiwvj")
+horizontal_alignment = 1
 
 [node name="Settings" type="Control" parent="UI" node_paths=PackedStringArray("settingsButton", "historyButton", "muteButton", "cassetteTapeButton", "historyBook", "bookQuitTop", "bookQuitBottom")]
 layout_mode = 1
@@ -420,6 +857,30 @@ label_settings = ExtResource("7_kldmu")
 [connection signal="pressed" from="UI/StartMenu/VBoxContainer/Start" to="UI/StartMenu" method="_onStartPressed"]
 [connection signal="pressed" from="UI/StartMenu/VBoxContainer/Credits" to="UI/StartMenu" method="_onCreditsPressed"]
 [connection signal="pressed" from="UI/CreditsMenu/CreditsStart" to="UI/StartMenu" method="_onCreditsStartPressed"]
+[connection signal="text_submitted" from="UI/CustomRollMenu/CustomSub/RollAmount/RollingAmount" to="UI/CustomRollMenu" method="_onLineEditTextSubmitted"]
+[connection signal="pressed" from="UI/CustomRollMenu/CustomSub/RollAmount/CustomRoll" to="UI/CustomRollMenu" method="_onCustomRollPressed"]
+[connection signal="mouse_entered" from="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice468/D4Button" to="UI/CustomRollMenu" method="_onDiceButtonMouseEntered" binds= [0, 4]]
+[connection signal="mouse_exited" from="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice468/D4Button" to="UI/CustomRollMenu" method="_onDiceButtonMouseExited" binds= [0, 4]]
+[connection signal="pressed" from="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice468/D4Button" to="UI/CustomRollMenu" method="_onDiceButtonPressed" binds= [0, 4]]
+[connection signal="mouse_entered" from="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice468/D6Button" to="UI/CustomRollMenu" method="_onDiceButtonMouseEntered" binds= [1, 6]]
+[connection signal="mouse_exited" from="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice468/D6Button" to="UI/CustomRollMenu" method="_onDiceButtonMouseExited" binds= [1, 6]]
+[connection signal="pressed" from="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice468/D6Button" to="UI/CustomRollMenu" method="_onDiceButtonPressed" binds= [1, 6]]
+[connection signal="mouse_entered" from="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice468/D8Button" to="UI/CustomRollMenu" method="_onDiceButtonMouseEntered" binds= [2, 8]]
+[connection signal="mouse_exited" from="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice468/D8Button" to="UI/CustomRollMenu" method="_onDiceButtonMouseExited" binds= [2, 8]]
+[connection signal="pressed" from="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice468/D8Button" to="UI/CustomRollMenu" method="_onDiceButtonPressed" binds= [2, 8]]
+[connection signal="mouse_entered" from="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice101220/D10Button" to="UI/CustomRollMenu" method="_onDiceButtonMouseEntered" binds= [3, 10]]
+[connection signal="mouse_exited" from="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice101220/D10Button" to="UI/CustomRollMenu" method="_onDiceButtonMouseExited" binds= [3, 10]]
+[connection signal="pressed" from="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice101220/D10Button" to="UI/CustomRollMenu" method="_onDiceButtonPressed" binds= [3, 10]]
+[connection signal="mouse_entered" from="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice101220/D12Button" to="UI/CustomRollMenu" method="_onDiceButtonMouseEntered" binds= [4, 12]]
+[connection signal="mouse_exited" from="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice101220/D12Button" to="UI/CustomRollMenu" method="_onDiceButtonMouseExited" binds= [4, 12]]
+[connection signal="pressed" from="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice101220/D12Button" to="UI/CustomRollMenu" method="_onDiceButtonPressed" binds= [4, 12]]
+[connection signal="mouse_entered" from="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice101220/D20Button" to="UI/CustomRollMenu" method="_onDiceButtonMouseEntered" binds= [5, 20]]
+[connection signal="mouse_exited" from="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice101220/D20Button" to="UI/CustomRollMenu" method="_onDiceButtonMouseExited" binds= [5, 20]]
+[connection signal="pressed" from="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice101220/D20Button" to="UI/CustomRollMenu" method="_onDiceButtonPressed" binds= [5, 20]]
+[connection signal="mouse_entered" from="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice100/D100Button" to="UI/CustomRollMenu" method="_onDiceButtonMouseEntered" binds= [6, 100]]
+[connection signal="mouse_exited" from="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice100/D100Button" to="UI/CustomRollMenu" method="_onDiceButtonMouseExited" binds= [6, 100]]
+[connection signal="pressed" from="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice100/D100Button" to="UI/CustomRollMenu" method="_onDiceButtonPressed" binds= [6, 100]]
+[connection signal="pressed" from="UI/CustomRollSwitch" to="UI/CustomRollMenu" method="_onCustomRollSwitchPressed"]
 [connection signal="pressed" from="UI/Settings/CassetteTape" to="UI/Settings" method="_onCassetteTapePressed"]
 [connection signal="pressed" from="UI/Settings/Speaker" to="UI/Settings" method="_onSpeakerPressed"]
 [connection signal="pressed" from="UI/Settings/Cogwheel" to="UI/Settings" method="_onCogwheelPressed"]

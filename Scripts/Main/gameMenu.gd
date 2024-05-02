@@ -12,7 +12,7 @@ class_name GameUI extends Control
 
 func _ready() -> void:
 	#ALERT REMOVE CODE ONCE NODE IS REMOVED!
-	$RemoveOnceDone.visible = false
+	$RemoveOnceDone.queue_free()
 
 func MainStarted() -> void:
 	Global.rolled = true

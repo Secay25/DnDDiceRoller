@@ -1,5 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://dkel02nly1c7"]
+[gd_scene load_steps=21 format=3 uid="uid://dkel02nly1c7"]
 
+[ext_resource type="Script" path="res://Scripts/Dice/TempscriptD20.gd" id="1_3c6e3"]
 [ext_resource type="Texture2D" uid="uid://cie8n4j8r50lg" path="res://Art/Dice/D20.png" id="1_yqtj5"]
 [ext_resource type="FontFile" uid="uid://d4nmlc0ojikdb" path="res://Fonts/712_serif.ttf" id="2_pipea"]
 [ext_resource type="LabelSettings" uid="uid://bgxs6qftfdboc" path="res://Fonts/D20Rolled.tres" id="2_wakuv"]
@@ -94,7 +95,7 @@ shadow_size = 0
 shadow_color = Color(0, 0, 0, 0.470588)
 shadow_offset = Vector2(0, 2)
 
-[node name="D20" type="Control"]
+[node name="D20" type="Control" node_paths=PackedStringArray("mainLabel", "allLabels")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -104,24 +105,24 @@ offset_bottom = -724.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(150, 150)
+script = ExtResource("1_3c6e3")
+mainLabel = NodePath("Die/ModulateControl/RolledNumber")
+allLabels = [NodePath("Die/ModulateControl/TopLeftNumber"), NodePath("Die/ModulateControl/TopRightNumber"), NodePath("Die/ModulateControl/LeftNumber"), NodePath("Die/ModulateControl/RightNumber"), NodePath("Die/ModulateControl/BottomNumber"), NodePath("Die/ModulateControl/SideLeftNumber"), NodePath("Die/ModulateControl/SideRightNumber"), NodePath("Die/ModulateControl/BottomLeft"), NodePath("Die/ModulateControl/BottomRight")]
 
-[node name="Die" type="TextureRect" parent="."]
+[node name="Die" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 50.0
 offset_top = 50.0
 offset_right = 250.0
 offset_bottom = 250.0
 pivot_offset = Vector2(100, 100)
-texture = ExtResource("1_yqtj5")
-expand_mode = 1
+texture_normal = ExtResource("1_yqtj5")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="ModulateControl" type="Control" parent="Die"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 
 [node name="RolledNumber" type="Label" parent="Die/ModulateControl"]
 layout_mode = 0
@@ -214,7 +215,7 @@ offset_top = 112.0
 offset_right = 248.0
 offset_bottom = 135.0
 rotation = -4.15445
-text = "6."
+text = "6"
 label_settings = SubResource("LabelSettings_jw6as")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -242,3 +243,5 @@ text = "16"
 label_settings = SubResource("LabelSettings_b25yj")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="Die" to="." method="_onDiePressed"]

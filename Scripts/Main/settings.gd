@@ -13,38 +13,39 @@ extends Control
 @onready var historyActivePos: float = buttonOrigins + 125
 @onready var muteActivePos: float = buttonOrigins + 225
 @onready var cassetteTapeActivePos: float = buttonOrigins + 325
-
-#region Textures
-var cogwheelNormal: Texture2D = preload("res://Art/Settings/Cogwheel/Cogwheel.png")
-var cogwheelHover: Texture2D = preload("res://Art/Settings/Cogwheel/CogwheelHover.png")
-var cogwheelPressed: Texture2D = preload("res://Art/Settings/Cogwheel/CogwheelPressed.png")
-var cogwheelPressedHover: Texture2D = preload("res://Art/Settings/Cogwheel/CogwheelPressedHover.png")
-var speakerNormal: Texture2D = preload("res://Art/Settings/Speaker/Speaker.png")
-var speakerHover: Texture2D = preload("res://Art/Settings/Speaker/SpeakerHover.png")
-var speakerDisabled: Texture2D = preload("res://Art/Settings/Speaker/DisabledSpeaker.png")
-var speakerPressed: Texture2D = preload("res://Art/Settings/Speaker/MutedSpeaker.png")
-var speakerPressedHover: Texture2D = preload("res://Art/Settings/Speaker/MutedSpeakerHover.png")
-var speakerMutedDisabled: Texture2D = preload("res://Art/Settings/Speaker/DisabledMutedSpeaker.png")
-var cassetteTapeNormal: Texture2D = preload("res://Art/Settings/Cassette tape/CassetteTapeNormal.png")
-var cassetteTapeNormalHover: Texture2D = preload("res://Art/Settings/Cassette tape/CassetteTapeNormalHover.png")
-var cassetteTapeNormalDisabled: Texture2D = preload("res://Art/Settings/Cassette tape/CassetteTapeNormalDisabled.png")
-var cassetteTapePressed: Texture2D = preload("res://Art/Settings/Cassette tape/CassetteTapePressed.png")
-var cassetteTapePressedHover: Texture2D = preload("res://Art/Settings/Cassette tape/CassetteTapePressedHover.png")
-var cassetteTapePressedDisabled: Texture2D = preload("res://Art/Settings/Cassette tape/CassetteTapePressedDisabled.png")
-#endregion
-
 var rolledUp: bool = false
 const FULLROT: float = 6 * PI
 const ROLLOUTDUR: float = 1.5
 const BOOKORIGINPOS: float = -1069
 const BOOKACTIVEPOS: float = -600
+#region Textures
+const COGWHEELNORMAL: Texture2D = preload("res://Art/Settings/Cogwheel/Cogwheel.png")
+const COGWHEELHOVER: Texture2D = preload("res://Art/Settings/Cogwheel/CogwheelHover.png")
+const COGWHEELPRESSED: Texture2D = preload("res://Art/Settings/Cogwheel/CogwheelPressed.png")
+const COGWHEELPRESSEDHOVER: Texture2D = preload("res://Art/Settings/Cogwheel/CogwheelPressedHover.png")
+const SPEAKERNORMAL: Texture2D = preload("res://Art/Settings/Speaker/Speaker.png")
+const SPEAKERHOVER: Texture2D = preload("res://Art/Settings/Speaker/SpeakerHover.png")
+const SPEAKERDISABLED: Texture2D = preload("res://Art/Settings/Speaker/DisabledSpeaker.png")
+const SPEAKERPRESSED: Texture2D = preload("res://Art/Settings/Speaker/MutedSpeaker.png")
+const SPEAKERPRESSEDHOVER: Texture2D = preload("res://Art/Settings/Speaker/MutedSpeakerHover.png")
+const SPEAKERMUTEDDISABLED: Texture2D = preload("res://Art/Settings/Speaker/DisabledMutedSpeaker.png")
+const CASSETTETAPENORMAL: Texture2D = preload("res://Art/Settings/Cassette tape/CassetteTapeNormal.png")
+const CASSETTETAPENORMALHOVER: Texture2D = preload("res://Art/Settings/Cassette tape/CassetteTapeNormalHover.png")
+const CASSETTETAPENORMALDISABLED: Texture2D = preload("res://Art/Settings/Cassette tape/CassetteTapeNormalDisabled.png")
+const CASSETTETAPEPRESSED: Texture2D = preload("res://Art/Settings/Cassette tape/CassetteTapePressed.png")
+const CASSETTETAPEPRESSEDHOVER: Texture2D = preload("res://Art/Settings/Cassette tape/CassetteTapePressedHover.png")
+const CASSETTETAPEPRESSEDDISABLED: Texture2D = preload("res://Art/Settings/Cassette tape/CassetteTapePressedDisabled.png")
+#endregion
 
+#region overridden methods
 func _ready() -> void:
 	if !Global.sfx:
 		muteButton.set_pressed_no_signal(true)
-		muteButton.texture_normal = speakerPressed
-		muteButton.texture_disabled = speakerMutedDisabled
+		muteButton.texture_normal = SPEAKERPRESSED
+		muteButton.texture_disabled = SPEAKERMUTEDDISABLED
+#endregion
 
+#region custom methods
 func ChangeSprites(imageNormal: Texture2D,imageHover: Texture2D,turnOn: bool = true) -> void:
 	settingsButton.texture_normal = imageNormal
 	settingsButton.texture_hover = imageHover
@@ -60,20 +61,16 @@ func ChangeSprites(imageNormal: Texture2D,imageHover: Texture2D,turnOn: bool = t
 	
 	if Global.rolled:
 		historyButton.disabled = !turnOn
+#endregion
 
 #region Signals
 func _onCogwheelPressed() -> void:
-	var rollOutDuration = ROLLOUTDUR
+	var rollOutDuration = ROLLOUTDUR * Global.BoolSign(!Global.animationSkip)
 	var tween: Tween = create_tween()
-	
-	if Global.animationSkip:
-		rollOutDuration = Global.ANIMSKIPDUR
 	
 	if !rolledUp:
 		#pressed
-		if !Global.animationPlaying:
-			cassetteTapeButton.disabled = true
-		
+		cassetteTapeButton.disabled = !Global.animationPlaying
 		rolledUp = true
 		settingsButton.disabled = true
 		muteButton.disabled = true
@@ -86,13 +83,10 @@ func _onCogwheelPressed() -> void:
 		tween.tween_property(historyButton,"position:y",historyActivePos,rollOutDuration).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(cassetteTapeButton,"position:y",cassetteTapeActivePos,rollOutDuration).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(settingsButton,"rotation",-FULLROT,rollOutDuration).set_trans(Tween.TRANS_QUINT)
-		tween.chain().tween_callback(ChangeSprites.bind(cogwheelPressed,cogwheelPressedHover))
+		tween.chain().tween_callback(ChangeSprites.bind(COGWHEELPRESSED,COGWHEELPRESSEDHOVER))
 	else:
 		#not pressed
-		
-		if !Global.animationPlaying:
-			cassetteTapeButton.disabled = true
-		
+		cassetteTapeButton.disabled = !Global.animationPlaying
 		rolledUp = false
 		settingsButton.disabled = true
 		muteButton.disabled = true
@@ -102,41 +96,37 @@ func _onCogwheelPressed() -> void:
 		tween.tween_property(historyButton,"position:y",buttonOrigins,rollOutDuration).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(cassetteTapeButton,"position:y",buttonOrigins,rollOutDuration).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(settingsButton,"rotation",FULLROT,rollOutDuration).set_trans(Tween.TRANS_QUINT)
-		tween.chain().tween_callback(ChangeSprites.bind(cogwheelNormal,cogwheelHover,false))
+		tween.chain().tween_callback(ChangeSprites.bind(COGWHEELNORMAL,COGWHEELHOVER,false))
 
 func _onSpeakerPressed() -> void:
 	if Global.sfx:
 		#pressed
 		Global.sfx = false
-		muteButton.texture_normal = speakerPressed
-		muteButton.texture_hover = speakerPressedHover
-		muteButton.texture_disabled = speakerMutedDisabled
+		muteButton.texture_normal = SPEAKERPRESSED
+		muteButton.texture_hover = SPEAKERPRESSEDHOVER
+		muteButton.texture_disabled = SPEAKERMUTEDDISABLED
 	else:
 		#not pressed
 		Global.sfx = true
-		muteButton.texture_normal = speakerNormal
-		muteButton.texture_hover = speakerHover
-		muteButton.texture_disabled = speakerDisabled
+		muteButton.texture_normal = SPEAKERNORMAL
+		muteButton.texture_hover = SPEAKERHOVER
+		muteButton.texture_disabled = SPEAKERDISABLED
 
 func _onCassetteTapePressed() -> void:
 	if !Global.animationSkip:
 		Global.animationSkip = true
-		cassetteTapeButton.texture_normal = cassetteTapePressed
-		cassetteTapeButton.texture_hover = cassetteTapePressedHover
-		cassetteTapeButton.texture_disabled = cassetteTapePressedDisabled
+		cassetteTapeButton.texture_normal = CASSETTETAPEPRESSED
+		cassetteTapeButton.texture_hover = CASSETTETAPEPRESSEDHOVER
+		cassetteTapeButton.texture_disabled = CASSETTETAPEPRESSEDDISABLED
 	else:
 		Global.animationSkip = false
-		cassetteTapeButton.texture_normal = cassetteTapeNormal
-		cassetteTapeButton.texture_hover = cassetteTapeNormalHover
-		cassetteTapeButton.texture_disabled = cassetteTapeNormalHover
-#endregion
+		cassetteTapeButton.texture_normal = CASSETTETAPENORMAL
+		cassetteTapeButton.texture_hover = CASSETTETAPENORMALHOVER
+		cassetteTapeButton.texture_disabled = CASSETTETAPENORMALDISABLED
 
 func _onBookToggled(toggled_on: bool) -> void:
-	var rollOutDur: float = ROLLOUTDUR
+	var rollOutDur: float = ROLLOUTDUR * Global.BoolSign(!Global.animationSkip)
 	var tween: Tween = create_tween()
-	
-	if Global.animationSkip:
-		rollOutDur = Global.ANIMSKIPDUR
 	
 	if toggled_on:
 		cassetteTapeButton.disabled = true
@@ -155,3 +145,4 @@ func _onBookToggled(toggled_on: bool) -> void:
 
 func _onButtonPressed() -> void:
 	historyButton.button_pressed = false
+#endregion
