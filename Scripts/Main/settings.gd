@@ -65,7 +65,7 @@ func ChangeSprites(imageNormal: Texture2D,imageHover: Texture2D,turnOn: bool = t
 
 #region Signals
 func _onCogwheelPressed() -> void:
-	var rollOutDuration = ROLLOUTDUR * Global.BoolSign(!Global.animationSkip)
+	var rollOutDuration = ROLLOUTDUR * int(!Global.animationSkip)
 	var tween: Tween = create_tween()
 	
 	if !rolledUp:
@@ -125,7 +125,7 @@ func _onCassetteTapePressed() -> void:
 		cassetteTapeButton.texture_disabled = CASSETTETAPENORMALDISABLED
 
 func _onBookToggled(toggled_on: bool) -> void:
-	var rollOutDur: float = ROLLOUTDUR * Global.BoolSign(!Global.animationSkip)
+	var rollOutDur: float = ROLLOUTDUR * int(!Global.animationSkip)
 	var tween: Tween = create_tween()
 	
 	if toggled_on:

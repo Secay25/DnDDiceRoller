@@ -11,7 +11,7 @@ const SWOOPDUR: Array[int] = [3,2]
 
 #region custom methods
 func StartRolling(firstObject: Control,secondObject: Control,targetPosFirst: Vector2,targetPosSecond: Vector2,mainStarted: bool = false) -> void:
-	var swoopingDur: Array[float] = [SWOOPDUR[0] * Global.BoolSign(!Global.animationSkip),SWOOPDUR[1] * Global.BoolSign(!Global.animationSkip)]
+	var swoopingDur: Array[float] = [SWOOPDUR[0] * int(!Global.animationSkip),SWOOPDUR[1] * int(!Global.animationSkip)]
 	startButton.disabled = true
 	creditsButton.disabled = true
 	var tween: Tween = create_tween().bind_node(self)

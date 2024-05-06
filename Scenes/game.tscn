@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://c8b5c468jx7e3"]
+[gd_scene load_steps=56 format=3 uid="uid://c8b5c468jx7e3"]
 
 [ext_resource type="Script" path="res://Scripts/Main/startMenu.gd" id="1_7a75a"]
 [ext_resource type="Texture2D" uid="uid://c55uyci3e3rp5" path="res://Art/Background/Background.png" id="1_q573a"]
@@ -145,6 +145,16 @@ font_size = 35
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i5y8d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wmhgb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8jyvl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h0sdj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cqmx8"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -362,7 +372,7 @@ text = " This program
  Enjoy!"
 label_settings = ExtResource("7_kldmu")
 
-[node name="CustomRollMenu" type="Control" parent="UI" node_paths=PackedStringArray("otherGroups", "diceButtons", "subWindow", "rollEdit", "errorText", "rollButton", "rolledNumberDisplay", "customButton")]
+[node name="CustomRollMenu" type="Control" parent="UI" node_paths=PackedStringArray("otherGroups", "diceButtons", "subWindow", "rollEdit", "errorText", "rollButton", "rolledNumberDisplay", "customButton", "book")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -380,6 +390,7 @@ errorText = NodePath("CustomSub/RollAmount/ErrorText")
 rollButton = NodePath("CustomSub/RollAmount/CustomRoll")
 rolledNumberDisplay = NodePath("CustomSub/RollAmount/RollDisplay/RolledNumber")
 customButton = NodePath("../CustomRollSwitch")
+book = NodePath("../Settings/History")
 
 [node name="CustomSub" type="Control" parent="UI/CustomRollMenu"]
 layout_mode = 1
@@ -421,7 +432,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_tehxb")
 placeholder_text = "10 (standard)"
 alignment = 1
 max_length = 3
-expand_to_text_length = true
 virtual_keyboard_type = 4
 clear_button_enabled = true
 middle_mouse_paste_enabled = false
@@ -779,7 +789,7 @@ offset_top = 100.0
 offset_right = 110.0
 offset_bottom = 924.0
 
-[node name="History" type="Panel" parent="UI/Settings" node_paths=PackedStringArray("noRollsLabel")]
+[node name="History" type="Panel" parent="UI/Settings" node_paths=PackedStringArray("noRollsLabel", "entryList")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -791,7 +801,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("23_5yi5t")
 script = ExtResource("26_6lol1")
-noRollsLabel = NodePath("Entries/HistoryExplanation")
+noRollsLabel = NodePath("HistoryExplanation")
+entryList = NodePath("EntryList")
 
 [node name="Book Bendy Part" type="ColorRect" parent="UI/Settings/History"]
 layout_mode = 1
@@ -818,41 +829,38 @@ offset_bottom = 70.0
 text = "History"
 label_settings = ExtResource("7_kldmu")
 
-[node name="Entries" type="Control" parent="UI/Settings/History"]
-anchors_preset = 0
-offset_left = 198.0
+[node name="HistoryExplanation" type="Label" parent="UI/Settings/History"]
+layout_mode = 2
+offset_left = 192.0
 offset_top = 132.0
-offset_right = 521.0
-offset_bottom = 959.0
-
-[node name="VScrollBar" type="VScrollBar" parent="UI/Settings/History/Entries"]
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -52.0
-offset_top = 8.0
-offset_right = -3.0
-offset_bottom = -200.0
-grow_horizontal = 0
-grow_vertical = 2
-max_value = 20.0
-step = 1.0
-page = 1.0
-
-[node name="HistoryExplanation" type="Label" parent="UI/Settings/History/Entries"]
-layout_mode = 0
-offset_right = 250.0
-offset_bottom = 284.0
-text = "You have
-yet to
-roll a
-dice. Roll
-a dice to
-view your
+offset_right = 542.0
+offset_bottom = 416.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "You have yet 
+to roll a die. 
+Roll a die 
+to view your
 history."
 label_settings = ExtResource("7_kldmu")
+
+[node name="EntryList" type="ItemList" parent="UI/Settings/History"]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 130.0
+offset_right = 532.0
+offset_bottom = 976.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("29_5m42f")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/panel = SubResource("StyleBoxEmpty_i5y8d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wmhgb")
+theme_override_styles/hovered = SubResource("StyleBoxEmpty_8jyvl")
+theme_override_styles/selected = SubResource("StyleBoxEmpty_h0sdj")
+theme_override_styles/selected_focus = SubResource("StyleBoxEmpty_cqmx8")
+allow_search = false
+icon_scale = 3.0
 
 [connection signal="pressed" from="UI/StartMenu/VBoxContainer/Start" to="UI/StartMenu" method="_onStartPressed"]
 [connection signal="pressed" from="UI/StartMenu/VBoxContainer/Credits" to="UI/StartMenu" method="_onCreditsPressed"]

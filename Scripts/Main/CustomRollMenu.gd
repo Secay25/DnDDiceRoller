@@ -10,6 +10,7 @@ extends Control
 @export var rollButton: Button
 @export var rolledNumberDisplay: Label
 @export var customButton: TextureButton
+@export var book: Panel
 var rolling: bool = false
 var revertToText: String = ""
 var currentDiceType: int = 4
@@ -51,6 +52,22 @@ func RollDiceXTimes(diceType: int,rollAmount: int = 10) -> void:
 		rolledNumber += randi_range(1,diceType)
 	
 	rolledNumberDisplay.text = str(rolledNumber)
+	
+	match (diceType):
+		4:
+			book.AddEntry(Global.D4,rolledNumber,"x" + str(rollAmount) + "=",Color.RED)
+		6:
+			book.AddEntry(Global.D6,rolledNumber,"x" + str(rollAmount) + "=",Color.ORANGE)
+		8:
+			book.AddEntry(Global.D8,rolledNumber,"x" + str(rollAmount) + "=",Color.YELLOW)
+		10: 
+			book.AddEntry(Global.D10,rolledNumber,"x" + str(rollAmount) + "=",Color.GREEN)
+		12:
+			book.AddEntry(Global.D12,rolledNumber,"x" + str(rollAmount) + "=",Color.DEEP_SKY_BLUE)
+		20:
+			book.AddEntry(Global.D20,rolledNumber,"x" + str(rollAmount) + "=",Color.INDIGO)
+		100:
+			book.AddEntry(Global.D100,rolledNumber,"x" + str(rollAmount) + "=",Color.VIOLET)
 
 func SwitchOtherGroups(isVisible: bool = false) -> void:
 	for i in range(len(otherGroups)):

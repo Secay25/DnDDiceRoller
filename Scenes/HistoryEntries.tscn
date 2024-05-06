@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcqbna80dlqg7"]
+
+[ext_resource type="Texture2D" uid="uid://dd3jx5e1wn140" path="res://Art/Dice/D4.png" id="1_r172c"]
+[ext_resource type="Script" path="res://Scripts/Main/HistoryEntries.gd" id="1_tw73p"]
+[ext_resource type="FontFile" uid="uid://d4nmlc0ojikdb" path="res://Fonts/712_serif.ttf" id="2_hud8e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sjgq1"]
+font = ExtResource("2_hud8e")
+font_size = 80
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[node name="HistoryEntries" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -260.0
+offset_bottom = -904.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tw73p")
+
+[node name="DieType" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(3, 3)
+texture = ExtResource("1_r172c")
+expand_mode = 1
+
+[node name="Number" type="Label" parent="."]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 33.0
+offset_right = 323.0
+offset_bottom = 93.0
+text = "99900"
+label_settings = SubResource("LabelSettings_sjgq1")
