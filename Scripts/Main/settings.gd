@@ -129,19 +129,23 @@ func _onBookToggled(toggled_on: bool) -> void:
 	var tween: Tween = create_tween()
 	
 	if toggled_on:
+		#pressed
 		cassetteTapeButton.disabled = true
 		muteButton.disabled = true
 		settingsButton.disabled = true
 		bookQuitTop.visible = true
 		bookQuitBottom.visible = true
+		tween.tween_callback(historyBook.show)
 		tween.tween_property(historyBook,"position:x",BOOKACTIVEPOS,rollOutDur).set_trans(Tween.TRANS_QUART)
 	else:
+		#unpressed
 		cassetteTapeButton.disabled = false
 		muteButton.disabled = false
 		settingsButton.disabled = false
 		bookQuitTop.visible = false
 		bookQuitBottom.visible = false
 		tween.tween_property(historyBook,"position:x",BOOKORIGINPOS,rollOutDur).set_trans(Tween.TRANS_QUART)
+		tween.tween_callback(historyBook.hide)
 
 func _onButtonPressed() -> void:
 	historyButton.button_pressed = false

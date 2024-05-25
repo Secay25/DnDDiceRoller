@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://c8b5c468jx7e3"]
+[gd_scene load_steps=54 format=3 uid="uid://c8b5c468jx7e3"]
 
 [ext_resource type="Script" path="res://Scripts/Main/startMenu.gd" id="1_7a75a"]
 [ext_resource type="Texture2D" uid="uid://c55uyci3e3rp5" path="res://Art/Background/Background.png" id="1_q573a"]
@@ -11,12 +11,10 @@
 [ext_resource type="Script" path="res://Scripts/Main/settings.gd" id="7_fnk7n"]
 [ext_resource type="LabelSettings" uid="uid://b4thldv6pi1tw" path="res://Fonts/712serif49white10black20-0-2.tres" id="7_kldmu"]
 [ext_resource type="Texture2D" uid="uid://p7stgxxs6kcf" path="res://Art/Settings/Speaker/Speaker.png" id="8_q0ek3"]
-[ext_resource type="Texture2D" uid="uid://dwjcy5ypj8e0h" path="res://Art/DiceSettings/DiceMultiplier/DiceMultiplierPressed.png" id="8_t2fpr"]
 [ext_resource type="Texture2D" uid="uid://dyw43lus04np5" path="res://Art/Settings/Speaker/DisabledSpeaker.png" id="8_vut64"]
-[ext_resource type="Texture2D" uid="uid://wyje5gx80pwy" path="res://Art/DiceSettings/DiceMultiplier/DiceMultiplierHover.png" id="9_6dsib"]
 [ext_resource type="Texture2D" uid="uid://uj0fodyn5s3d" path="res://Art/Settings/Book/Book.png" id="9_h8um5"]
 [ext_resource type="Texture2D" uid="uid://cu47og2si3d1p" path="res://Art/Settings/Book/BookDark.png" id="9_qt6e2"]
-[ext_resource type="Texture2D" uid="uid://dqbij0g42wt5k" path="res://Art/DiceSettings/DiceMultiplier/DiceMultiplierDisabled.png" id="10_j7ajj"]
+[ext_resource type="Script" path="res://Scripts/TextureCycle.gd" id="10_5vjmw"]
 [ext_resource type="PackedScene" uid="uid://dkel02nly1c7" path="res://Scenes/Dice/D20.tscn" id="11_8qi10"]
 [ext_resource type="Texture2D" uid="uid://cqv3rx704irn1" path="res://Art/Settings/Speaker/SpeakerHover.png" id="12_b1oju"]
 [ext_resource type="Texture2D" uid="uid://bp0pt4xmbvpoh" path="res://Art/Settings/Cassette tape/CassetteTapeNormal.png" id="13_a6l0u"]
@@ -36,14 +34,14 @@
 [ext_resource type="Texture2D" uid="uid://cv2o8wdj4sejg" path="res://Art/Dice/D12.png" id="34_rh6bl"]
 [ext_resource type="Texture2D" uid="uid://cie8n4j8r50lg" path="res://Art/Dice/D20.png" id="35_hagqd"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_s72gc"]
+[sub_resource type="LabelSettings" id="LabelSettings_6c3ct"]
 font = ExtResource("29_5m42f")
-font_size = 35
+font_size = 70
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
-shadow_size = 5
-shadow_color = Color(0, 0, 0, 0.356863)
-shadow_offset = Vector2(0, 5)
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 0.678431)
+shadow_offset = Vector2(0, 10)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jun3c"]
 bg_color = Color(1, 0, 0, 0.717647)
@@ -235,7 +233,7 @@ theme = ExtResource("4_3sai3")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Credits"
 
-[node name="GameMenu" type="Control" parent="UI" node_paths=PackedStringArray("settings")]
+[node name="GameMenu" type="Control" parent="UI" node_paths=PackedStringArray("mainPoly", "rightPoly", "settings")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -245,6 +243,8 @@ offset_right = 3456.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_kp3ou")
+mainPoly = NodePath("LeftMain")
+rightPoly = NodePath("RightNonMain")
 settings = NodePath("../Settings")
 
 [node name="RemoveOnceDone" type="ColorRect" parent="UI/GameMenu"]
@@ -262,68 +262,25 @@ anchor_right = 1.0
 offset_bottom = 200.0
 grow_horizontal = 2
 
-[node name="DiceMultiplier" type="TextureButton" parent="UI/GameMenu/DiceSettings"]
-layout_mode = 0
-offset_left = 150.0
-offset_right = 300.0
-offset_bottom = 150.0
-toggle_mode = true
-texture_normal = ExtResource("7_a08ih")
-texture_pressed = ExtResource("8_t2fpr")
-texture_hover = ExtResource("9_6dsib")
-texture_disabled = ExtResource("10_j7ajj")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TempTextNotWorking" type="Label" parent="UI/GameMenu/DiceSettings/DiceMultiplier"]
-layout_mode = 0
-offset_left = 14.0
-offset_top = 150.0
-offset_right = 158.0
-offset_bottom = 207.0
-text = "^Doesn't 
-work"
-label_settings = SubResource("LabelSettings_s72gc")
-horizontal_alignment = 1
-
-[node name="DiceTopD10" type="Polygon2D" parent="UI/GameMenu"]
+[node name="LeftMain" type="Polygon2D" parent="UI/GameMenu"]
 position = Vector2(288, 550)
 scale = Vector2(1.5, -1.5)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(0, -100, 0, -100, 0, -100, 100, 100, -100, 100)
 
-[node name="DiceTopD100" type="Polygon2D" parent="UI/GameMenu"]
+[node name="RightNonMain" type="Polygon2D" parent="UI/GameMenu"]
 position = Vector2(288, 512)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(1, 1, 1, 1, 1, -1, -1, -1, -1, 1)
 
-[node name="DiceMiddleD10" type="Polygon2D" parent="UI/GameMenu"]
-position = Vector2(288, 512)
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(1, 1, 1, 1, 1, -1, -1, -1, -1, 1)
-
-[node name="DiceMiddleD100" type="Polygon2D" parent="UI/GameMenu"]
-position = Vector2(288, 512)
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(1, 1, 1, 1, 1, -1, -1, -1, -1, 1)
-
-[node name="DiceBottomD10" type="Polygon2D" parent="UI/GameMenu"]
-position = Vector2(288, 512)
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(1, 1, 1, 1, 1, -1, -1, -1, -1, 1)
-
-[node name="DiceBottomD100" type="Polygon2D" parent="UI/GameMenu"]
-position = Vector2(288, 512)
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(1, 1, 1, 1, 1, -1, -1, -1, -1, 1)
-
-[node name="D20" parent="UI/GameMenu" instance=ExtResource("11_8qi10")]
+[node name="D20" parent="UI/GameMenu" node_paths=PackedStringArray("historyBook") instance=ExtResource("11_8qi10")]
 layout_mode = 1
 offset_left = 125.0
-offset_top = 376.0
+offset_top = 417.0
 offset_right = -151.0
-offset_bottom = -348.0
+offset_bottom = -307.0
 scale = Vector2(2, 2)
+historyBook = NodePath("../../Settings/History")
 
 [node name="CreditsMenu" type="Control" parent="UI"]
 layout_mode = 1
@@ -359,6 +316,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -19.0
+offset_right = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 text = " This program 
@@ -367,10 +326,38 @@ text = " This program
  for letting me
  use his dice for
  reference!
- Thank you for 
- using this and
- Enjoy!"
+ And thanks to the
+ people in the pirate
+ software discord
+ server for helping me
+ when I needed it. Thank 
+ you for  using this 
+ and Enjoy!"
 label_settings = ExtResource("7_kldmu")
+
+[node name="TextureRect" type="TextureRect" parent="UI/CreditsMenu"]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 652.0
+offset_right = 438.0
+offset_bottom = 952.0
+pivot_offset = Vector2(150, 150)
+texture = ExtResource("7_a08ih")
+expand_mode = 1
+script = ExtResource("10_5vjmw")
+
+[node name="Timer" type="Timer" parent="UI/CreditsMenu/TextureRect"]
+wait_time = 5.0
+autostart = true
+
+[node name="TextureLabel" type="Label" parent="UI/CreditsMenu"]
+layout_mode = 0
+offset_top = 954.0
+offset_right = 576.0
+offset_bottom = 1014.0
+text = "Unused Textures"
+label_settings = SubResource("LabelSettings_6c3ct")
+horizontal_alignment = 1
 
 [node name="CustomRollMenu" type="Control" parent="UI" node_paths=PackedStringArray("otherGroups", "diceButtons", "subWindow", "rollEdit", "errorText", "rollButton", "rolledNumberDisplay", "customButton", "book")]
 layout_mode = 1
@@ -865,6 +852,7 @@ icon_scale = 3.0
 [connection signal="pressed" from="UI/StartMenu/VBoxContainer/Start" to="UI/StartMenu" method="_onStartPressed"]
 [connection signal="pressed" from="UI/StartMenu/VBoxContainer/Credits" to="UI/StartMenu" method="_onCreditsPressed"]
 [connection signal="pressed" from="UI/CreditsMenu/CreditsStart" to="UI/StartMenu" method="_onCreditsStartPressed"]
+[connection signal="timeout" from="UI/CreditsMenu/TextureRect/Timer" to="UI/CreditsMenu/TextureRect" method="_onTimerTimeout"]
 [connection signal="text_submitted" from="UI/CustomRollMenu/CustomSub/RollAmount/RollingAmount" to="UI/CustomRollMenu" method="_onLineEditTextSubmitted"]
 [connection signal="pressed" from="UI/CustomRollMenu/CustomSub/RollAmount/CustomRoll" to="UI/CustomRollMenu" method="_onCustomRollPressed"]
 [connection signal="mouse_entered" from="UI/CustomRollMenu/CustomSub/RollAmount/DiceGrids/Dice468/D4Button" to="UI/CustomRollMenu" method="_onDiceButtonMouseEntered" binds= [0, 4]]
@@ -895,3 +883,4 @@ icon_scale = 3.0
 [connection signal="toggled" from="UI/Settings/Book" to="UI/Settings" method="_onBookToggled"]
 [connection signal="pressed" from="UI/Settings/Book/BookQuitButtonTop" to="UI/Settings" method="_onButtonPressed"]
 [connection signal="pressed" from="UI/Settings/Book/BookQuitButtonBottom" to="UI/Settings" method="_onButtonPressed"]
+[connection signal="visibility_changed" from="UI/Settings/History" to="UI/Settings/History" method="_onVisibilityChanged"]

@@ -1,9 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://dkel02nly1c7"]
+[gd_scene load_steps=23 format=3 uid="uid://dkel02nly1c7"]
 
 [ext_resource type="Script" path="res://Scripts/Dice/TempscriptD20.gd" id="1_3c6e3"]
 [ext_resource type="Texture2D" uid="uid://cie8n4j8r50lg" path="res://Art/Dice/D20.png" id="1_yqtj5"]
 [ext_resource type="FontFile" uid="uid://d4nmlc0ojikdb" path="res://Fonts/712_serif.ttf" id="2_pipea"]
 [ext_resource type="LabelSettings" uid="uid://bgxs6qftfdboc" path="res://Fonts/D20Rolled.tres" id="2_wakuv"]
+[ext_resource type="Texture2D" uid="uid://baprf3w76e3v8" path="res://Art/Dice/D8.png" id="5_nr54e"]
+[ext_resource type="Texture2D" uid="uid://dd3jx5e1wn140" path="res://Art/Dice/D4.png" id="6_ivffb"]
 
 [sub_resource type="FontVariation" id="FontVariation_a7fgu"]
 base_font = ExtResource("2_pipea")
@@ -95,7 +97,7 @@ shadow_size = 0
 shadow_color = Color(0, 0, 0, 0.470588)
 shadow_offset = Vector2(0, 2)
 
-[node name="D20" type="Control" node_paths=PackedStringArray("mainLabel", "allLabels")]
+[node name="D20" type="Control" node_paths=PackedStringArray("textModulate", "mainLabel", "allLabels", "die", "colorPickerButton", "colorPicker", "colorPickerBackground", "textButton", "textColorPicker", "textColorBackground")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -106,8 +108,16 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(150, 150)
 script = ExtResource("1_3c6e3")
+textModulate = NodePath("Die/ModulateControl")
 mainLabel = NodePath("Die/ModulateControl/RolledNumber")
 allLabels = [NodePath("Die/ModulateControl/TopLeftNumber"), NodePath("Die/ModulateControl/TopRightNumber"), NodePath("Die/ModulateControl/LeftNumber"), NodePath("Die/ModulateControl/RightNumber"), NodePath("Die/ModulateControl/BottomNumber"), NodePath("Die/ModulateControl/SideLeftNumber"), NodePath("Die/ModulateControl/SideRightNumber"), NodePath("Die/ModulateControl/BottomLeft"), NodePath("Die/ModulateControl/BottomRight")]
+die = NodePath("Die")
+colorPickerButton = NodePath("ColorButton")
+colorPicker = NodePath("ColorButton/DieColorPicker")
+colorPickerBackground = NodePath("ColorButton/ColorRect")
+textButton = NodePath("TextColorButton")
+textColorPicker = NodePath("TextColorButton/TextColorPicker")
+textColorBackground = NodePath("TextColorButton/ColorRect")
 
 [node name="Die" type="TextureButton" parent="."]
 layout_mode = 0
@@ -244,4 +254,70 @@ label_settings = SubResource("LabelSettings_b25yj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ColorButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 50.0
+offset_right = 90.0
+offset_bottom = 40.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("5_nr54e")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ColorRect" type="ColorRect" parent="ColorButton"]
+visible = false
+layout_mode = 0
+offset_left = -15.0
+offset_top = 40.0
+offset_right = 104.0
+offset_bottom = 229.0
+
+[node name="DieColorPicker" type="ColorPicker" parent="ColorButton"]
+visible = false
+layout_mode = 0
+offset_left = -16.0
+offset_top = 41.0
+offset_right = 282.0
+offset_bottom = 484.0
+scale = Vector2(0.4, 0.4)
+edit_alpha = false
+deferred_mode = true
+can_add_swatches = false
+presets_visible = false
+
+[node name="TextColorButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 190.0
+offset_right = 230.0
+offset_bottom = 40.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("6_ivffb")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ColorRect" type="ColorRect" parent="TextColorButton"]
+visible = false
+layout_mode = 0
+offset_left = -109.0
+offset_top = 40.0
+offset_right = 10.0
+offset_bottom = 229.0
+
+[node name="TextColorPicker" type="ColorPicker" parent="TextColorButton"]
+visible = false
+layout_mode = 0
+offset_left = -109.0
+offset_top = 41.0
+offset_right = 189.0
+offset_bottom = 484.0
+scale = Vector2(0.4, 0.4)
+edit_alpha = false
+deferred_mode = true
+can_add_swatches = false
+presets_visible = false
+
 [connection signal="pressed" from="Die" to="." method="_onDiePressed"]
+[connection signal="pressed" from="ColorButton" to="." method="_onTextureButtonPressed"]
+[connection signal="color_changed" from="ColorButton/DieColorPicker" to="." method="_onDieColorPickerColorChanged"]
+[connection signal="pressed" from="TextColorButton" to="." method="_onTextColorButtonPressed"]
+[connection signal="color_changed" from="TextColorButton/TextColorPicker" to="." method="_onTextColorPickerColorChanged"]

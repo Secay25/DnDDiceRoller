@@ -1,9 +1,20 @@
 extends Control
 
 @export_group("Node References")
+@export var textModulate: Control
 @export var mainLabel: Label
 @export var allLabels: Array[Label]
+@export var die: TextureButton
+@export var colorPickerButton: TextureButton
+@export var colorPicker: ColorPicker
+@export var colorPickerBackground: ColorRect
+@export var textButton: TextureButton
+@export var textColorPicker: ColorPicker
+@export var textColorBackground: ColorRect
+@export var historyBook: Panel
 var rolledNumber: int = 20
+const MINIMALBRIGHT: float = 25.0 / 100.0
+const D20: Texture2D = preload("res://Art/Dice/D20.png")
 #region label Numbers	
 const S1: Array[int] = [17,3,7,19,13,15,9,5,11]
 const S2: Array[int] = [15,5,12,18,20,10,4,8,14]
@@ -31,6 +42,12 @@ const DICECONFIG: Dictionary = {1: S1,2: S2,3: S3,4: S4,5: S5,6: S6,7: S7,8: S8,
 func _onDiePressed() -> void:
 	rolledNumber = randi_range(1,20)
 	mainLabel.text = str(rolledNumber)
+	var color = die.self_modulate
+	
+	if color.v < MINIMALBRIGHT:
+		color.v = MINIMALBRIGHT / 2.0
+	
+	historyBook.AddEntry(D20,rolledNumber,"",color)
 	
 	for i in len(allLabels):
 		#ALERT DO NOT REMOVE THE "#" WITHOUT THE CORRESPONDING COMMENTS, IT WILL CRASH.
@@ -38,3 +55,53 @@ func _onDiePressed() -> void:
 		#Code below should be: allLabels[i].text = str(NUMBERS[i])
 		#ALERT ABOVE CODE WILL THROW AN ERROR BUT FUNCTIONALLY IS THE SAME AS CODE BELOW.
 		allLabels[i].text = str(DICECONFIG[rolledNumber][i])
+
+func _onTextureButtonPressed(codePressed: bool = false) -> void:
+	colorPicker.visible = !colorPicker.visible
+	colorPickerBackground.visible = !colorPickerBackground.visible
+	
+	if textColorPicker.visible and !codePressed:
+		textButton.pressed.emit(true)
+
+func _onDieColorPickerColorChanged(color: Color) -> void:
+	colorPickerButton.self_modulate = color
+	die.self_modulate = color
+	colorPickerBackground.self_modulate = color
+	
+	var outlineColor: Color
+	
+	if color.v <= MINIMALBRIGHT and mainLabel.label_settings.font_color.v <= MINIMALBRIGHT:
+		outlineColor = Color.WHITE
+	else:
+		outlineColor = Color.BLACK
+	
+	mainLabel.label_settings.outline_color = outlineColor
+	
+	for i in allLabels:
+		i.label_settings.outline_color = outlineColor
+
+func _onTextColorButtonPressed(codePressed: bool = false) -> void:
+	textColorPicker.visible = !textColorPicker.visible
+	textColorBackground. visible = !textColorBackground.visible
+	
+	if colorPicker.visible and !codePressed:
+		colorPickerButton.pressed.emit(true)
+
+func _onTextColorPickerColorChanged(color: Color) -> void:
+	textButton.self_modulate = color
+	mainLabel.label_settings.font_color = color
+	textColorBackground.self_modulate = color
+	var c: Color
+	
+	if color.v <= MINIMALBRIGHT and die.self_modulate.v <= MINIMALBRIGHT:
+		c = Color.WHITE
+	else:
+		c = Color.BLACK
+	
+	mainLabel.label_settings.outline_color = c
+	
+	for i in allLabels:
+		i.label_settings.font_color = color
+		i.label_settings.outline_color = c
+	
+
