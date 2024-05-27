@@ -1,0 +1,83 @@
+[33mcommit 34a027d520ddda0dab2c30cc7a24ce4d6de17e09[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Secay25 <M.Al-Amri.S@outlook.com>
+Date:   Sat May 25 20:40:08 2024 +0200
+
+    Added an addon for me to use, can now choose color for the D20, body and text, will be remembered in history. History has a limit on the amount of entries. Removed some useless files, updated the credits page.
+
+[33mcommit 166c93c0fe47fed17d6fb8af137a025afb472e1b[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Secay25 <M.Al-Amri.S@outlook.com>
+Date:   Mon May 6 20:08:47 2024 +0200
+
+    The history tab is now functional! And it won't break in the future I promise!
+
+[33mcommit dfc1669c8b63e745534aab11cf9a31fede0403f0[m
+Author: Secay25 <M.Al-Amri.S@outlook.com>
+Date:   Thu May 2 20:48:21 2024 +0200
+
+    Added a menu to roll a custom amount of times. Works properly too just need assets for opening and closing it. Done a bunch of other small changes and tweaks.
+
+[33mcommit 5be51cdceb545968c74ad823c17ead00f96cd764[m
+Author: Secay25 <M.Al-Amri.S@outlook.com>
+Date:   Thu Apr 25 16:10:07 2024 +0200
+
+    Bunch of small changes along with rendering pipeline switch and numbers on the D20!
+
+[33mcommit bf75615dc4e833b94539a076307ec7426722b863[m
+Author: Secay25 <M.Al-Amri.S@outlook.com>
+Date:   Thu Apr 11 00:03:45 2024 +0200
+
+    Added the dice textures and started implementing the D20.
+
+[33mcommit bef0b79df9f4f9a1d447a84b17b884b5d0447cd9[m
+Author: Secay25 <M.Al-Amri.S@outlook.com>
+Date:   Wed Apr 10 00:31:37 2024 +0200
+
+    Added BookButton last icons, made the bookpanel move into screen and off screen. Cleaned up the animationSkip code.
+
+[33mcommit 59e97a101ea0669fc8aa6aabc14a918a11ba9b8a[m
+Author: Secay25 <M.Al-Amri.S@outlook.com>
+Date:   Mon Apr 8 23:59:54 2024 +0200
+
+    Adding a skip functionality to the animations and some basic functionality for the Dice Multiplier Button.
+
+[33mcommit b33acc6e0dc5f084fd317f73ae9351b9c00859c8[m
+Author: Secay25 <M.Al-Amri.S@outlook.com>
+Date:   Sat Apr 6 00:02:00 2024 +0200
+
+    Added the Animation skip and Dice multiplier textures.
+
+[33mcommit b4fcc1a70125bb2796823e2a93910cf68cdb2a32[m
+Author: Secay25 <M.Al-Amri.S@outlook.com>
+Date:   Fri Apr 5 00:19:00 2024 +0200
+
+    Planning out the Hole positions and removing some minor changes to the code as well as removing a script reference causing potential crashes.
+
+[33mcommit 61ca03496af5f1f4632fd2afdcfcf1415d737b6d[m
+Author: Secay25 <M.Al-Amri.S@outlook.com>
+Date:   Thu Apr 4 00:04:23 2024 +0200
+
+    Fixed the hover bug
+
+[33mcommit 2bc0f6eba7f2aaffb74909cd639e2e6c38b693ab[m
+Author: Secay25 <M.Al-Amri.S@outlook.com>
+Date:   Wed Apr 3 00:09:04 2024 +0200
+
+    Adding Cogwheel and speaker Hover, discovering possible Godot bug. Pressed Hover always ongit add .
+
+[33mcommit adddecb82dbb968f150ca6172f8d8cf5ebdb29eb[m
+Author: Secay25 <M.Al-Amri.S@outlook.com>
+Date:   Tue Apr 2 22:42:00 2024 +0200
+
+    Added Text to the credits a button and additional icons for the settings.
+
+[33mcommit 9fdc518c159d9867404021b63e4df7dcffb45055[m
+Author: Secay25 <M.Al-Amri.S@outlook.com>
+Date:   Mon Apr 1 00:10:17 2024 +0200
+
+    Actual initial commit
+
+[33mcommit 95ac62bafc6c4c6460b1b4d12f03e5a87e16fff9[m
+Author: Secay25 <M.Al-Amri.S@outlook.com>
+Date:   Mon Apr 1 00:07:53 2024 +0200
+
+    first commit

@@ -3,7 +3,7 @@ extends Control
 @export_group("Node References")
 @export var textModulate: Control
 @export var mainLabel: Label
-@export var allLabels: Array[Label]
+@export var allLabels: Array[Label] #ALERT NOOOO TOUCHY ALERT
 @export var die: TextureButton
 @export var colorPickerButton: TextureButton
 @export var colorPicker: ColorPicker
@@ -12,9 +12,11 @@ extends Control
 @export var textColorPicker: ColorPicker
 @export var textColorBackground: ColorRect
 @export var historyBook: Panel
+@export var swatchSet: Panel
+@export var allSwatches: Array[ColorRect]
 var rolledNumber: int = 20
+var swatchStates: Array[bool] = [false,false]
 const MINIMALBRIGHT: float = 25.0 / 100.0
-const D20: Texture2D = preload("res://Art/Dice/D20.png")
 #region label Numbers	
 const S1: Array[int] = [17,3,7,19,13,15,9,5,11]
 const S2: Array[int] = [15,5,12,18,20,10,4,8,14]
@@ -39,6 +41,16 @@ const S20: Array[int] = [18,4,2,14,8,12,6,10,16]
 const DICECONFIG: Dictionary = {1: S1,2: S2,3: S3,4: S4,5: S5,6: S6,7: S7,8: S8,9: S9,10: S10,11: S11,12: S12,13: S13,14: S14,15: S15,16: S16,17: S17,18: S18,19: S19,20: S20}
 #endregion
 
+#region custom methods
+func changeAllDieTextColor(fontColor: Color,outlineColor: Color = Color.BLACK) -> void:
+	mainLabel.label_settings.outline_color = outlineColor
+	
+	for i in allLabels:
+		i.label_settings.font_color = fontColor
+		i.label_settings.outline_color = outlineColor
+#endregion
+
+#region signals
 func _onDiePressed() -> void:
 	rolledNumber = randi_range(1,20)
 	mainLabel.text = str(rolledNumber)
@@ -47,7 +59,7 @@ func _onDiePressed() -> void:
 	if color.v < MINIMALBRIGHT:
 		color.v = MINIMALBRIGHT / 2.0
 	
-	historyBook.AddEntry(D20,rolledNumber,"",color)
+	historyBook.AddEntry(die.texture_normal,rolledNumber,"",color)
 	
 	for i in len(allLabels):
 		#ALERT DO NOT REMOVE THE "#" WITHOUT THE CORRESPONDING COMMENTS, IT WILL CRASH.
@@ -59,6 +71,7 @@ func _onDiePressed() -> void:
 func _onTextureButtonPressed(codePressed: bool = false) -> void:
 	colorPicker.visible = !colorPicker.visible
 	colorPickerBackground.visible = !colorPickerBackground.visible
+	swatchSet.visible = colorPicker.visible or textColorPicker.visible
 	
 	if textColorPicker.visible and !codePressed:
 		textButton.pressed.emit(true)
@@ -75,14 +88,12 @@ func _onDieColorPickerColorChanged(color: Color) -> void:
 	else:
 		outlineColor = Color.BLACK
 	
-	mainLabel.label_settings.outline_color = outlineColor
-	
-	for i in allLabels:
-		i.label_settings.outline_color = outlineColor
+	changeAllDieTextColor(mainLabel.label_settings.font_color,outlineColor)
 
 func _onTextColorButtonPressed(codePressed: bool = false) -> void:
 	textColorPicker.visible = !textColorPicker.visible
 	textColorBackground. visible = !textColorBackground.visible
+	swatchSet.visible = colorPicker.visible or textColorPicker.visible
 	
 	if colorPicker.visible and !codePressed:
 		colorPickerButton.pressed.emit(true)
@@ -98,10 +109,28 @@ func _onTextColorPickerColorChanged(color: Color) -> void:
 	else:
 		c = Color.BLACK
 	
-	mainLabel.label_settings.outline_color = c
-	
-	for i in allLabels:
-		i.label_settings.font_color = color
-		i.label_settings.outline_color = c
-	
+	changeAllDieTextColor(color,c)
 
+func _onSwatchButtonPressed(swatchButton: int) -> void:
+	var swatch: ColorRect = allSwatches[swatchButton]
+	
+	if colorPicker.visible:
+		if swatchStates[swatchButton]:
+			colorPicker.color = swatch.color
+			colorPicker.color_changed.emit(swatch.color)
+		else:
+			swatch.self_modulate = Color.WHITE
+			swatch.get_node("SwatchButton").modulate.a = 0.0
+			swatchStates[swatchButton] = true
+			swatch.color = die.self_modulate
+	elif textColorPicker.visible:
+		if swatchStates[swatchButton]:
+			textColorPicker.color = swatch.color
+			textColorPicker.color_changed.emit(swatch.color)
+		else:
+			swatch.self_modulate = Color.WHITE
+			swatch.get_node("SwatchButton").modulate.a = 0.0
+			swatchStates[swatchButton] = true
+			swatch.color = mainLabel.label_settings.font_color
+
+#endregion

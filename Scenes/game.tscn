@@ -839,6 +839,7 @@ offset_right = 532.0
 offset_bottom = 976.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("29_5m42f")
 theme_override_font_sizes/font_size = 45
 theme_override_styles/panel = SubResource("StyleBoxEmpty_i5y8d")
@@ -847,6 +848,8 @@ theme_override_styles/hovered = SubResource("StyleBoxEmpty_8jyvl")
 theme_override_styles/selected = SubResource("StyleBoxEmpty_h0sdj")
 theme_override_styles/selected_focus = SubResource("StyleBoxEmpty_cqmx8")
 allow_search = false
+text_overrun_behavior = 0
+same_column_width = true
 icon_scale = 3.0
 
 [connection signal="pressed" from="UI/StartMenu/VBoxContainer/Start" to="UI/StartMenu" method="_onStartPressed"]

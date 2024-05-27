@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dkel02nly1c7"]
+[gd_scene load_steps=24 format=3 uid="uid://dkel02nly1c7"]
 
 [ext_resource type="Script" path="res://Scripts/Dice/TempscriptD20.gd" id="1_3c6e3"]
 [ext_resource type="Texture2D" uid="uid://cie8n4j8r50lg" path="res://Art/Dice/D20.png" id="1_yqtj5"]
@@ -97,7 +97,21 @@ shadow_size = 0
 shadow_color = Color(0, 0, 0, 0.470588)
 shadow_offset = Vector2(0, 2)
 
-[node name="D20" type="Control" node_paths=PackedStringArray("textModulate", "mainLabel", "allLabels", "die", "colorPickerButton", "colorPicker", "colorPickerBackground", "textButton", "textColorPicker", "textColorBackground")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gxmjq"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.439216, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 20
+anti_aliasing = false
+
+[node name="D20" type="Control" node_paths=PackedStringArray("textModulate", "mainLabel", "allLabels", "die", "colorPickerButton", "colorPicker", "colorPickerBackground", "textButton", "textColorPicker", "textColorBackground", "swatchSet", "allSwatches")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -118,6 +132,8 @@ colorPickerBackground = NodePath("ColorButton/ColorRect")
 textButton = NodePath("TextColorButton")
 textColorPicker = NodePath("TextColorButton/TextColorPicker")
 textColorBackground = NodePath("TextColorButton/ColorRect")
+swatchSet = NodePath("SwatchPanel")
+allSwatches = [NodePath("SwatchPanel/Swatch"), NodePath("SwatchPanel/Swatch2")]
 
 [node name="Die" type="TextureButton" parent="."]
 layout_mode = 0
@@ -254,6 +270,133 @@ label_settings = SubResource("LabelSettings_b25yj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="SwatchPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 50.0
+offset_top = -50.0
+offset_right = -50.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gxmjq")
+
+[node name="Swatch" type="ColorRect" parent="SwatchPanel"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 7.0
+offset_right = -145.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(17.5, 17.5)
+
+[node name="SwatchButton" type="Button" parent="SwatchPanel/Swatch"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -19.0
+offset_right = 44.0
+offset_bottom = 49.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.415686, 0.415686, 0.415686, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("2_pipea")
+theme_override_font_sizes/font_size = 80
+text = "+"
+flat = true
+
+[node name="Control" type="Control" parent="SwatchPanel/Swatch/SwatchButton"]
+anchors_preset = 0
+offset_left = 4.0
+offset_right = 39.0
+offset_bottom = 19.0
+
+[node name="Control2" type="Control" parent="SwatchPanel/Swatch/SwatchButton"]
+anchors_preset = 0
+offset_left = 39.0
+offset_top = 7.0
+offset_right = 51.0
+offset_bottom = 62.0
+
+[node name="Control3" type="Control" parent="SwatchPanel/Swatch/SwatchButton"]
+anchors_preset = 0
+offset_left = 4.0
+offset_top = 54.0
+offset_right = 39.0
+offset_bottom = 62.0
+
+[node name="Control4" type="Control" parent="SwatchPanel/Swatch/SwatchButton"]
+anchors_preset = 0
+offset_left = -4.0
+offset_top = 11.0
+offset_right = 4.0
+offset_bottom = 62.0
+
+[node name="Swatch2" type="ColorRect" parent="SwatchPanel"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 82.0
+offset_top = 7.0
+offset_right = -83.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(17.5, 17.5)
+
+[node name="SwatchButton" type="Button" parent="SwatchPanel/Swatch2"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -19.0
+offset_right = 44.0
+offset_bottom = 49.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.415686, 0.415686, 0.415686, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("2_pipea")
+theme_override_font_sizes/font_size = 80
+text = "+"
+flat = true
+
+[node name="Control" type="Control" parent="SwatchPanel/Swatch2/SwatchButton"]
+anchors_preset = 0
+offset_left = 4.0
+offset_right = 39.0
+offset_bottom = 19.0
+
+[node name="Control2" type="Control" parent="SwatchPanel/Swatch2/SwatchButton"]
+anchors_preset = 0
+offset_left = 39.0
+offset_top = 7.0
+offset_right = 51.0
+offset_bottom = 62.0
+
+[node name="Control3" type="Control" parent="SwatchPanel/Swatch2/SwatchButton"]
+anchors_preset = 0
+offset_left = 4.0
+offset_top = 54.0
+offset_right = 39.0
+offset_bottom = 62.0
+
+[node name="Control4" type="Control" parent="SwatchPanel/Swatch2/SwatchButton"]
+anchors_preset = 0
+offset_left = -4.0
+offset_top = 11.0
+offset_right = 4.0
+offset_bottom = 62.0
+
+[node name="TrashCanLocation" type="Marker2D" parent="SwatchPanel"]
+position = Vector2(161, 25)
+gizmo_extents = 20.0
+
 [node name="ColorButton" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 50.0
@@ -267,18 +410,18 @@ stretch_mode = 0
 [node name="ColorRect" type="ColorRect" parent="ColorButton"]
 visible = false
 layout_mode = 0
-offset_left = -15.0
+offset_left = 6.5
 offset_top = 40.0
-offset_right = 104.0
+offset_right = 125.5
 offset_bottom = 229.0
 
 [node name="DieColorPicker" type="ColorPicker" parent="ColorButton"]
 visible = false
 layout_mode = 0
-offset_left = -16.0
+offset_left = 6.66667
 offset_top = 41.0
-offset_right = 282.0
-offset_bottom = 484.0
+offset_right = 304.667
+offset_bottom = 512.0
 scale = Vector2(0.4, 0.4)
 edit_alpha = false
 deferred_mode = true
@@ -298,18 +441,18 @@ stretch_mode = 0
 [node name="ColorRect" type="ColorRect" parent="TextColorButton"]
 visible = false
 layout_mode = 0
-offset_left = -109.0
+offset_left = -86.5
 offset_top = 40.0
-offset_right = 10.0
+offset_right = 32.5
 offset_bottom = 229.0
 
 [node name="TextColorPicker" type="ColorPicker" parent="TextColorButton"]
 visible = false
 layout_mode = 0
-offset_left = -109.0
+offset_left = -86.6667
 offset_top = 41.0
-offset_right = 189.0
-offset_bottom = 484.0
+offset_right = 211.333
+offset_bottom = 512.0
 scale = Vector2(0.4, 0.4)
 edit_alpha = false
 deferred_mode = true
@@ -317,6 +460,8 @@ can_add_swatches = false
 presets_visible = false
 
 [connection signal="pressed" from="Die" to="." method="_onDiePressed"]
+[connection signal="pressed" from="SwatchPanel/Swatch/SwatchButton" to="." method="_onSwatchButtonPressed" binds= [0]]
+[connection signal="pressed" from="SwatchPanel/Swatch2/SwatchButton" to="." method="_onSwatchButtonPressed" binds= [1]]
 [connection signal="pressed" from="ColorButton" to="." method="_onTextureButtonPressed"]
 [connection signal="color_changed" from="ColorButton/DieColorPicker" to="." method="_onDieColorPickerColorChanged"]
 [connection signal="pressed" from="TextColorButton" to="." method="_onTextColorButtonPressed"]
