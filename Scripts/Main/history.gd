@@ -9,7 +9,8 @@ var entries: Array[Control]
 var freed: bool = false
 const MAXITEMCOUNT: int = 50
 
-func AddEntry(dieTexture: Texture2D,rolledNumber: int,additionalText: String = "",color: Color = Color.WHITE) -> void:
+func AddEntry(dieTexture: Texture2D,rolledNumber: int,additionalText: String = "",color: Color = Color.WHITE)\
+	 -> void:
 	if !freed:
 		noRollsLabel.queue_free()
 		freed = true

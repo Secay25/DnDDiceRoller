@@ -30,11 +30,15 @@ const SPEAKERPRESSED: Texture2D = preload("res://Art/Settings/Speaker/MutedSpeak
 const SPEAKERPRESSEDHOVER: Texture2D = preload("res://Art/Settings/Speaker/MutedSpeakerHover.png")
 const SPEAKERMUTEDDISABLED: Texture2D = preload("res://Art/Settings/Speaker/DisabledMutedSpeaker.png")
 const CASSETTETAPENORMAL: Texture2D = preload("res://Art/Settings/Cassette tape/CassetteTapeNormal.png")
-const CASSETTETAPENORMALHOVER: Texture2D = preload("res://Art/Settings/Cassette tape/CassetteTapeNormalHover.png")
-const CASSETTETAPENORMALDISABLED: Texture2D = preload("res://Art/Settings/Cassette tape/CassetteTapeNormalDisabled.png")
+const CASSETTETAPENORMALHOVER: Texture2D\
+	= preload("res://Art/Settings/Cassette tape/CassetteTapeNormalHover.png")
+const CASSETTETAPENORMALDISABLED: Texture2D\
+= preload("res://Art/Settings/Cassette tape/CassetteTapeNormalDisabled.png")
 const CASSETTETAPEPRESSED: Texture2D = preload("res://Art/Settings/Cassette tape/CassetteTapePressed.png")
-const CASSETTETAPEPRESSEDHOVER: Texture2D = preload("res://Art/Settings/Cassette tape/CassetteTapePressedHover.png")
-const CASSETTETAPEPRESSEDDISABLED: Texture2D = preload("res://Art/Settings/Cassette tape/CassetteTapePressedDisabled.png")
+const CASSETTETAPEPRESSEDHOVER: Texture2D\
+	= preload("res://Art/Settings/Cassette tape/CassetteTapePressedHover.png")
+const CASSETTETAPEPRESSEDDISABLED: Texture2D\
+	= preload("res://Art/Settings/Cassette tape/CassetteTapePressedDisabled.png")
 #endregion
 
 #region overridden methods
@@ -79,9 +83,12 @@ func _onCogwheelPressed() -> void:
 		historyButton.show()
 		cassetteTapeButton.show()
 		tween.set_parallel()
-		tween.tween_property(muteButton,"position:y",muteActivePos,rollOutDuration).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
-		tween.tween_property(historyButton,"position:y",historyActivePos,rollOutDuration).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
-		tween.tween_property(cassetteTapeButton,"position:y",cassetteTapeActivePos,rollOutDuration).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(muteButton,"position:y",muteActivePos,rollOutDuration).\
+			set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(historyButton,"position:y",historyActivePos,rollOutDuration).\
+			set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(cassetteTapeButton,"position:y",cassetteTapeActivePos,rollOutDuration).\
+			set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(settingsButton,"rotation",-FULLROT,rollOutDuration).set_trans(Tween.TRANS_QUINT)
 		tween.chain().tween_callback(ChangeSprites.bind(COGWHEELPRESSED,COGWHEELPRESSEDHOVER))
 	else:
@@ -92,8 +99,10 @@ func _onCogwheelPressed() -> void:
 		muteButton.disabled = true
 		historyButton.disabled = true
 		tween.set_parallel()
-		tween.tween_property(muteButton,"position:y",buttonOrigins,rollOutDuration).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
-		tween.tween_property(historyButton,"position:y",buttonOrigins,rollOutDuration).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(muteButton,"position:y",buttonOrigins,rollOutDuration).set_trans(Tween.TRANS_QUINT).\
+			set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(historyButton,"position:y",buttonOrigins,rollOutDuration).set_trans(Tween.TRANS_QUINT).\
+			set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(cassetteTapeButton,"position:y",buttonOrigins,rollOutDuration).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(settingsButton,"rotation",FULLROT,rollOutDuration).set_trans(Tween.TRANS_QUINT)
 		tween.chain().tween_callback(ChangeSprites.bind(COGWHEELNORMAL,COGWHEELHOVER,false))

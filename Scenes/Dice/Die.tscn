@@ -1,0 +1,414 @@
+[gd_scene load_steps=24 format=3 uid="uid://byibk8repygl7"]
+
+[ext_resource type="Script" path="res://Scripts/Dice/Dice.gd" id="1_fb0qc"]
+[ext_resource type="Texture2D" uid="uid://cie8n4j8r50lg" path="res://Art/Dice/D20.png" id="2_mk3k8"]
+[ext_resource type="LabelSettings" uid="uid://bgxs6qftfdboc" path="res://Fonts/D20Rolled.tres" id="3_2qnxb"]
+[ext_resource type="FontFile" uid="uid://d4nmlc0ojikdb" path="res://Fonts/712_serif.ttf" id="4_qelvi"]
+[ext_resource type="Texture2D" uid="uid://b1lytwp28l3ft" path="res://Art/colorPicking/Trashcan/TrashcanNormal.png" id="5_ctf8k"]
+[ext_resource type="Texture2D" uid="uid://bvx1xwpau1y6c" path="res://Art/colorPicking/Trashcan/TrashcanHover.png" id="6_nlrgn"]
+[ext_resource type="Texture2D" uid="uid://dns1ldtkwlc7b" path="res://Art/colorPicking/PaintBucket/Bucket.png" id="7_am2wg"]
+[ext_resource type="Texture2D" uid="uid://b1hjvqwrore3o" path="res://Art/colorPicking/PaintBucket/Paint.png" id="8_waqrf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gxmjq"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.439216, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 20
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dq6xw"]
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.439216, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 20
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g4fvn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ul31e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ohvnw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i0sdr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1lo26"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lr2jb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_anff4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_122lb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yygmy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8n8om"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_voxy8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0pywo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qatod"]
+font = ExtResource("4_qelvi")
+font_size = 30
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[node name="D?" type="Control" node_paths=PackedStringArray("mainLabel", "die", "colorPickerButton", "colorPicker", "colorPickerBackground", "textButton", "textColorPicker", "textColorBackground", "swatchSet", "allSwatches")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -276.0
+offset_bottom = -724.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(150, 150)
+script = ExtResource("1_fb0qc")
+mainLabel = NodePath("Die/Labels/RolledNumber")
+die = NodePath("Die")
+colorPickerButton = NodePath("ColorButton")
+colorPicker = NodePath("ColorButton/DieColorPicker")
+colorPickerBackground = NodePath("ColorButton/ColorRect")
+textButton = NodePath("TextColorButton")
+textColorPicker = NodePath("TextColorButton/TextColorPicker")
+textColorBackground = NodePath("TextColorButton/ColorRect")
+swatchSet = NodePath("SwatchPanel")
+allSwatches = [NodePath("SwatchPanel/Swatch"), NodePath("SwatchPanel/Swatch2")]
+
+[node name="Die" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 250.0
+offset_bottom = 250.0
+pivot_offset = Vector2(100, 100)
+texture_normal = ExtResource("2_mk3k8")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Labels" type="Control" parent="Die"]
+layout_mode = 1
+anchors_preset = 0
+
+[node name="RolledNumber" type="Label" parent="Die/Labels"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 80.0
+offset_right = 142.0
+offset_bottom = 140.0
+text = "20"
+label_settings = ExtResource("3_2qnxb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SwatchPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 50.0
+offset_top = -50.0
+offset_right = -50.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gxmjq")
+
+[node name="Swatch" type="ColorRect" parent="SwatchPanel"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 7.0
+offset_right = -145.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(17.5, 17.5)
+
+[node name="SwatchBorder" type="Panel" parent="SwatchPanel/Swatch"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -2.0
+offset_top = -1.0
+offset_right = 37.0
+offset_bottom = 36.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dq6xw")
+
+[node name="SwatchButton" type="Button" parent="SwatchPanel/Swatch"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -19.0
+offset_right = 44.0
+offset_bottom = 49.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.415686, 0.415686, 0.415686, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("4_qelvi")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/focus = SubResource("StyleBoxEmpty_g4fvn")
+text = "+"
+flat = true
+
+[node name="Control" type="Control" parent="SwatchPanel/Swatch/SwatchButton"]
+anchors_preset = 0
+offset_left = 4.0
+offset_right = 39.0
+offset_bottom = 19.0
+
+[node name="Control2" type="Control" parent="SwatchPanel/Swatch/SwatchButton"]
+anchors_preset = 0
+offset_left = 39.0
+offset_top = 7.0
+offset_right = 51.0
+offset_bottom = 62.0
+
+[node name="Control3" type="Control" parent="SwatchPanel/Swatch/SwatchButton"]
+anchors_preset = 0
+offset_left = 4.0
+offset_top = 54.0
+offset_right = 39.0
+offset_bottom = 62.0
+
+[node name="Control4" type="Control" parent="SwatchPanel/Swatch/SwatchButton"]
+anchors_preset = 0
+offset_left = -4.0
+offset_top = 11.0
+offset_right = 4.0
+offset_bottom = 62.0
+
+[node name="Swatch2" type="ColorRect" parent="SwatchPanel"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 82.0
+offset_top = 7.0
+offset_right = -83.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(17.5, 17.5)
+
+[node name="SwatchBorder" type="Panel" parent="SwatchPanel/Swatch2"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -2.0
+offset_top = -1.0
+offset_right = 37.0
+offset_bottom = 36.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dq6xw")
+
+[node name="SwatchButton" type="Button" parent="SwatchPanel/Swatch2"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -19.0
+offset_right = 44.0
+offset_bottom = 49.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.415686, 0.415686, 0.415686, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("4_qelvi")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ul31e")
+text = "+"
+flat = true
+
+[node name="Control" type="Control" parent="SwatchPanel/Swatch2/SwatchButton"]
+anchors_preset = 0
+offset_left = 4.0
+offset_right = 39.0
+offset_bottom = 19.0
+
+[node name="Control2" type="Control" parent="SwatchPanel/Swatch2/SwatchButton"]
+anchors_preset = 0
+offset_left = 39.0
+offset_top = 7.0
+offset_right = 51.0
+offset_bottom = 62.0
+
+[node name="Control3" type="Control" parent="SwatchPanel/Swatch2/SwatchButton"]
+anchors_preset = 0
+offset_left = 4.0
+offset_top = 54.0
+offset_right = 39.0
+offset_bottom = 62.0
+
+[node name="Control4" type="Control" parent="SwatchPanel/Swatch2/SwatchButton"]
+anchors_preset = 0
+offset_left = -4.0
+offset_top = 11.0
+offset_right = 4.0
+offset_bottom = 62.0
+
+[node name="Trashcan" type="TextureButton" parent="SwatchPanel"]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 3.0
+offset_right = 181.0
+offset_bottom = 43.0
+pivot_offset = Vector2(20, 20)
+texture_normal = ExtResource("5_ctf8k")
+texture_hover = ExtResource("6_nlrgn")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ColorButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 50.0
+offset_right = 90.0
+offset_bottom = 40.0
+scale = Vector2(1.5, 1.5)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ohvnw")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_i0sdr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1lo26")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_lr2jb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_anff4")
+
+[node name="Outline" type="ColorRect" parent="ColorButton"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 13.0
+offset_right = 27.0
+offset_bottom = 23.0
+color = Color(0, 0, 0, 1)
+
+[node name="Dice" type="TextureRect" parent="ColorButton"]
+layout_mode = 0
+offset_top = 20.0
+offset_right = 20.0
+offset_bottom = 40.0
+texture = ExtResource("2_mk3k8")
+expand_mode = 1
+
+[node name="Bucket" type="TextureRect" parent="ColorButton"]
+layout_mode = 0
+offset_left = 15.0
+offset_right = 40.0
+offset_bottom = 25.0
+texture = ExtResource("7_am2wg")
+expand_mode = 1
+
+[node name="Paint" type="TextureRect" parent="ColorButton"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 11.0
+offset_right = 28.0
+offset_bottom = 25.0
+texture = ExtResource("8_waqrf")
+expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="ColorButton"]
+visible = false
+layout_mode = 0
+offset_left = 6.5
+offset_top = 40.0
+offset_right = 125.5
+offset_bottom = 229.0
+
+[node name="DieColorPicker" type="ColorPicker" parent="ColorButton"]
+visible = false
+layout_mode = 0
+offset_left = 6.66667
+offset_top = 41.0
+offset_right = 304.667
+offset_bottom = 512.0
+scale = Vector2(0.4, 0.4)
+edit_alpha = false
+deferred_mode = true
+can_add_swatches = false
+presets_visible = false
+
+[node name="TextColorButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 190.0
+offset_right = 230.0
+offset_bottom = 40.0
+scale = Vector2(1.5, 1.5)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_122lb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_yygmy")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8n8om")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_voxy8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0pywo")
+
+[node name="Outline" type="ColorRect" parent="TextColorButton"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 13.0
+offset_right = 27.0
+offset_bottom = 23.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="TextColorButton"]
+layout_mode = 0
+offset_left = 6.00001
+offset_top = 16.0
+offset_right = 25.0
+offset_bottom = 39.0
+text = "1"
+label_settings = SubResource("LabelSettings_qatod")
+
+[node name="Bucket" type="TextureRect" parent="TextColorButton"]
+layout_mode = 0
+offset_left = 15.3333
+offset_right = 40.3333
+offset_bottom = 25.0
+texture = ExtResource("7_am2wg")
+expand_mode = 1
+
+[node name="Paint" type="TextureRect" parent="TextColorButton"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 11.0
+offset_right = 28.0
+offset_bottom = 25.0
+texture = ExtResource("8_waqrf")
+expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="TextColorButton"]
+visible = false
+layout_mode = 0
+offset_left = -86.5
+offset_top = 40.0
+offset_right = 32.5
+offset_bottom = 229.0
+
+[node name="TextColorPicker" type="ColorPicker" parent="TextColorButton"]
+visible = false
+layout_mode = 0
+offset_left = -86.6667
+offset_top = 41.0
+offset_right = 211.333
+offset_bottom = 512.0
+scale = Vector2(0.4, 0.4)
+edit_alpha = false
+deferred_mode = true
+can_add_swatches = false
+presets_visible = false
+
+[connection signal="pressed" from="Die" to="." method="_onDiePressed" binds= [20]]
+[connection signal="pressed" from="SwatchPanel/Swatch/SwatchButton" to="." method="_onSwatchButtonPressed" binds= [0]]
+[connection signal="pressed" from="SwatchPanel/Swatch2/SwatchButton" to="." method="_onSwatchButtonPressed" binds= [1]]
+[connection signal="pressed" from="SwatchPanel/Trashcan" to="." method="_onTrashcanPressed"]
+[connection signal="pressed" from="ColorButton" to="." method="_onTextureButtonPressed"]
+[connection signal="color_changed" from="ColorButton/DieColorPicker" to="." method="_onDieColorPickerColorChanged"]
+[connection signal="pressed" from="TextColorButton" to="." method="_onTextColorButtonPressed"]
+[connection signal="color_changed" from="TextColorButton/TextColorPicker" to="." method="_onTextColorPickerColorChanged"]

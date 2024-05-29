@@ -10,8 +10,10 @@ extends Control
 const SWOOPDUR: Array[int] = [3,2] 
 
 #region custom methods
-func StartRolling(firstObject: Control,secondObject: Control,targetPosFirst: Vector2,targetPosSecond: Vector2,mainStarted: bool = false) -> void:
-	var swoopingDur: Array[float] = [SWOOPDUR[0] * int(!Global.animationSkip),SWOOPDUR[1] * int(!Global.animationSkip)]
+func StartRolling(firstObject: Control,secondObject: Control,targetPosFirst: Vector2,targetPosSecond: Vector2,\
+	mainStarted: bool = false) -> void:
+	var swoopingDur: Array[float] = [SWOOPDUR[0] * int(!Global.animationSkip),SWOOPDUR[1] *\
+		int(!Global.animationSkip)]
 	startButton.disabled = true
 	creditsButton.disabled = true
 	var tween: Tween = create_tween().bind_node(self)
@@ -38,5 +40,6 @@ func _onCreditsPressed() -> void:
 	StartRolling(self,creditsMenu,Vector2(0,-Global.defaultHeight),Vector2.ZERO)
 
 func _onCreditsStartPressed() -> void:
-	StartRolling(creditsMenu,gameMenuControl,Vector2(-Global.defaultWidth * 4,creditsMenu.position.y),creditsMenu.position,true)
+	StartRolling(creditsMenu,gameMenuControl,Vector2(-Global.defaultWidth * 4,creditsMenu.position.y),\
+		creditsMenu.position,true)
 #endregion

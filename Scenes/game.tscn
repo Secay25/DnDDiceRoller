@@ -15,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://uj0fodyn5s3d" path="res://Art/Settings/Book/Book.png" id="9_h8um5"]
 [ext_resource type="Texture2D" uid="uid://cu47og2si3d1p" path="res://Art/Settings/Book/BookDark.png" id="9_qt6e2"]
 [ext_resource type="Script" path="res://Scripts/TextureCycle.gd" id="10_5vjmw"]
-[ext_resource type="PackedScene" uid="uid://dkel02nly1c7" path="res://Scenes/Dice/D20.tscn" id="11_8qi10"]
 [ext_resource type="Texture2D" uid="uid://cqv3rx704irn1" path="res://Art/Settings/Speaker/SpeakerHover.png" id="12_b1oju"]
 [ext_resource type="Texture2D" uid="uid://bp0pt4xmbvpoh" path="res://Art/Settings/Cassette tape/CassetteTapeNormal.png" id="13_a6l0u"]
 [ext_resource type="Texture2D" uid="uid://dj6i2aba3abqu" path="res://Art/Settings/Cassette tape/CassetteTapeNormalHover.png" id="14_vj3rc"]
@@ -23,6 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://d3j0wwd84m7rh" path="res://Art/Settings/Cogwheel/CogwheelHover.png" id="15_sswkl"]
 [ext_resource type="Texture2D" uid="uid://b2nasoet1tth0" path="res://Art/Settings/Book/BookHover.png" id="17_3aykt"]
 [ext_resource type="Texture2D" uid="uid://bbgds7136x4x8" path="res://Art/Settings/Book/BookPressed.png" id="17_x3to1"]
+[ext_resource type="Texture2D" uid="uid://c58rgbqjtfbx2" path="res://Art/DiceSettings/CustomRoll/CustomRole.png" id="18_dbnoq"]
+[ext_resource type="Texture2D" uid="uid://b25bhvcw26sv1" path="res://Art/DiceSettings/CustomRoll/CustomRoleHover.png" id="19_75qmj"]
 [ext_resource type="StyleBox" uid="uid://42stf2ibsr3a" path="res://Resources/PanelBook.tres" id="23_5yi5t"]
 [ext_resource type="Script" path="res://Scripts/Main/history.gd" id="26_6lol1"]
 [ext_resource type="Script" path="res://Scripts/Main/CustomRollMenu.gd" id="28_wp88i"]
@@ -74,7 +75,7 @@ shadow_offset = Vector2(0, 2)
 
 [sub_resource type="LabelSettings" id="LabelSettings_2cvse"]
 font = ExtResource("29_5m42f")
-font_size = 80
+font_size = 70
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 0
@@ -133,13 +134,6 @@ shadow_size = 0
 [sub_resource type="LabelSettings" id="LabelSettings_0cuuw"]
 font = ExtResource("29_5m42f")
 font_size = 60
-outline_size = 10
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 0
-
-[sub_resource type="LabelSettings" id="LabelSettings_uiwvj"]
-font = ExtResource("29_5m42f")
-font_size = 35
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 0
@@ -272,15 +266,6 @@ polygon = PackedVector2Array(0, -100, 0, -100, 0, -100, 100, 100, -100, 100)
 position = Vector2(288, 512)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(1, 1, 1, 1, 1, -1, -1, -1, -1, 1)
-
-[node name="D20" parent="UI/GameMenu" node_paths=PackedStringArray("historyBook") instance=ExtResource("11_8qi10")]
-layout_mode = 1
-offset_left = 125.0
-offset_top = 417.0
-offset_right = -151.0
-offset_bottom = -307.0
-scale = Vector2(2, 2)
-historyBook = NodePath("../../Settings/History")
 
 [node name="CreditsMenu" type="Control" parent="UI"]
 layout_mode = 1
@@ -466,7 +451,7 @@ text = "Roll"
 
 [node name="RollDisplay" type="Label" parent="UI/CustomRollMenu/CustomSub/RollAmount"]
 layout_mode = 0
-offset_left = 82.0
+offset_left = 134.0
 offset_top = 1.0
 offset_right = 661.0
 offset_bottom = 64.0
@@ -476,9 +461,9 @@ horizontal_alignment = 1
 
 [node name="RolledNumber" type="Label" parent="UI/CustomRollMenu/CustomSub/RollAmount/RollDisplay"]
 layout_mode = 0
-offset_left = -82.0
+offset_left = -133.0
 offset_top = 73.0
-offset_right = 495.0
+offset_right = 485.0
 offset_bottom = 193.0
 text = "?"
 label_settings = SubResource("LabelSettings_n0foa")
@@ -649,22 +634,12 @@ label_settings = SubResource("LabelSettings_0cuuw")
 [node name="CustomRollSwitch" type="TextureButton" parent="UI"]
 layout_mode = 0
 offset_left = 3456.0
-offset_right = 3570.0
-offset_bottom = 93.0
-texture_normal = ExtResource("1_q573a")
+offset_right = 3656.0
+offset_bottom = 100.0
+texture_normal = ExtResource("18_dbnoq")
+texture_hover = ExtResource("19_75qmj")
 ignore_texture_size = true
 stretch_mode = 0
-
-[node name="TempText" type="Label" parent="UI/CustomRollSwitch"]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 16.0
-offset_right = 112.0
-offset_bottom = 73.0
-text = "Roll 
-Custom"
-label_settings = SubResource("LabelSettings_uiwvj")
-horizontal_alignment = 1
 
 [node name="Settings" type="Control" parent="UI" node_paths=PackedStringArray("settingsButton", "historyButton", "muteButton", "cassetteTapeButton", "historyBook", "bookQuitTop", "bookQuitBottom")]
 layout_mode = 1
