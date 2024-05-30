@@ -72,7 +72,7 @@ func _onDiePressed(maxNumber: int) -> void:
 	if color.v < MINIMALBRIGHT:
 		color.v = MINIMALBRIGHT / 2.0
 	
-	#historyBook.AddEntry(die.texture_normal,rolledNumber,"",color)
+	historyBook.AddEntry(die.texture_normal,rolledNumber,"",color)
 
 func _onTextureButtonPressed(codePressed: bool = false) -> void:
 	colorPicker.visible = !colorPicker.visible
