@@ -1,70 +1,60 @@
-[gd_scene load_steps=34 format=3 uid="uid://dye6t66a57haw"]
+[gd_scene load_steps=32 format=3 uid="uid://cdqynsth8fdxk"]
 
-[ext_resource type="Script" path="res://Scripts/Dice/D12.gd" id="1_yhqxi"]
-[ext_resource type="Texture2D" uid="uid://cv2o8wdj4sejg" path="res://Art/Dice/D12.png" id="2_7ivl0"]
-[ext_resource type="FontFile" uid="uid://d4nmlc0ojikdb" path="res://Fonts/712_serif.ttf" id="4_r4kba"]
-[ext_resource type="Texture2D" uid="uid://b1lytwp28l3ft" path="res://Art/colorPicking/Trashcan/TrashcanNormal.png" id="5_od4x3"]
-[ext_resource type="Texture2D" uid="uid://bvx1xwpau1y6c" path="res://Art/colorPicking/Trashcan/TrashcanHover.png" id="6_737ik"]
-[ext_resource type="Texture2D" uid="uid://dns1ldtkwlc7b" path="res://Art/colorPicking/PaintBucket/Bucket.png" id="7_wdxj1"]
-[ext_resource type="Texture2D" uid="uid://b1hjvqwrore3o" path="res://Art/colorPicking/PaintBucket/Paint.png" id="8_ctbey"]
+[ext_resource type="Script" path="res://Scripts/Dice/D10.gd" id="1_bpj5t"]
+[ext_resource type="Texture2D" uid="uid://cq8caolatom81" path="res://Art/Dice/D10.png" id="2_vsqfm"]
+[ext_resource type="FontFile" uid="uid://d4nmlc0ojikdb" path="res://Fonts/712_serif.ttf" id="4_pwdc4"]
+[ext_resource type="Texture2D" uid="uid://b1lytwp28l3ft" path="res://Art/colorPicking/Trashcan/TrashcanNormal.png" id="5_7vwy5"]
+[ext_resource type="Texture2D" uid="uid://bvx1xwpau1y6c" path="res://Art/colorPicking/Trashcan/TrashcanHover.png" id="6_pweba"]
+[ext_resource type="Texture2D" uid="uid://dns1ldtkwlc7b" path="res://Art/colorPicking/PaintBucket/Bucket.png" id="7_v61c2"]
+[ext_resource type="Texture2D" uid="uid://b1hjvqwrore3o" path="res://Art/colorPicking/PaintBucket/Paint.png" id="8_x7v6h"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_tgf7t"]
-font = ExtResource("4_r4kba")
+[sub_resource type="LabelSettings" id="LabelSettings_kt5uv"]
+font = ExtResource("4_pwdc4")
 font_size = 80
 outline_size = 15
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 0
 
-[sub_resource type="FontVariation" id="FontVariation_71dof"]
-base_font = ExtResource("4_r4kba")
-variation_transform = Transform2D(1, -1, 0, 1, 0, 0)
-
-[sub_resource type="LabelSettings" id="LabelSettings_f2nr2"]
-font = SubResource("FontVariation_71dof")
-font_size = 30
-outline_size = 10
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 0
-
-[sub_resource type="FontVariation" id="FontVariation_1axha"]
-base_font = ExtResource("4_r4kba")
+[sub_resource type="FontVariation" id="FontVariation_7d6l4"]
+base_font = ExtResource("4_pwdc4")
 variation_transform = Transform2D(1, 1, 0, 1, 0, 0)
 
-[sub_resource type="LabelSettings" id="LabelSettings_q8ouu"]
-font = SubResource("FontVariation_1axha")
+[sub_resource type="LabelSettings" id="LabelSettings_tpu8a"]
+font = SubResource("FontVariation_7d6l4")
+font_size = 20
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[sub_resource type="FontVariation" id="FontVariation_t24mo"]
+base_font = ExtResource("4_pwdc4")
+variation_transform = Transform2D(1, -1, 0, 1, 0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a0fq2"]
+font = SubResource("FontVariation_t24mo")
+font_size = 20
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[sub_resource type="FontVariation" id="FontVariation_ycmrb"]
+base_font = ExtResource("4_pwdc4")
+variation_transform = Transform2D(1, -0.5, 0, 1, 0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_00x4i"]
+font = SubResource("FontVariation_ycmrb")
 font_size = 30
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 0
 
-[sub_resource type="FontVariation" id="FontVariation_s8wsx"]
-base_font = ExtResource("4_r4kba")
+[sub_resource type="FontVariation" id="FontVariation_weo70"]
+base_font = ExtResource("4_pwdc4")
 variation_transform = Transform2D(1, 0.5, 0, 1, 0, 0)
 
-[sub_resource type="LabelSettings" id="LabelSettings_1u66m"]
-font = SubResource("FontVariation_s8wsx")
+[sub_resource type="LabelSettings" id="LabelSettings_ldemp"]
+font = SubResource("FontVariation_weo70")
 font_size = 30
-outline_size = 10
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 0
-
-[sub_resource type="FontVariation" id="FontVariation_hnidi"]
-base_font = ExtResource("4_r4kba")
-variation_transform = Transform2D(1, 0.5, 0, 1, 0, 0)
-
-[sub_resource type="LabelSettings" id="LabelSettings_j8mnd"]
-font = SubResource("FontVariation_hnidi")
-font_size = 30
-outline_size = 10
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 0
-
-[sub_resource type="FontVariation" id="FontVariation_h4d6k"]
-base_font = ExtResource("4_r4kba")
-
-[sub_resource type="LabelSettings" id="LabelSettings_j5fhx"]
-font = SubResource("FontVariation_h4d6k")
-font_size = 45
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 0
@@ -122,13 +112,13 @@ anti_aliasing = false
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0pywo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qatod"]
-font = ExtResource("4_r4kba")
+font = ExtResource("4_pwdc4")
 font_size = 30
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 0
 
-[node name="D12" type="Control" node_paths=PackedStringArray("mainLabel", "allLabels", "die", "colorPickerButton", "colorPicker", "colorPickerBackground", "textButton", "textColorPicker", "textColorBackground", "swatchSet", "allSwatches")]
+[node name="D10" type="Control" node_paths=PackedStringArray("mainLabel", "allLabels", "die", "colorPickerButton", "colorPicker", "colorPickerBackground", "textButton", "textColorPicker", "textColorBackground", "swatchSet", "allSwatches")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -138,9 +128,9 @@ offset_bottom = -724.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(150, 150)
-script = ExtResource("1_yhqxi")
+script = ExtResource("1_bpj5t")
 mainLabel = NodePath("Die/Labels/RolledNumber")
-allLabels = [NodePath("Die/Labels/TopLeft"), NodePath("Die/Labels/TopRight"), NodePath("Die/Labels/Left"), NodePath("Die/Labels/Right"), NodePath("Die/Labels/Bottom")]
+allLabels = [NodePath("Die/Labels/TopLeft"), NodePath("Die/Labels/TopRight"), NodePath("Die/Labels/BottomLeft"), NodePath("Die/Labels/BottomRight")]
 die = NodePath("Die")
 colorPickerButton = NodePath("ColorButton")
 colorPicker = NodePath("ColorButton/DieColorPicker")
@@ -150,7 +140,6 @@ textColorPicker = NodePath("TextColorButton/TextColorPicker")
 textColorBackground = NodePath("TextColorButton/ColorRect")
 swatchSet = NodePath("SwatchPanel")
 allSwatches = [NodePath("SwatchPanel/Swatch"), NodePath("SwatchPanel/Swatch2")]
-rolledNumber = 12
 
 [node name="Die" type="TextureButton" parent="."]
 layout_mode = 0
@@ -159,7 +148,7 @@ offset_top = 50.0
 offset_right = 250.0
 offset_bottom = 250.0
 pivot_offset = Vector2(100, 100)
-texture_normal = ExtResource("2_7ivl0")
+texture_normal = ExtResource("2_vsqfm")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -170,61 +159,54 @@ anchors_preset = 0
 [node name="RolledNumber" type="Label" parent="Die/Labels"]
 layout_mode = 0
 offset_left = 62.0
-offset_top = 61.0
+offset_top = 64.0
 offset_right = 142.0
-offset_bottom = 121.0
-text = "12"
-label_settings = SubResource("LabelSettings_tgf7t")
+offset_bottom = 124.0
+text = "0"
+label_settings = SubResource("LabelSettings_kt5uv")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TopLeft" type="Label" parent="Die/Labels"]
 layout_mode = 0
-offset_left = 48.0
-offset_top = 21.0
-offset_right = 88.0
-offset_bottom = 44.0
-text = "7"
-label_settings = SubResource("LabelSettings_f2nr2")
+offset_left = 7.0
+offset_top = 98.0
+offset_right = 47.0
+offset_bottom = 121.0
+text = "8"
+label_settings = SubResource("LabelSettings_tpu8a")
+horizontal_alignment = 1
 
 [node name="TopRight" type="Label" parent="Die/Labels"]
 layout_mode = 0
-offset_left = 126.0
-offset_top = 19.0
-offset_right = 166.0
-offset_bottom = 42.0
-text = "8"
-label_settings = SubResource("LabelSettings_q8ouu")
+offset_left = 156.0
+offset_top = 98.0
+offset_right = 196.0
+offset_bottom = 121.0
+text = "2"
+label_settings = SubResource("LabelSettings_a0fq2")
+horizontal_alignment = 1
 
-[node name="Left" type="Label" parent="Die/Labels"]
+[node name="BottomLeft" type="Label" parent="Die/Labels"]
 layout_mode = 0
-offset_left = 22.0
-offset_top = 149.0
-offset_right = 62.0
-offset_bottom = 172.0
-rotation = -1.91523
-text = "11"
-label_settings = SubResource("LabelSettings_1u66m")
-
-[node name="Right" type="Label" parent="Die/Labels"]
-layout_mode = 0
-offset_left = 189.0
-offset_top = 120.0
-offset_right = 229.0
-offset_bottom = 143.0
-rotation = 1.91463
-text = "9"
-label_settings = SubResource("LabelSettings_j8mnd")
-
-[node name="Bottom" type="Label" parent="Die/Labels"]
-layout_mode = 0
-offset_left = 121.0
-offset_top = 191.0
-offset_right = 167.0
-offset_bottom = 226.0
+offset_left = 85.0
+offset_top = 168.0
+offset_right = 125.0
+offset_bottom = 191.0
 rotation = 3.14159
-text = "10"
-label_settings = SubResource("LabelSettings_j5fhx")
+text = "5"
+label_settings = SubResource("LabelSettings_00x4i")
+horizontal_alignment = 1
+
+[node name="BottomRight" type="Label" parent="Die/Labels"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 171.0
+offset_right = 190.0
+offset_bottom = 194.0
+rotation = 3.14159
+text = "3"
+label_settings = SubResource("LabelSettings_ldemp")
 horizontal_alignment = 1
 
 [node name="SwatchPanel" type="Panel" parent="."]
@@ -271,7 +253,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0.415686, 0.415686, 0.415686, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("4_r4kba")
+theme_override_fonts/font = ExtResource("4_pwdc4")
 theme_override_font_sizes/font_size = 80
 theme_override_styles/focus = SubResource("StyleBoxEmpty_g4fvn")
 text = "+"
@@ -337,7 +319,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0.415686, 0.415686, 0.415686, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("4_r4kba")
+theme_override_fonts/font = ExtResource("4_pwdc4")
 theme_override_font_sizes/font_size = 80
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ul31e")
 text = "+"
@@ -377,8 +359,8 @@ offset_top = 3.0
 offset_right = 181.0
 offset_bottom = 43.0
 pivot_offset = Vector2(20, 20)
-texture_normal = ExtResource("5_od4x3")
-texture_hover = ExtResource("6_737ik")
+texture_normal = ExtResource("5_7vwy5")
+texture_hover = ExtResource("6_pweba")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -407,7 +389,7 @@ layout_mode = 0
 offset_top = 20.0
 offset_right = 20.0
 offset_bottom = 40.0
-texture = ExtResource("2_7ivl0")
+texture = ExtResource("2_vsqfm")
 expand_mode = 1
 
 [node name="Bucket" type="TextureRect" parent="ColorButton"]
@@ -415,7 +397,7 @@ layout_mode = 0
 offset_left = 15.0
 offset_right = 40.0
 offset_bottom = 25.0
-texture = ExtResource("7_wdxj1")
+texture = ExtResource("7_v61c2")
 expand_mode = 1
 
 [node name="Paint" type="TextureRect" parent="ColorButton"]
@@ -424,7 +406,7 @@ offset_left = 14.0
 offset_top = 11.0
 offset_right = 28.0
 offset_bottom = 25.0
-texture = ExtResource("8_ctbey")
+texture = ExtResource("8_x7v6h")
 expand_mode = 1
 
 [node name="ColorRect" type="ColorRect" parent="ColorButton"]
@@ -482,7 +464,7 @@ layout_mode = 0
 offset_left = 15.3333
 offset_right = 40.3333
 offset_bottom = 25.0
-texture = ExtResource("7_wdxj1")
+texture = ExtResource("7_v61c2")
 expand_mode = 1
 
 [node name="Paint" type="TextureRect" parent="TextColorButton"]
@@ -491,7 +473,7 @@ offset_left = 14.0
 offset_top = 11.0
 offset_right = 28.0
 offset_bottom = 25.0
-texture = ExtResource("8_ctbey")
+texture = ExtResource("8_x7v6h")
 expand_mode = 1
 
 [node name="ColorRect" type="ColorRect" parent="TextColorButton"]
@@ -515,7 +497,9 @@ deferred_mode = true
 can_add_swatches = false
 presets_visible = false
 
-[connection signal="pressed" from="Die" to="." method="_onDiePressed" binds= [12]]
+[connection signal="pressed" from="Die" to="." method="_onDiePressed" binds= [9]]
+[connection signal="pressed" from="SwatchPanel/Swatch/SwatchButton" to="." method="_onSwatchButtonPressed" binds= [0]]
+[connection signal="pressed" from="SwatchPanel/Swatch2/SwatchButton" to="." method="_onSwatchButtonPressed" binds= [1]]
 [connection signal="pressed" from="SwatchPanel/Trashcan" to="." method="_onTrashcanPressed"]
 [connection signal="pressed" from="ColorButton" to="." method="_onTextureButtonPressed"]
 [connection signal="color_changed" from="ColorButton/DieColorPicker" to="." method="_onDieColorPickerColorChanged"]
