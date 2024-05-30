@@ -8,6 +8,8 @@ class_name GameUI extends Control
 var die: Dice
 const DICEPOS: Vector2i = Vector2i(125,417)
 const DICESCALE: int = 2
+const Dice8: PackedScene = preload("res://Scenes/Dice/D8.tscn")
+const Dice10: PackedScene = preload("res://Scenes/Dice/D10.tscn")
 const Dice12: PackedScene = preload("res://Scenes/Dice/D12.tscn")
 const Dice20: PackedScene = preload("res://Scenes/Dice/D20.tscn")
 const DROPINHOLEDURATION: float = 0.5

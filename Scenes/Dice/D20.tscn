@@ -617,6 +617,8 @@ can_add_swatches = false
 presets_visible = false
 
 [connection signal="pressed" from="Die" to="." method="_onDiePressed" binds= [20]]
+[connection signal="pressed" from="SwatchPanel/Swatch/SwatchButton" to="." method="_onSwatchButtonPressed" binds= [0]]
+[connection signal="pressed" from="SwatchPanel/Swatch2/SwatchButton" to="." method="_onSwatchButtonPressed" binds= [1]]
 [connection signal="pressed" from="SwatchPanel/Trashcan" to="." method="_onTrashcanPressed"]
 [connection signal="pressed" from="ColorButton" to="." method="_onTextureButtonPressed"]
 [connection signal="color_changed" from="ColorButton/DieColorPicker" to="." method="_onDieColorPickerColorChanged"]

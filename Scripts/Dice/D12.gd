@@ -24,3 +24,7 @@ func _onDiePressed(maxNumber: int) -> void:
 		#Code below should be: allLabels[i].text = str(NUMBERS[i])
 		#ALERT ABOVE CODE WILL THROW AN ERROR BUT FUNCTIONALLY IS THE SAME AS CODE BELOW.
 		allLabels[i].text = str(DICECONFIG[rolledNumber][i])
+
+func _onSwatchButtonPressed(swatchButton: int) -> void:
+	#ALERT Godot stopped recognizing the inherited method and I couldn't actually connect the signal
+	super(swatchButton)

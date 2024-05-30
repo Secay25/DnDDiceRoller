@@ -24,7 +24,7 @@ const DICECONFIG: Dictionary = {
 }
 
 #region signals
-func _onDiePressed(maxNumber) -> void:
+func _onDiePressed(maxNumber: int) -> void:
 	super(maxNumber)
 	
 	for i in len(allLabels):
@@ -34,3 +34,7 @@ func _onDiePressed(maxNumber) -> void:
 		#ALERT ABOVE CODE WILL THROW AN ERROR BUT FUNCTIONALLY IS THE SAME AS CODE BELOW.
 		allLabels[i].text = str(DICECONFIG[rolledNumber][i])
 #endregion
+
+func _onSwatchButtonPressed(swatchButton: int) -> void:
+	#ALERT Godot stopped recognizing the inherited method and I couldn't actually connect the signal
+	super(swatchButton)

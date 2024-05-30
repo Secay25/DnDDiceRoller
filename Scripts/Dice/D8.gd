@@ -1,27 +1,18 @@
-class_name D10 extends Dice
+class_name D8 extends Dice
 
 const DICECONFIG: Dictionary = {
-	1: [9,3,4,2],
-	2: [0,4,3,1],
-	3: [1,5,2,0],
-	4: [2,6,1,9],
-	5: [3,7,0,8],
-	6: [4,8,9,7],
-	7: [5,9,8,6],
-	8: [6,0,7,5],
-	9: [7,1,6,4],
-	0: [8,2,5,3],
+	1: [7,3,4],
+	2: [4,8,7],
+	3: [1,5,6],
+	4: [6,2,1],
+	5: [3,7,8],
+	6: [8,4,3],
+	7: [5,1,2],
+	8: [2,6,5],
 }
 
 func _onDiePressed(maxNumber: int) -> void:
-	rolledNumber = randi_range(0,maxNumber)
-	mainLabel.text = str(rolledNumber)
-	var color = die.self_modulate
-	
-	if color.v < MINIMALBRIGHT:
-		color.v = MINIMALBRIGHT / 2.0
-	
-	historyBook.AddEntry(die.texture_normal,rolledNumber,"",color)
+	super(maxNumber)
 	
 	for i in len(allLabels):
 		#ALERT DO NOT REMOVE THE "#" WITHOUT THE CORRESPONDING COMMENTS, IT WILL CRASH.
