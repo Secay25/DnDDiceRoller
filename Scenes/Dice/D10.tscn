@@ -15,45 +15,45 @@ outline_size = 15
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 0
 
-[sub_resource type="FontVariation" id="FontVariation_7d6l4"]
+[sub_resource type="FontVariation" id="FontVariation_ljo5y"]
 base_font = ExtResource("4_pwdc4")
 variation_transform = Transform2D(1, 1, 0, 1, 0, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_tpu8a"]
-font = SubResource("FontVariation_7d6l4")
+font = SubResource("FontVariation_ljo5y")
 font_size = 20
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 0
 
-[sub_resource type="FontVariation" id="FontVariation_t24mo"]
+[sub_resource type="FontVariation" id="FontVariation_yuvmi"]
 base_font = ExtResource("4_pwdc4")
 variation_transform = Transform2D(1, -1, 0, 1, 0, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_a0fq2"]
-font = SubResource("FontVariation_t24mo")
+font = SubResource("FontVariation_yuvmi")
 font_size = 20
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 0
 
-[sub_resource type="FontVariation" id="FontVariation_ycmrb"]
+[sub_resource type="FontVariation" id="FontVariation_dsocj"]
 base_font = ExtResource("4_pwdc4")
 variation_transform = Transform2D(1, -0.5, 0, 1, 0, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_00x4i"]
-font = SubResource("FontVariation_ycmrb")
+font = SubResource("FontVariation_dsocj")
 font_size = 30
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 0
 
-[sub_resource type="FontVariation" id="FontVariation_weo70"]
+[sub_resource type="FontVariation" id="FontVariation_d13vk"]
 base_font = ExtResource("4_pwdc4")
 variation_transform = Transform2D(1, 0.5, 0, 1, 0, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ldemp"]
-font = SubResource("FontVariation_weo70")
+font = SubResource("FontVariation_d13vk")
 font_size = 30
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
