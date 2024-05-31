@@ -87,10 +87,13 @@ func _onCustomRollSwitchPressed() -> void:
 		tween.set_parallel()
 		tween.tween_property(subWindow,"position:x",0,tweenDur).set_trans(Tween.TRANS_EXPO).\
 			set_ease(Tween.EASE_OUT)
-		tween.tween_callback(SwitchOtherGroups.bind(true)).set_delay(tweenDur / SHOWUPDUR[1])
+		tween.tween_callback(SwitchOtherGroups.bind(true)).set_delay(tweenDur / SHOWUPDUR[1] *\
+			float(!Global.animationSkip))
+		tween.chain().tween_callback(hide)
 		customButton.texture_normal = CUSTOMBUTTONNORMAL
 		customButton.texture_hover = CUSTOMBUTTONNORMALHOVER
 	else:
+		visible = true
 		tween.tween_callback(SwitchOtherGroups)
 		tween.tween_property(subWindow,"position:x",BACKGROUNDACTIVEPOS,tweenDur).set_trans(Tween.TRANS_EXPO).\
 			set_ease(Tween.EASE_OUT)

@@ -22,7 +22,8 @@ var swatchStates: Array[bool] = [false,false]
 const MINIMALBRIGHT: float = 25.0 / 100.0
 signal wrapUpDone
 
-func _ready() -> void:
+#region custom methods
+func BecomeAlive() -> void:
 	var tween: Tween = create_tween()
 	var shootDuration: float = SHOOTDUR * float(!Global.animationSkip)
 	tween.set_parallel()
@@ -30,7 +31,6 @@ func _ready() -> void:
 	tween.tween_property(textButton,"position",TEXTPICKERPOS,shootDuration)
 	tween.chain().tween_callback(EnableButtons)
 
-#region custom methods
 func ChangeAllDieTextColor(fontColor: Color,outlineColor: Color = Color.BLACK) -> void:
 	mainLabel.label_settings.outline_color = outlineColor
 	
@@ -65,6 +65,10 @@ func EnableButtons() -> void:
 
 #region signals
 func _onDiePressed(maxNumber: int) -> void:
+	colorPicker.visible = false
+	colorPickerBackground.visible = false
+	textColorPicker.visible = false
+	textColorBackground.visible = false
 	rolledNumber = randi_range(1,maxNumber)
 	mainLabel.text = str(rolledNumber)
 	var color = die.self_modulate

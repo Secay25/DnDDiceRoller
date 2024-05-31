@@ -256,12 +256,13 @@ offset_bottom = 200.0
 grow_horizontal = 2
 
 [node name="LeftMain" type="Polygon2D" parent="UI/GameMenu"]
-position = Vector2(288, 550)
-scale = Vector2(1.5, -1.5)
+position = Vector2(288, 686)
+scale = Vector2(2.5, -2.5)
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(0, -100, 0, -100, 0, -100, 100, 100, -100, 100)
+polygon = PackedVector2Array(100, -100, 100, -100, 100, 100, -100, 100, -100, -100)
 
 [node name="RightNonMain" type="Polygon2D" parent="UI/GameMenu"]
+visible = false
 position = Vector2(288, 512)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(1, 1, 1, 1, 1, -1, -1, -1, -1, 1)
@@ -344,6 +345,7 @@ label_settings = SubResource("LabelSettings_6c3ct")
 horizontal_alignment = 1
 
 [node name="CustomRollMenu" type="Control" parent="UI" node_paths=PackedStringArray("otherGroups", "diceButtons", "subWindow", "rollEdit", "errorText", "rollButton", "rolledNumberDisplay", "customButton", "book")]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

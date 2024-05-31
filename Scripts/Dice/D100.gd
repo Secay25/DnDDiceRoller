@@ -25,6 +25,7 @@ class_name D100 extends Control
 @export var rolledNumber: int = 10
 @export var rolledPercentile: int = 100
 var swatchStates: Array[bool] = [false,false,false,false]
+var percentilePressed: bool = false
 const DIEPICKERPOS: Vector2 = Vector2(329,0)
 const PERCENTILEPICKERPOS: Vector2 = Vector2(50,0)
 const SWATCHBUTTONSORGIN: float = 100.0
@@ -58,7 +59,8 @@ const PERCENTILECONFIG: Dictionary = {
 	100: [80,20,50,30],
 }
 
-func _ready() -> void:
+#region custom methods
+func BecomeAlive() -> void:
 	var tween: Tween = create_tween()
 	var shootDuration: float = SHOOTDUR * float(!Global.animationSkip)
 	tween.set_parallel()
@@ -68,7 +70,6 @@ func _ready() -> void:
 	tween.tween_property(textButtonPercentile,"position",TEXTPERCENTILEPOS,shootDuration)
 	tween.chain().tween_callback(EnableButtons)
 
-#region custom methods
 func ChangeAllDieTextColor(fontColor: Color,outlineColor: Color = Color.BLACK) -> void:
 	mainLabel.label_settings.outline_color = outlineColor
 	
@@ -125,12 +126,23 @@ func EnableButtons() -> void:
 #endregion
 
 #region signals
-func _onDiePressed() -> void:
+func _onDiePressed(diePressed: bool = true) -> void:
+	colorPicker.visible = false
+	colorPickerBackground.visible = false
+	colorPickerPercentile.visible = false
+	colorBackgroundPercentile.visible = false
+	textBackgroundPercentile.visible = false
+	textColorBackground.visible = false
+	textPickerPercentile.visible = false
 	rolledNumber = randi_range(0,9)
 	rolledPercentile = randi_range(1,10) * 10
 	mainLabel.text = str(rolledNumber)
 	mainPercentile.text = str(rolledPercentile)
+	percentilePressed = !diePressed
 	var color = die.self_modulate
+	
+	if !diePressed:
+		color = diePercentile.self_modulate
 	
 	if rolledPercentile == 100:
 		mainPercentile.text = "00"
@@ -138,7 +150,8 @@ func _onDiePressed() -> void:
 	if color.v < MINIMALBRIGHT:
 		color.v = MINIMALBRIGHT / 2.0
 	
-	#historyBook.AddEntry(Global.D100DICE,rolledNumber + int((float(rolledPercentile) / 10.0)),"",color)
+	historyBook.AddEntry(Global.D100DICE,rolledNumber + int((float(rolledPercentile) / 10.0)),"",color)
+	
 	for i in len(allLabels):
 		#ALERT DO NOT REMOVE THE "#" WITHOUT THE CORRESPONDING COMMENTS, IT WILL CRASH.
 		#const NUMBERS: Array[int] = DICECONFIG[rolledNumbers]
@@ -332,6 +345,5 @@ func _onTrashcanPressed() -> void:
 		i.self_modulate.a = 0.0
 		i.get_node("SwatchButton").modulate.a = 1.0
 		i.get_node("SwatchBorder").self_modulate.a = 0.0
-
 #endregion
 

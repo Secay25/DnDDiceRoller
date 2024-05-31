@@ -39,8 +39,8 @@ One die:
 			3: (100,100)
 			4: (-100,100)
 		Transform:
-			Position: (288,550)
-			Scale: (2,0;-2,0) (1,5;-1,5)
+			Position: (288,686)
+			Scale: (2,5;-2,5) (1,5;-1,5)
 		Dice:
 			Position: (125,417)
 			Scale: (2,0;2,0)
