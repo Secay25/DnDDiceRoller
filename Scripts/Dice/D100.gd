@@ -84,7 +84,7 @@ func ChangeAllPercentileTextColor(fontColor: Color,outlineColor: Color = Color.B
 		i.label_settings.font_color = fontColor
 		i.label_settings.outline_color = outlineColor
 
-func ShootInColors() -> void:
+func ShootInColors(diceType: int) -> void:
 	move_child(colorPickerButton,0)
 	move_child(textButton,0)
 	move_child(colorButtonPercentile,0)
@@ -114,7 +114,7 @@ func ShootInColors() -> void:
 		set_trans(Tween.TRANS_QUART)
 	tween.tween_property(textButtonPercentile,"position:y",SWATCHBUTTONSORGIN,shootDuration).\
 		set_trans(Tween.TRANS_QUART)
-	tween.chain().tween_callback(emit_signal.bind("wrapUpDone"))
+	tween.chain().tween_callback(emit_signal.bind("wrapUpDone",diceType))
 
 func EnableButtons() -> void:
 	colorPickerButton.disabled = false
