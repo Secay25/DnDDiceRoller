@@ -7,6 +7,8 @@ extends Control
 @export var startButton: Button
 @export var creditsButton: Button
 @export var customButton: TextureButton
+@export var gameMenuBagage: Control
+@export var sfxPlayer: AudioStreamPlayer
 const SWOOPDUR: Array[int] = [3,2] 
 
 #region custom methods
@@ -23,8 +25,11 @@ func StartRolling(firstObject: Control,secondObject: Control,targetPosFirst: Vec
 	tween.tween_property(secondObject,"position",targetPosSecond,swoopingDur[1])
 	
 	if mainStarted:
-		tween.tween_property(customButton,"position",targetPosSecond,swoopingDur[1])
+		tween.tween_property(customButton,"position",Vector2.ZERO,swoopingDur[1])
 		tween.chain().tween_callback(RollingStarted)
+	
+	if Global.sfx:
+		sfxPlayer.play()
 
 func RollingStarted() -> void:
 	gameMenuControl.MainStarted()
@@ -35,11 +40,14 @@ func RollingStarted() -> void:
 #region signals
 func _onStartPressed() -> void:
 	StartRolling(self,gameMenuControl,Vector2(-Global.defaultWidth * 4,position.y),position,true)
+	StartRolling(self,gameMenuBagage,Vector2(-Global.defaultWidth * 4,position.y),Vector2(300.0,0),true)
 
 func _onCreditsPressed() -> void:
 	StartRolling(self,creditsMenu,Vector2(0,-Global.defaultHeight),Vector2.ZERO)
 
 func _onCreditsStartPressed() -> void:
 	StartRolling(creditsMenu,gameMenuControl,Vector2(-Global.defaultWidth * 4,creditsMenu.position.y),\
+		creditsMenu.position,true)
+	StartRolling(creditsMenu,gameMenuBagage,Vector2(-Global.defaultWidth * 4,creditsMenu.position.y),\
 		creditsMenu.position,true)
 #endregion

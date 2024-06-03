@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://c8b5c468jx7e3"]
+[gd_scene load_steps=64 format=3 uid="uid://c8b5c468jx7e3"]
 
 [ext_resource type="Script" path="res://Scripts/Main/startMenu.gd" id="1_7a75a"]
 [ext_resource type="Texture2D" uid="uid://c55uyci3e3rp5" path="res://Art/Background/Background.png" id="1_q573a"]
@@ -7,23 +7,30 @@
 [ext_resource type="Theme" uid="uid://dsedf33rtjse7" path="res://Resources/Buttons/creditsTheme.tres" id="4_3sai3"]
 [ext_resource type="Script" path="res://Scripts/Main/gameMenu.gd" id="4_kp3ou"]
 [ext_resource type="Texture2D" uid="uid://cebxqhxb5xi1o" path="res://Art/Settings/Cogwheel/Cogwheel.png" id="6_e5p7b"]
+[ext_resource type="AudioStream" uid="uid://blr7rfqadx57r" path="res://SFX/ButtonPressed.wav" id="6_tty8x"]
 [ext_resource type="Texture2D" uid="uid://cbwn3iuwy4nst" path="res://Art/DiceSettings/DiceMultiplier/DiceMultiplierNormal.png" id="7_a08ih"]
 [ext_resource type="Script" path="res://Scripts/Main/settings.gd" id="7_fnk7n"]
 [ext_resource type="LabelSettings" uid="uid://b4thldv6pi1tw" path="res://Fonts/712serif49white10black20-0-2.tres" id="7_kldmu"]
+[ext_resource type="Texture2D" uid="uid://dh1kgg1h56xmp" path="res://Art/DiceSettings/DiceBag/DiceBagNormal.png" id="7_rk6wn"]
 [ext_resource type="Texture2D" uid="uid://p7stgxxs6kcf" path="res://Art/Settings/Speaker/Speaker.png" id="8_q0ek3"]
+[ext_resource type="Texture2D" uid="uid://dt2p3wmsvo75c" path="res://Art/DiceSettings/DiceBag/DiceBagNormalHover.png" id="8_vesnd"]
 [ext_resource type="Texture2D" uid="uid://dyw43lus04np5" path="res://Art/Settings/Speaker/DisabledSpeaker.png" id="8_vut64"]
 [ext_resource type="Texture2D" uid="uid://uj0fodyn5s3d" path="res://Art/Settings/Book/Book.png" id="9_h8um5"]
 [ext_resource type="Texture2D" uid="uid://cu47og2si3d1p" path="res://Art/Settings/Book/BookDark.png" id="9_qt6e2"]
 [ext_resource type="Script" path="res://Scripts/TextureCycle.gd" id="10_5vjmw"]
 [ext_resource type="Texture2D" uid="uid://cqv3rx704irn1" path="res://Art/Settings/Speaker/SpeakerHover.png" id="12_b1oju"]
 [ext_resource type="Texture2D" uid="uid://bp0pt4xmbvpoh" path="res://Art/Settings/Cassette tape/CassetteTapeNormal.png" id="13_a6l0u"]
+[ext_resource type="Texture2D" uid="uid://b645m2ur0ijhv" path="res://Art/Dice/Percentile.png" id="13_k48p3"]
 [ext_resource type="Texture2D" uid="uid://dj6i2aba3abqu" path="res://Art/Settings/Cassette tape/CassetteTapeNormalHover.png" id="14_vj3rc"]
 [ext_resource type="Texture2D" uid="uid://c3nh1iyjdybpw" path="res://Art/Settings/Cassette tape/CassetteTapeNormalDisabled.png" id="15_0p1mn"]
 [ext_resource type="Texture2D" uid="uid://d3j0wwd84m7rh" path="res://Art/Settings/Cogwheel/CogwheelHover.png" id="15_sswkl"]
 [ext_resource type="Texture2D" uid="uid://b2nasoet1tth0" path="res://Art/Settings/Book/BookHover.png" id="17_3aykt"]
+[ext_resource type="AudioStream" uid="uid://n27u3hf2gt0q" path="res://SFX/foley_2_dice_throw_on_table.mp3" id="17_43jxy"]
 [ext_resource type="Texture2D" uid="uid://bbgds7136x4x8" path="res://Art/Settings/Book/BookPressed.png" id="17_x3to1"]
 [ext_resource type="Texture2D" uid="uid://c58rgbqjtfbx2" path="res://Art/DiceSettings/CustomRoll/CustomRole.png" id="18_dbnoq"]
+[ext_resource type="AudioStream" uid="uid://6pknlwnqs56" path="res://SFX/zapsplat_nature_water_buckets_worth_throw_onto_surface_of_deep_water_splash_001_68912.mp3" id="18_rnb21"]
 [ext_resource type="Texture2D" uid="uid://b25bhvcw26sv1" path="res://Art/DiceSettings/CustomRoll/CustomRoleHover.png" id="19_75qmj"]
+[ext_resource type="AudioStream" uid="uid://vld4icxwh5ow" path="res://SFX/zapsplat_foley_shopping_baskets_metal_x2_bang_together_001.mp3" id="20_kee0c"]
 [ext_resource type="StyleBox" uid="uid://42stf2ibsr3a" path="res://Resources/PanelBook.tres" id="23_5yi5t"]
 [ext_resource type="Script" path="res://Scripts/Main/history.gd" id="26_6lol1"]
 [ext_resource type="Script" path="res://Scripts/Main/CustomRollMenu.gd" id="28_wp88i"]
@@ -34,6 +41,9 @@
 [ext_resource type="Texture2D" uid="uid://cq8caolatom81" path="res://Art/Dice/D10.png" id="33_h8oa5"]
 [ext_resource type="Texture2D" uid="uid://cv2o8wdj4sejg" path="res://Art/Dice/D12.png" id="34_rh6bl"]
 [ext_resource type="Texture2D" uid="uid://cie8n4j8r50lg" path="res://Art/Dice/D20.png" id="35_hagqd"]
+[ext_resource type="AudioStream" uid="uid://budyqk25cw8lp" path="res://SFX/cogWheelSpin.wav" id="39_dd3qm"]
+[ext_resource type="AudioStream" uid="uid://d3n4dmko6wlv5" path="res://SFX/zapsplat_household_book_artists_sketch_pad_page_slide_turn_001_50090.mp3" id="40_c8xh2"]
+[ext_resource type="AudioStream" uid="uid://c7sctym2tcpg6" path="res://SFX/zapsplat_foley_luggage_small_thick_fabric_bag_zipper_zip_001_89087.mp3" id="43_322wp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6c3ct"]
 font = ExtResource("29_5m42f")
@@ -63,19 +73,9 @@ outline_color = Color(0, 0, 0, 1)
 shadow_size = 0
 shadow_offset = Vector2(0, 5)
 
-[sub_resource type="LabelSettings" id="LabelSettings_q06w1"]
-font = ExtResource("29_5m42f")
-font_size = 40
-font_color = Color(1, 0, 0, 1)
-outline_size = 10
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 20
-shadow_color = Color(0, 0, 0, 0.470588)
-shadow_offset = Vector2(0, 2)
-
 [sub_resource type="LabelSettings" id="LabelSettings_2cvse"]
 font = ExtResource("29_5m42f")
-font_size = 70
+font_size = 55
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 0
@@ -83,8 +83,8 @@ shadow_offset = Vector2(0, 5)
 
 [sub_resource type="LabelSettings" id="LabelSettings_n0foa"]
 font = ExtResource("29_5m42f")
-font_size = 160
-outline_size = 10
+font_size = 150
+outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 0
 shadow_offset = Vector2(0, 5)
@@ -138,6 +138,16 @@ outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 0
 
+[sub_resource type="LabelSettings" id="LabelSettings_q06w1"]
+font = ExtResource("29_5m42f")
+font_size = 40
+font_color = Color(1, 0, 0, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 0.470588)
+shadow_offset = Vector2(0, 2)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i5y8d"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wmhgb"]
@@ -172,7 +182,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_q573a")
 
-[node name="StartMenu" type="Control" parent="UI" node_paths=PackedStringArray("gameMenuControl", "creditsMenu", "startButton", "creditsButton", "customButton")]
+[node name="StartMenu" type="Control" parent="UI" node_paths=PackedStringArray("gameMenuControl", "creditsMenu", "startButton", "creditsButton", "customButton", "gameMenuBagage", "sfxPlayer")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -185,6 +195,8 @@ creditsMenu = NodePath("../CreditsMenu")
 startButton = NodePath("VBoxContainer/Start")
 creditsButton = NodePath("VBoxContainer/Credits")
 customButton = NodePath("../CustomRollSwitch")
+gameMenuBagage = NodePath("../Control")
+sfxPlayer = NodePath("AudioStreamPlayer")
 
 [node name="Title" type="Label" parent="UI/StartMenu"]
 custom_minimum_size = Vector2(0, 80)
@@ -226,7 +238,10 @@ theme = ExtResource("4_3sai3")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Credits"
 
-[node name="GameMenu" type="Control" parent="UI" node_paths=PackedStringArray("mainPoly", "rightPoly", "settings")]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UI/StartMenu"]
+stream = ExtResource("6_tty8x")
+
+[node name="GameMenu" type="Control" parent="UI" node_paths=PackedStringArray("mainPoly", "rightPoly", "settings", "allDice", "buttonGroup", "bagDice", "sfxPlayer", "dicePlayer", "waterPlayer", "bagPlayer", "trashPlayer")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -239,14 +254,14 @@ script = ExtResource("4_kp3ou")
 mainPoly = NodePath("LeftMain")
 rightPoly = NodePath("RightNonMain")
 settings = NodePath("../Settings")
-
-[node name="RemoveOnceDone" type="ColorRect" parent="UI/GameMenu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+allDice = [NodePath("DiceSettings/DiceButtons/D4Button"), NodePath("DiceSettings/DiceButtons/D6Button"), NodePath("DiceSettings/DiceButtons/D8Button"), NodePath("DiceSettings/DiceButtons/D10Button"), NodePath("DiceSettings/DiceButtons/D12Button"), NodePath("DiceSettings/DiceButtons/D20Button"), NodePath("DiceSettings/DiceButtons/D100Button")]
+buttonGroup = [NodePath("../Control/Button"), NodePath("../Control/Button2"), NodePath("../Control/Button3")]
+bagDice = NodePath("DiceSettings/DiceBag")
+sfxPlayer = NodePath("AudioStreamPlayer")
+dicePlayer = NodePath("AudioStreamPlayer2")
+waterPlayer = NodePath("AudioStreamPlayer3")
+bagPlayer = NodePath("AudioStreamPlayer4")
+trashPlayer = NodePath("AudioStreamPlayer5")
 
 [node name="DiceSettings" type="Control" parent="UI/GameMenu"]
 layout_mode = 1
@@ -254,6 +269,87 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 200.0
 grow_horizontal = 2
+
+[node name="DiceButtons" type="Control" parent="UI/GameMenu/DiceSettings"]
+anchors_preset = 0
+offset_left = 333.0
+offset_top = 33.0
+offset_right = 373.0
+offset_bottom = 73.0
+scale = Vector2(0.5, 0.5)
+
+[node name="D4Button" type="TextureButton" parent="UI/GameMenu/DiceSettings/DiceButtons"]
+self_modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_right = 130.0
+offset_bottom = 130.0
+texture_normal = ExtResource("30_u2av3")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="D6Button" type="TextureButton" parent="UI/GameMenu/DiceSettings/DiceButtons"]
+self_modulate = Color(1, 0.494118, 0, 1)
+layout_mode = 0
+offset_right = 130.0
+offset_bottom = 130.0
+texture_normal = ExtResource("31_0ks4u")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="D8Button" type="TextureButton" parent="UI/GameMenu/DiceSettings/DiceButtons"]
+self_modulate = Color(1, 1, 0, 1)
+layout_mode = 0
+offset_right = 130.0
+offset_bottom = 130.0
+texture_normal = ExtResource("32_qrw2c")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="D10Button" type="TextureButton" parent="UI/GameMenu/DiceSettings/DiceButtons"]
+self_modulate = Color(0, 1, 0, 1)
+layout_mode = 0
+offset_right = 130.0
+offset_bottom = 130.0
+texture_normal = ExtResource("33_h8oa5")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="D12Button" type="TextureButton" parent="UI/GameMenu/DiceSettings/DiceButtons"]
+self_modulate = Color(0, 1, 1, 1)
+layout_mode = 0
+offset_right = 130.0
+offset_bottom = 130.0
+texture_normal = ExtResource("34_rh6bl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="D20Button" type="TextureButton" parent="UI/GameMenu/DiceSettings/DiceButtons"]
+self_modulate = Color(0, 0, 1, 1)
+layout_mode = 0
+offset_right = 130.0
+offset_bottom = 130.0
+texture_normal = ExtResource("35_hagqd")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="D100Button" type="TextureButton" parent="UI/GameMenu/DiceSettings/DiceButtons"]
+self_modulate = Color(0.454902, 0, 1, 1)
+layout_mode = 0
+offset_right = 130.0
+offset_bottom = 130.0
+texture_normal = ExtResource("13_k48p3")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="DiceBag" type="TextureButton" parent="UI/GameMenu/DiceSettings"]
+layout_mode = 0
+offset_left = 300.0
+offset_right = 430.0
+offset_bottom = 130.0
+texture_normal = ExtResource("7_rk6wn")
+texture_hover = ExtResource("8_vesnd")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="LeftMain" type="Polygon2D" parent="UI/GameMenu"]
 position = Vector2(288, 686)
@@ -266,6 +362,21 @@ visible = false
 position = Vector2(288, 512)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(1, 1, 1, 1, 1, -1, -1, -1, -1, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UI/GameMenu"]
+stream = ExtResource("6_tty8x")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="UI/GameMenu"]
+stream = ExtResource("17_43jxy")
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="UI/GameMenu"]
+stream = ExtResource("18_rnb21")
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="UI/GameMenu"]
+stream = ExtResource("43_322wp")
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="UI/GameMenu"]
+stream = ExtResource("20_kee0c")
 
 [node name="CreditsMenu" type="Control" parent="UI"]
 layout_mode = 1
@@ -332,7 +443,7 @@ expand_mode = 1
 script = ExtResource("10_5vjmw")
 
 [node name="Timer" type="Timer" parent="UI/CreditsMenu/TextureRect"]
-wait_time = 5.0
+wait_time = 3.0
 autostart = true
 
 [node name="TextureLabel" type="Label" parent="UI/CreditsMenu"]
@@ -344,7 +455,7 @@ text = "Unused Textures"
 label_settings = SubResource("LabelSettings_6c3ct")
 horizontal_alignment = 1
 
-[node name="CustomRollMenu" type="Control" parent="UI" node_paths=PackedStringArray("otherGroups", "diceButtons", "subWindow", "rollEdit", "errorText", "rollButton", "rolledNumberDisplay", "customButton", "book")]
+[node name="CustomRollMenu" type="Control" parent="UI" node_paths=PackedStringArray("otherGroups", "diceButtons", "subWindow", "rollEdit", "errorText", "rollButton", "rolledNumberDisplay", "customButton", "book", "sfxPlayer", "dicePlayer")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -364,6 +475,8 @@ rollButton = NodePath("CustomSub/RollAmount/CustomRoll")
 rolledNumberDisplay = NodePath("CustomSub/RollAmount/RollDisplay/RolledNumber")
 customButton = NodePath("../CustomRollSwitch")
 book = NodePath("../Settings/History")
+sfxPlayer = NodePath("AudioStreamPlayer")
+dicePlayer = NodePath("AudioStreamPlayer2")
 
 [node name="CustomSub" type="Control" parent="UI/CustomRollMenu"]
 layout_mode = 1
@@ -421,16 +534,6 @@ like to roll?"
 label_settings = SubResource("LabelSettings_bf4rv")
 horizontal_alignment = 1
 
-[node name="ErrorText" type="Label" parent="UI/CustomRollMenu/CustomSub/RollAmount"]
-visible = false
-layout_mode = 0
-offset_left = 37.0
-offset_top = 174.0
-offset_right = 557.0
-offset_bottom = 204.0
-text = "Please Input numbers only!"
-label_settings = SubResource("LabelSettings_q06w1")
-
 [node name="CustomRoll" type="Button" parent="UI/CustomRollMenu/CustomSub/RollAmount"]
 layout_mode = 1
 anchors_preset = 8
@@ -452,9 +555,9 @@ text = "Roll"
 
 [node name="RollDisplay" type="Label" parent="UI/CustomRollMenu/CustomSub/RollAmount"]
 layout_mode = 0
-offset_left = 134.0
+offset_left = 238.0
 offset_top = 1.0
-offset_right = 661.0
+offset_right = 623.0
 offset_bottom = 64.0
 text = "You rolled:"
 label_settings = SubResource("LabelSettings_2cvse")
@@ -462,10 +565,10 @@ horizontal_alignment = 1
 
 [node name="RolledNumber" type="Label" parent="UI/CustomRollMenu/CustomSub/RollAmount/RollDisplay"]
 layout_mode = 0
-offset_left = -133.0
-offset_top = 73.0
-offset_right = 485.0
-offset_bottom = 193.0
+offset_left = -238.0
+offset_top = 110.0
+offset_right = 337.0
+offset_bottom = 223.0
 text = "?"
 label_settings = SubResource("LabelSettings_n0foa")
 horizontal_alignment = 1
@@ -632,23 +735,39 @@ offset_bottom = 126.0
 text = "100"
 label_settings = SubResource("LabelSettings_0cuuw")
 
+[node name="ErrorText" type="Label" parent="UI/CustomRollMenu/CustomSub/RollAmount"]
+visible = false
+layout_mode = 0
+offset_left = 37.0
+offset_top = 174.0
+offset_right = 557.0
+offset_bottom = 204.0
+text = "Please Input numbers only!"
+label_settings = SubResource("LabelSettings_q06w1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UI/CustomRollMenu"]
+stream = ExtResource("6_tty8x")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="UI/CustomRollMenu"]
+stream = ExtResource("17_43jxy")
+
 [node name="CustomRollSwitch" type="TextureButton" parent="UI"]
 layout_mode = 0
 offset_left = 3456.0
-offset_right = 3656.0
-offset_bottom = 100.0
+offset_right = 3716.0
+offset_bottom = 130.0
 texture_normal = ExtResource("18_dbnoq")
 texture_hover = ExtResource("19_75qmj")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Settings" type="Control" parent="UI" node_paths=PackedStringArray("settingsButton", "historyButton", "muteButton", "cassetteTapeButton", "historyBook", "bookQuitTop", "bookQuitBottom")]
+[node name="Settings" type="Control" parent="UI" node_paths=PackedStringArray("settingsButton", "historyButton", "muteButton", "cassetteTapeButton", "historyBook", "bookQuitTop", "bookQuitBottom", "sfxPlayer", "bookPlayer")]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -100.0
-offset_bottom = 300.0
+offset_bottom = 127.0
 grow_horizontal = 0
 script = ExtResource("7_fnk7n")
 settingsButton = NodePath("Cogwheel")
@@ -658,6 +777,8 @@ cassetteTapeButton = NodePath("CassetteTape")
 historyBook = NodePath("History")
 bookQuitTop = NodePath("Book/BookQuitButtonTop")
 bookQuitBottom = NodePath("Book/BookQuitButtonBottom")
+sfxPlayer = NodePath("AudioStreamPlayer")
+bookPlayer = NodePath("AudioStreamPlayer2")
 
 [node name="CassetteTape" type="TextureButton" parent="UI/Settings"]
 visible = false
@@ -682,9 +803,7 @@ anchor_bottom = 0.5
 offset_left = -10.0
 offset_top = 10.0
 offset_right = 40.0
-offset_bottom = -40.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_bottom = 46.5
 pivot_offset = Vector2(50, 50)
 disabled = true
 texture_normal = ExtResource("8_q0ek3")
@@ -759,7 +878,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -1069.0
 offset_right = -593.0
-offset_bottom = 724.0
+offset_bottom = 897.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("23_5yi5t")
@@ -828,8 +947,54 @@ text_overrun_behavior = 0
 same_column_width = true
 icon_scale = 3.0
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UI/Settings"]
+stream = ExtResource("39_dd3qm")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="UI/Settings"]
+stream = ExtResource("40_c8xh2")
+
+[node name="Control" type="Control" parent="UI"]
+anchors_preset = 0
+offset_left = 3756.0
+offset_right = 3756.0
+offset_bottom = 16.0
+
+[node name="Button" type="Button" parent="UI/Control"]
+visible = false
+layout_mode = 0
+offset_left = -299.0
+offset_top = 1.0
+offset_right = 7.0
+offset_bottom = 146.0
+flat = true
+
+[node name="Button2" type="Button" parent="UI/Control"]
+visible = false
+layout_mode = 0
+offset_left = -295.0
+offset_top = 304.0
+offset_right = 272.0
+offset_bottom = 1026.0
+flat = true
+
+[node name="Button3" type="Button" parent="UI/Control"]
+visible = false
+layout_mode = 0
+offset_left = 132.0
+offset_right = 285.0
+offset_bottom = 137.0
+flat = true
+
 [connection signal="pressed" from="UI/StartMenu/VBoxContainer/Start" to="UI/StartMenu" method="_onStartPressed"]
 [connection signal="pressed" from="UI/StartMenu/VBoxContainer/Credits" to="UI/StartMenu" method="_onCreditsPressed"]
+[connection signal="pressed" from="UI/GameMenu/DiceSettings/DiceButtons/D4Button" to="UI/GameMenu" method="_onDiceButtonPressed" binds= [0]]
+[connection signal="pressed" from="UI/GameMenu/DiceSettings/DiceButtons/D6Button" to="UI/GameMenu" method="_onDiceButtonPressed" binds= [1]]
+[connection signal="pressed" from="UI/GameMenu/DiceSettings/DiceButtons/D8Button" to="UI/GameMenu" method="_onDiceButtonPressed" binds= [2]]
+[connection signal="pressed" from="UI/GameMenu/DiceSettings/DiceButtons/D10Button" to="UI/GameMenu" method="_onDiceButtonPressed" binds= [3]]
+[connection signal="pressed" from="UI/GameMenu/DiceSettings/DiceButtons/D12Button" to="UI/GameMenu" method="_onDiceButtonPressed" binds= [4]]
+[connection signal="pressed" from="UI/GameMenu/DiceSettings/DiceButtons/D20Button" to="UI/GameMenu" method="_onDiceButtonPressed" binds= [5]]
+[connection signal="pressed" from="UI/GameMenu/DiceSettings/DiceButtons/D100Button" to="UI/GameMenu" method="_onDiceButtonPressed" binds= [6]]
+[connection signal="pressed" from="UI/GameMenu/DiceSettings/DiceBag" to="UI/GameMenu" method="_onDiceBagPressed"]
 [connection signal="pressed" from="UI/CreditsMenu/CreditsStart" to="UI/StartMenu" method="_onCreditsStartPressed"]
 [connection signal="timeout" from="UI/CreditsMenu/TextureRect/Timer" to="UI/CreditsMenu/TextureRect" method="_onTimerTimeout"]
 [connection signal="text_submitted" from="UI/CustomRollMenu/CustomSub/RollAmount/RollingAmount" to="UI/CustomRollMenu" method="_onLineEditTextSubmitted"]
@@ -863,3 +1028,6 @@ icon_scale = 3.0
 [connection signal="pressed" from="UI/Settings/Book/BookQuitButtonTop" to="UI/Settings" method="_onButtonPressed"]
 [connection signal="pressed" from="UI/Settings/Book/BookQuitButtonBottom" to="UI/Settings" method="_onButtonPressed"]
 [connection signal="visibility_changed" from="UI/Settings/History" to="UI/Settings/History" method="_onVisibilityChanged"]
+[connection signal="pressed" from="UI/Control/Button" to="UI/GameMenu" method="_onDiceBagPressed"]
+[connection signal="pressed" from="UI/Control/Button2" to="UI/GameMenu" method="_onDiceBagPressed"]
+[connection signal="pressed" from="UI/Control/Button3" to="UI/GameMenu" method="_onDiceBagPressed"]

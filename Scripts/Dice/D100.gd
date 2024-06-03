@@ -34,6 +34,9 @@ const TEXTPERCENTILEPOS: Vector2 = Vector2(190,0)
 const SHOOTDUR: float = .5
 const MINIMALBRIGHT: float = 25.0 / 100.0
 signal wrapUpDone
+signal rolled
+signal paint
+signal trash
 const DICECONFIG: Array[Array] = [
 	[8,2,5,3],
 	[9,3,4,2],
@@ -150,7 +153,13 @@ func _onDiePressed(diePressed: bool = true) -> void:
 	if color.v < MINIMALBRIGHT:
 		color.v = MINIMALBRIGHT / 2.0
 	
-	historyBook.AddEntry(Global.D100DICE,rolledNumber + int((float(rolledPercentile) / 10.0)),"",color)
+	var c: int = rolledNumber + rolledPercentile
+	
+	if c > 100:
+		c -= 100
+	
+	historyBook.AddEntry(Global.D100DICE,c,"",color)
+	rolled.emit()
 	
 	for i in len(allLabels):
 		#ALERT DO NOT REMOVE THE "#" WITHOUT THE CORRESPONDING COMMENTS, IT WILL CRASH.
@@ -172,6 +181,7 @@ func _onDiePressed(diePressed: bool = true) -> void:
 		allPercentile[i].text = number
 
 func _onTextureButtonPressed(codePressed: bool = false) -> void:
+	paint.emit()
 	colorPicker.visible = !colorPicker.visible
 	colorPickerBackground.visible = !colorPickerBackground.visible
 	swatchSet.visible = colorPicker.visible or textColorPicker.visible or colorPickerPercentile.visible\
@@ -187,6 +197,7 @@ func _onTextureButtonPressed(codePressed: bool = false) -> void:
 		textButtonPercentile.pressed.emit(true)
 
 func _onColorButtonPercentilePressed(codePressed: bool = false) -> void:
+	paint.emit()
 	colorPickerPercentile.visible = !colorPickerPercentile.visible
 	colorBackgroundPercentile.visible = !colorBackgroundPercentile.visible
 	swatchSet.visible = colorPicker.visible or textColorPicker.visible or colorPickerPercentile.visible\
@@ -232,6 +243,7 @@ func _onPercentileColorPickerColorChanged(color: Color) -> void:
 	ChangeAllPercentileTextColor(mainPercentile.label_settings.font_color,outlineColor)
 
 func _onTextColorButtonPressed(codePressed: bool = false) -> void:
+	paint.emit()
 	textColorPicker.visible = !textColorPicker.visible
 	textColorBackground. visible = !textColorBackground.visible
 	swatchSet.visible = colorPicker.visible or textColorPicker.visible or colorPickerPercentile.visible\
@@ -247,6 +259,7 @@ func _onTextColorButtonPressed(codePressed: bool = false) -> void:
 		textButtonPercentile.pressed.emit(true)
 
 func _onTextButtonPercentilePressed(codePressed: bool = false) -> void:
+	paint.emit()
 	textPickerPercentile.visible = !textPickerPercentile.visible
 	textBackgroundPercentile.visible = !textBackgroundPercentile.visible
 	swatchSet.visible = colorPicker.visible or textColorPicker.visible or colorPickerPercentile.visible\
@@ -295,6 +308,7 @@ func _onTextPercentileColorPickerColorChanged(color: Color) -> void:
 
 func _onSwatchButtonPressed(swatchButton: int) -> void:
 	var swatch: ColorRect = allSwatches[swatchButton]
+	paint.emit()
 	
 	if colorPicker.visible:
 		if swatchStates[swatchButton]:
@@ -338,6 +352,7 @@ func _onSwatchButtonPressed(swatchButton: int) -> void:
 			swatch.color = mainPercentile.label_settings.font_color
 
 func _onTrashcanPressed() -> void:
+	trash.emit()
 	for i in swatchStates.size():
 		swatchStates[i] = false
 	
@@ -346,4 +361,3 @@ func _onTrashcanPressed() -> void:
 		i.get_node("SwatchButton").modulate.a = 1.0
 		i.get_node("SwatchBorder").self_modulate.a = 0.0
 #endregion
-

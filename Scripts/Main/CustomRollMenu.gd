@@ -11,6 +11,8 @@ extends Control
 @export var rolledNumberDisplay: Label
 @export var customButton: TextureButton
 @export var book: Panel
+@export var sfxPlayer: AudioStreamPlayer
+@export var dicePlayer: AudioStreamPlayer
 var rolling: bool = false
 var revertToText: String = ""
 var currentDiceType: int = 4
@@ -73,6 +75,11 @@ func SwitchOtherGroups(isVisible: bool = false) -> void:
 
 #region signals
 func _onCustomRollPressed() -> void:
+	if Global.sfx:
+		dicePlayer.play()
+	
+	errorText.visible = false
+	
 	if rollEdit.text == "":
 		RollDiceXTimes(currentDiceType)
 		return
@@ -82,6 +89,9 @@ func _onCustomRollPressed() -> void:
 func _onCustomRollSwitchPressed() -> void:
 	var tween: Tween = create_tween()
 	var tweenDur: float = SHOWUPDUR[0] * Global.BoolSign(!Global.animationSkip)
+	
+	if Global.sfx:
+		sfxPlayer.play()
 	
 	if rolling:
 		tween.set_parallel()
@@ -97,6 +107,8 @@ func _onCustomRollSwitchPressed() -> void:
 		tween.tween_callback(SwitchOtherGroups)
 		tween.tween_property(subWindow,"position:x",BACKGROUNDACTIVEPOS,tweenDur).set_trans(Tween.TRANS_EXPO).\
 			set_ease(Tween.EASE_OUT)
+		#ALERT Some weird bug where it turns invisible need a better solution.
+		tween.chain().tween_callback(show)
 		customButton.texture_normal = CUSTOMBUTTONPRESSED
 		customButton.texture_hover = CUSTOMBUTTONPRESSEDHOVER
 	
@@ -106,6 +118,9 @@ func _onLineEditTextSubmitted(new_text: String) -> void:
 	HandleNodesOnError(!new_text.is_valid_int(),new_text)
 
 func _onDiceButtonPressed(arrayPlace: int,diceType: int) -> void:
+	if Global.sfx:
+		sfxPlayer.play()
+	
 	for i in diceButtons:
 		i.self_modulate = WHITECOL
 	

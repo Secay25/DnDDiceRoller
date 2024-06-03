@@ -21,6 +21,9 @@ const SHOOTDUR: float = .5
 var swatchStates: Array[bool] = [false,false]
 const MINIMALBRIGHT: float = 25.0 / 100.0
 signal wrapUpDone
+signal rolled
+signal paint
+signal trash
 
 #region custom methods
 func BecomeAlive() -> void:
@@ -77,8 +80,10 @@ func _onDiePressed(maxNumber: int) -> void:
 		color.v = MINIMALBRIGHT / 2.0
 	
 	historyBook.AddEntry(die.texture_normal,rolledNumber,"",color)
+	rolled.emit()
 
 func _onTextureButtonPressed(codePressed: bool = false) -> void:
+	paint.emit()
 	colorPicker.visible = !colorPicker.visible
 	colorPickerBackground.visible = !colorPickerBackground.visible
 	swatchSet.visible = colorPicker.visible or textColorPicker.visible
@@ -102,6 +107,7 @@ func _onDieColorPickerColorChanged(color: Color) -> void:
 	ChangeAllDieTextColor(mainLabel.label_settings.font_color,outlineColor)
 
 func _onTextColorButtonPressed(codePressed: bool = false) -> void:
+	paint.emit()
 	textColorPicker.visible = !textColorPicker.visible
 	textColorBackground. visible = !textColorBackground.visible
 	swatchSet.visible = colorPicker.visible or textColorPicker.visible
@@ -126,6 +132,7 @@ func _onTextColorPickerColorChanged(color: Color) -> void:
 	ChangeAllDieTextColor(color,c)
 
 func _onSwatchButtonPressed(swatchButton: int) -> void:
+	paint.emit()
 	var swatch: ColorRect = allSwatches[swatchButton]
 	
 	if colorPicker.visible:
@@ -150,6 +157,7 @@ func _onSwatchButtonPressed(swatchButton: int) -> void:
 			swatch.color = mainLabel.label_settings.font_color
 
 func _onTrashcanPressed() -> void:
+	trash.emit()
 	for i in swatchStates.size():
 		swatchStates[i] = false
 	

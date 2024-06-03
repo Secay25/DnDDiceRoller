@@ -15,5 +15,9 @@ func _onTimerTimeout() -> void:
 	
 	if index > arrayLength - 1:
 		index = 0
+		$"../TextureLabel".text = "some sounds where gotten from
+		 https://www.zapsplat.com/"
+		$"../TextureLabel".label_settings.font_size = 40
 	
 	texture = textures[index]
+	

@@ -9,6 +9,8 @@ extends Control
 @export var historyBook: Panel
 @export var bookQuitTop: Button
 @export var bookQuitBottom: Button
+@export var sfxPlayer: AudioStreamPlayer
+@export var bookPlayer: AudioStreamPlayer
 @onready var buttonOrigins: float = muteButton.position.y
 @onready var historyActivePos: float = buttonOrigins + 125
 @onready var muteActivePos: float = buttonOrigins + 225
@@ -71,6 +73,9 @@ func ChangeSprites(imageNormal: Texture2D,imageHover: Texture2D,turnOn: bool = t
 func _onCogwheelPressed() -> void:
 	var rollOutDuration = ROLLOUTDUR * int(!Global.animationSkip)
 	var tween: Tween = create_tween()
+	
+	if Global.sfx:
+		sfxPlayer.play()
 	
 	if !rolledUp:
 		#pressed
@@ -136,6 +141,9 @@ func _onCassetteTapePressed() -> void:
 func _onBookToggled(toggled_on: bool) -> void:
 	var rollOutDur: float = ROLLOUTDUR * int(!Global.animationSkip)
 	var tween: Tween = create_tween()
+	
+	if Global.sfx:
+		bookPlayer.play()
 	
 	if toggled_on:
 		#pressed
