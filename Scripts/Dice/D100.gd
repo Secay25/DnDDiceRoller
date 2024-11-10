@@ -33,6 +33,7 @@ const TEXTPICKERPOS: Vector2 = Vector2(465,0)
 const TEXTPERCENTILEPOS: Vector2 = Vector2(190,0)
 const SHOOTDUR: float = .5
 const MINIMALBRIGHT: float = 25.0 / 100.0
+@warning_ignore("unused_signal")
 signal wrapUpDone
 signal rolled
 signal paint

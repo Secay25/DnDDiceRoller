@@ -54,6 +54,8 @@ shadow_size = 10
 shadow_color = Color(0, 0, 0, 0.678431)
 shadow_offset = Vector2(0, 10)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tehxb"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jun3c"]
 bg_color = Color(1, 0, 0, 0.717647)
 corner_radius_top_left = 20
@@ -62,8 +64,6 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 corner_detail = 12
 anti_aliasing = false
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tehxb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bf4rv"]
 font = ExtResource("29_5m42f")
@@ -148,9 +148,9 @@ shadow_size = 20
 shadow_color = Color(0, 0, 0, 0.470588)
 shadow_offset = Vector2(0, 2)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i5y8d"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wmhgb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i5y8d"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8jyvl"]
 
@@ -507,14 +507,14 @@ offset_top = 212.0
 offset_right = 575.0
 offset_bottom = 284.0
 pivot_offset = Vector2(285, 36)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_colors/clear_button_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("29_5m42f")
 theme_override_font_sizes/font_size = 84
-theme_override_styles/normal = SubResource("StyleBoxFlat_jun3c")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_tehxb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jun3c")
 placeholder_text = "10 (standard)"
 alignment = 1
 max_length = 3
@@ -932,13 +932,13 @@ offset_left = 198.0
 offset_top = 130.0
 offset_right = 532.0
 offset_bottom = 976.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("29_5m42f")
 theme_override_font_sizes/font_size = 45
-theme_override_styles/panel = SubResource("StyleBoxEmpty_i5y8d")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wmhgb")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_i5y8d")
 theme_override_styles/hovered = SubResource("StyleBoxEmpty_8jyvl")
 theme_override_styles/selected = SubResource("StyleBoxEmpty_h0sdj")
 theme_override_styles/selected_focus = SubResource("StyleBoxEmpty_cqmx8")
