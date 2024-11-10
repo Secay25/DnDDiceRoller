@@ -13,6 +13,7 @@ class_name GameUI extends Control
 @export var waterPlayer: AudioStreamPlayer
 @export var bagPlayer: AudioStreamPlayer
 @export var trashPlayer: AudioStreamPlayer
+var diceBagRolling: bool = false
 var die: Control
 var diceBagPressed: bool = false
 var currentDiceType: int = DIE20
@@ -278,44 +279,47 @@ func SetGroupButtonVisible(boolean: bool = true) -> void:
 		i.visible = boolean
 
 func _onDiceBagPressed() -> void:
-	var tween: Tween = create_tween().set_parallel()
-	var diceButParent: Control = allDice[0].get_parent()
-	var duration: float = DICEBUTTONANIMDUR * float(!Global.animationSkip)
-	tween.tween_callback(ButtonDisable.bind(diceButParent.get_parent().get_node("DiceBag")))
-	SetGroupButtonVisible(false)
-	ButtonDisable(bagDice,true)
-	
-	if Global.sfx:
-		bagPlayer.play()
-	
-	if settings.rolledUp:
-		settings.settingsButton.pressed.emit()
-	
-	if diceBagPressed:
-		for i in allDice:
-			tween.tween_property(i,"position:x",0.0,duration)
+	if !diceBagRolling:
+		diceBagRolling = true
+		var tween: Tween = create_tween().set_parallel()
+		var diceButParent: Control = allDice[0].get_parent()
+		var duration: float = DICEBUTTONANIMDUR * float(!Global.animationSkip)
+		tween.tween_callback(ButtonDisable.bind(diceButParent.get_parent().get_node("DiceBag")))
+		SetGroupButtonVisible(false)
+		ButtonDisable(bagDice,true)
 		
-		tween.tween_property(diceButParent,"position",DICEBUTTONSORIGINPOS,duration).set_delay(duration)
-		tween.tween_property(diceButParent,"scale",DICEBUTTONSSCALEORIGINAL,duration).set_delay(duration)
-		tween.chain().tween_callback(ButtonDisable.bind(diceButParent.get_parent().get_node("DiceBag"),false))
-		bagDice.texture_normal = DICEBAGNORMAL
-		bagDice.texture_hover = DICEBAGNORMALHOVER
-	else:
-		tween.tween_property(diceButParent,"position",DICEBUTTONSACTIVEPOS,duration)
-		tween.tween_property(diceButParent,"scale",DICESCALEACTIVE,duration)
-		tween.chain().tween_property(diceButParent,"position:x",DICEBUTTONACTIVEOFFSET,duration)
+		if Global.sfx:
+			bagPlayer.play()
 		
-		for i in range(allDice.size()):
-			var givenDie: TextureButton = allDice[i]
-			var givenPos: float = DICEBUTTONPOSACTIVE[i]
-			tween.tween_property(givenDie,"position:x",givenPos,duration).set_delay(duration)
+		if settings.rolledUp:
+			settings.settingsButton.pressed.emit()
 		
-		tween.chain().tween_callback(ButtonDisable.bind(diceButParent.get_parent().get_node("DiceBag"),false))
-		tween.chain().tween_callback(SetGroupButtonVisible)
-		bagDice.texture_normal = DICEBAGPRESSED
-		bagDice.texture_hover = DICEBAGPRESSEDHOVER
-	
-	diceBagPressed = !diceBagPressed
+		if diceBagPressed:
+			for i in allDice:
+				tween.tween_property(i,"position:x",0.0,duration)
+			
+			tween.tween_property(diceButParent,"position",DICEBUTTONSORIGINPOS,duration).set_delay(duration)
+			tween.tween_property(diceButParent,"scale",DICEBUTTONSSCALEORIGINAL,duration).set_delay(duration)
+			tween.chain().tween_callback(ButtonDisable.bind(diceButParent.get_parent().get_node("DiceBag"),false))
+			bagDice.texture_normal = DICEBAGNORMAL
+			bagDice.texture_hover = DICEBAGNORMALHOVER
+		else:
+			tween.chain().tween_callback(SetGroupButtonVisible)
+			tween.tween_property(diceButParent,"position",DICEBUTTONSACTIVEPOS,duration)
+			tween.tween_property(diceButParent,"scale",DICESCALEACTIVE,duration)
+			tween.chain().tween_property(diceButParent,"position:x",DICEBUTTONACTIVEOFFSET,duration)
+			
+			for i in range(allDice.size()):
+				var givenDie: TextureButton = allDice[i]
+				var givenPos: float = DICEBUTTONPOSACTIVE[i]
+				tween.tween_property(givenDie,"position:x",givenPos,duration).set_delay(duration)
+			
+			tween.chain().tween_callback(ButtonDisable.bind(diceButParent.get_parent().get_node("DiceBag"),false))
+			bagDice.texture_normal = DICEBAGPRESSED
+			bagDice.texture_hover = DICEBAGPRESSEDHOVER
+		
+		tween.chain().tween_callback(func() -> void: diceBagRolling = false)
+		diceBagPressed = !diceBagPressed
 
 func _onDiceButtonPressed(diceType: int) -> void:
 	_onDiceBagPressed()

@@ -6,6 +6,7 @@ extends Control
 @export var creditsMenu: Control
 @export var startButton: Button
 @export var creditsButton: Button
+@export var creditsStartButton: Button
 @export var customButton: TextureButton
 @export var gameMenuBagage: Control
 @export var sfxPlayer: AudioStreamPlayer
@@ -25,6 +26,7 @@ func StartRolling(firstObject: Control,secondObject: Control,targetPosFirst: Vec
 	tween.tween_property(secondObject,"position",targetPosSecond,swoopingDur[1])
 	
 	if mainStarted:
+		creditsStartButton.disabled = true
 		tween.tween_property(customButton,"position",Vector2.ZERO,swoopingDur[1])
 		tween.chain().tween_callback(RollingStarted)
 	

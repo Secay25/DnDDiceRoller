@@ -79,25 +79,25 @@ anti_aliasing = false
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ul31e"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ohvnw"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_anff4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lr2jb"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i0sdr"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1lo26"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lr2jb"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ohvnw"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_anff4"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0pywo"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_122lb"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_voxy8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yygmy"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8n8om"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_voxy8"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0pywo"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_122lb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qatod"]
 font = ExtResource("4_hku7s")
@@ -226,8 +226,8 @@ offset_left = -4.0
 offset_top = -19.0
 offset_right = 44.0
 offset_bottom = 49.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0.415686, 0.415686, 0.415686, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("4_hku7s")
@@ -292,8 +292,8 @@ offset_left = -4.0
 offset_top = -19.0
 offset_right = 44.0
 offset_bottom = 49.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0.415686, 0.415686, 0.415686, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("4_hku7s")
@@ -347,11 +347,11 @@ offset_left = 50.0
 offset_right = 90.0
 offset_bottom = 40.0
 scale = Vector2(1.5, 1.5)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_ohvnw")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_anff4")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_lr2jb")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_i0sdr")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_1lo26")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_lr2jb")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_anff4")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ohvnw")
 
 [node name="Outline" type="ColorRect" parent="ColorButton"]
 layout_mode = 0
@@ -413,11 +413,11 @@ offset_left = 190.0
 offset_right = 230.0
 offset_bottom = 40.0
 scale = Vector2(1.5, 1.5)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_122lb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0pywo")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_voxy8")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_yygmy")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_8n8om")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_voxy8")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_0pywo")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_122lb")
 
 [node name="Outline" type="ColorRect" parent="TextColorButton"]
 layout_mode = 0

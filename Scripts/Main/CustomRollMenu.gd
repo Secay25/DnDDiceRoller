@@ -14,6 +14,7 @@ extends Control
 @export var sfxPlayer: AudioStreamPlayer
 @export var dicePlayer: AudioStreamPlayer
 var rolling: bool = false
+var customRolling: bool = false
 var revertToText: String = ""
 var currentDiceType: int = 4
 const BACKGROUNDACTIVEPOS: int = -576
@@ -87,32 +88,35 @@ func _onCustomRollPressed() -> void:
 	RollDiceXTimes(currentDiceType,rollEdit.text.to_int())
 
 func _onCustomRollSwitchPressed() -> void:
-	var tween: Tween = create_tween()
-	var tweenDur: float = SHOWUPDUR[0] * Global.BoolSign(!Global.animationSkip)
-	
-	if Global.sfx:
-		sfxPlayer.play()
-	
-	if rolling:
-		tween.set_parallel()
-		tween.tween_property(subWindow,"position:x",0,tweenDur).set_trans(Tween.TRANS_EXPO).\
-			set_ease(Tween.EASE_OUT)
-		tween.tween_callback(SwitchOtherGroups.bind(true)).set_delay((tweenDur / SHOWUPDUR[1]) *\
-			float(!Global.animationSkip))
-		tween.chain().tween_callback(hide)
-		customButton.texture_normal = CUSTOMBUTTONNORMAL
-		customButton.texture_hover = CUSTOMBUTTONNORMALHOVER
-	else:
-		visible = true
-		tween.tween_callback(SwitchOtherGroups)
-		tween.tween_property(subWindow,"position:x",BACKGROUNDACTIVEPOS,tweenDur).set_trans(Tween.TRANS_EXPO).\
-			set_ease(Tween.EASE_OUT)
-		#ALERT Some weird bug where it turns invisible need a better solution.
-		tween.chain().tween_callback(show)
-		customButton.texture_normal = CUSTOMBUTTONPRESSED
-		customButton.texture_hover = CUSTOMBUTTONPRESSEDHOVER
-	
-	rolling = !rolling
+	if !customRolling:
+		customRolling = true
+		var tween: Tween = create_tween()
+		var tweenDur: float = SHOWUPDUR[0] * Global.BoolSign(!Global.animationSkip)
+		
+		if Global.sfx:
+			sfxPlayer.play()
+		
+		if rolling:
+			tween.set_parallel()
+			tween.tween_property(subWindow,"position:x",0,tweenDur).set_trans(Tween.TRANS_EXPO).\
+				set_ease(Tween.EASE_OUT)
+			tween.tween_callback(SwitchOtherGroups.bind(true)).set_delay((tweenDur / SHOWUPDUR[1]) *\
+				float(!Global.animationSkip))
+			tween.chain().tween_callback(hide)
+			customButton.texture_normal = CUSTOMBUTTONNORMAL
+			customButton.texture_hover = CUSTOMBUTTONNORMALHOVER
+		else:
+			visible = true
+			tween.tween_callback(SwitchOtherGroups)
+			tween.tween_property(subWindow,"position:x",BACKGROUNDACTIVEPOS,tweenDur).set_trans(Tween.TRANS_EXPO).\
+				set_ease(Tween.EASE_OUT)
+			#ALERT Some weird bug where it turns invisible need a better solution.
+			tween.chain().tween_callback(show)
+			customButton.texture_normal = CUSTOMBUTTONPRESSED
+			customButton.texture_hover = CUSTOMBUTTONPRESSEDHOVER
+		
+		tween.chain().tween_callback(func() -> void: customRolling = false)
+		rolling = !rolling
 
 func _onLineEditTextSubmitted(new_text: String) -> void:
 	HandleNodesOnError(!new_text.is_valid_int(),new_text)

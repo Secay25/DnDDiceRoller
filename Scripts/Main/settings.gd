@@ -16,6 +16,7 @@ extends Control
 @onready var muteActivePos: float = buttonOrigins + 225
 @onready var cassetteTapeActivePos: float = buttonOrigins + 325
 var rolledUp: bool = false
+var bookRolling: bool = false
 const FULLROT: float = 6 * PI
 const ROLLOUTDUR: float = 1.5
 const BOOKORIGINPOS: float = -1069
@@ -108,7 +109,8 @@ func _onCogwheelPressed() -> void:
 			set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(historyButton,"position:y",buttonOrigins,rollOutDuration).set_trans(Tween.TRANS_QUINT).\
 			set_ease(Tween.EASE_IN_OUT)
-		tween.tween_property(cassetteTapeButton,"position:y",buttonOrigins,rollOutDuration).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(cassetteTapeButton,"position:y",buttonOrigins,rollOutDuration).\
+			set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(settingsButton,"rotation",FULLROT,rollOutDuration).set_trans(Tween.TRANS_QUINT)
 		tween.chain().tween_callback(ChangeSprites.bind(COGWHEELNORMAL,COGWHEELHOVER,false))
 
@@ -139,30 +141,34 @@ func _onCassetteTapePressed() -> void:
 		cassetteTapeButton.texture_disabled = CASSETTETAPENORMALDISABLED
 
 func _onBookToggled(toggled_on: bool) -> void:
-	var rollOutDur: float = ROLLOUTDUR * int(!Global.animationSkip)
-	var tween: Tween = create_tween()
-	
-	if Global.sfx:
-		bookPlayer.play()
-	
-	if toggled_on:
-		#pressed
-		cassetteTapeButton.disabled = true
-		muteButton.disabled = true
-		settingsButton.disabled = true
-		bookQuitTop.visible = true
-		bookQuitBottom.visible = true
-		tween.tween_callback(historyBook.show)
-		tween.tween_property(historyBook,"position:x",BOOKACTIVEPOS,rollOutDur).set_trans(Tween.TRANS_QUART)
-	else:
-		#unpressed
-		cassetteTapeButton.disabled = false
-		muteButton.disabled = false
-		settingsButton.disabled = false
-		bookQuitTop.visible = false
-		bookQuitBottom.visible = false
-		tween.tween_property(historyBook,"position:x",BOOKORIGINPOS,rollOutDur).set_trans(Tween.TRANS_QUART)
-		tween.tween_callback(historyBook.hide)
+	if !bookRolling:
+		bookRolling = true
+		var rollOutDur: float = ROLLOUTDUR * int(!Global.animationSkip)
+		var tween: Tween = create_tween()
+		
+		if Global.sfx:
+			bookPlayer.play()
+		
+		if toggled_on:
+			#pressed
+			cassetteTapeButton.disabled = true
+			muteButton.disabled = true
+			settingsButton.disabled = true
+			bookQuitTop.visible = true
+			bookQuitBottom.visible = true
+			tween.tween_callback(historyBook.show)
+			tween.tween_property(historyBook,"position:x",BOOKACTIVEPOS,rollOutDur).set_trans(Tween.TRANS_QUART)
+		else:
+			#unpressed
+			cassetteTapeButton.disabled = false
+			muteButton.disabled = false
+			settingsButton.disabled = false
+			bookQuitTop.visible = false
+			bookQuitBottom.visible = false
+			tween.tween_property(historyBook,"position:x",BOOKORIGINPOS,rollOutDur).set_trans(Tween.TRANS_QUART)
+			tween.tween_callback(historyBook.hide)
+		
+		tween.chain().tween_callback(func() -> void: bookRolling = false)
 
 func _onButtonPressed() -> void:
 	historyButton.button_pressed = false
