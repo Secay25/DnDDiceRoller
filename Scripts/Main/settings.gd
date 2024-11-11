@@ -15,6 +15,7 @@ extends Control
 @onready var historyActivePos: float = buttonOrigins + 125
 @onready var muteActivePos: float = buttonOrigins + 225
 @onready var cassetteTapeActivePos: float = buttonOrigins + 325
+@onready var abilityActivePos: float = buttonOrigins + 425
 var rolledUp: bool = false
 var bookRolling: bool = false
 const FULLROT: float = 6 * PI
