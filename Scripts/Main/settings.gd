@@ -11,6 +11,7 @@ extends Control
 @export var bookQuitBottom: Button
 @export var sfxPlayer: AudioStreamPlayer
 @export var bookPlayer: AudioStreamPlayer
+@export var abilityScoreButton: TextureButton
 @onready var buttonOrigins: float = muteButton.position.y
 @onready var historyActivePos: float = buttonOrigins + 125
 @onready var muteActivePos: float = buttonOrigins + 225
@@ -63,12 +64,14 @@ func ChangeSprites(imageNormal: Texture2D,imageHover: Texture2D,turnOn: bool = t
 	muteButton.visible = turnOn
 	historyButton.visible = turnOn
 	cassetteTapeButton.visible = turnOn
+	abilityScoreButton.visible = turnOn
 	
 	if !Global.animationPlaying:
 		cassetteTapeButton.disabled = !turnOn
 	
 	if Global.rolled:
 		historyButton.disabled = !turnOn
+		abilityScoreButton.disabled = !turnOn
 #endregion
 
 #region Signals
@@ -86,15 +89,19 @@ func _onCogwheelPressed() -> void:
 		settingsButton.disabled = true
 		muteButton.disabled = true
 		historyButton.disabled = true
+		abilityScoreButton.disabled = true
 		muteButton.show()
 		historyButton.show()
 		cassetteTapeButton.show()
+		abilityScoreButton.show()
 		tween.set_parallel()
 		tween.tween_property(muteButton,"position:y",muteActivePos,rollOutDuration).\
 			set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(historyButton,"position:y",historyActivePos,rollOutDuration).\
 			set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(cassetteTapeButton,"position:y",cassetteTapeActivePos,rollOutDuration).\
+			set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(abilityScoreButton,"position:y",abilityActivePos,rollOutDuration).\
 			set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(settingsButton,"rotation",-FULLROT,rollOutDuration).set_trans(Tween.TRANS_QUINT)
 		tween.chain().tween_callback(ChangeSprites.bind(COGWHEELPRESSED,COGWHEELPRESSEDHOVER))
@@ -105,12 +112,15 @@ func _onCogwheelPressed() -> void:
 		settingsButton.disabled = true
 		muteButton.disabled = true
 		historyButton.disabled = true
+		abilityScoreButton.disabled = true
 		tween.set_parallel()
 		tween.tween_property(muteButton,"position:y",buttonOrigins,rollOutDuration).set_trans(Tween.TRANS_QUINT).\
 			set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(historyButton,"position:y",buttonOrigins,rollOutDuration).set_trans(Tween.TRANS_QUINT).\
 			set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(cassetteTapeButton,"position:y",buttonOrigins,rollOutDuration).\
+			set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(abilityScoreButton,"position:y",buttonOrigins,rollOutDuration).\
 			set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(settingsButton,"rotation",FULLROT,rollOutDuration).set_trans(Tween.TRANS_QUINT)
 		tween.chain().tween_callback(ChangeSprites.bind(COGWHEELNORMAL,COGWHEELHOVER,false))

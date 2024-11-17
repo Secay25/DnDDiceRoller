@@ -110,7 +110,6 @@ func _onCustomRollSwitchPressed() -> void:
 			tween.tween_callback(SwitchOtherGroups)
 			tween.tween_property(subWindow,"position:x",BACKGROUNDACTIVEPOS,tweenDur).set_trans(Tween.TRANS_EXPO).\
 				set_ease(Tween.EASE_OUT)
-			#ALERT Some weird bug where it turns invisible need a better solution.
 			tween.chain().tween_callback(show)
 			customButton.texture_normal = CUSTOMBUTTONPRESSED
 			customButton.texture_hover = CUSTOMBUTTONPRESSEDHOVER

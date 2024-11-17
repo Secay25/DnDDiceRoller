@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://c8b5c468jx7e3"]
+[gd_scene load_steps=66 format=3 uid="uid://c8b5c468jx7e3"]
 
 [ext_resource type="Script" path="res://Scripts/Main/startMenu.gd" id="1_7a75a"]
 [ext_resource type="Texture2D" uid="uid://c55uyci3e3rp5" path="res://Art/Background/Background.png" id="1_q573a"]
@@ -44,6 +44,7 @@
 [ext_resource type="AudioStream" uid="uid://budyqk25cw8lp" path="res://SFX/cogWheelSpin.wav" id="39_dd3qm"]
 [ext_resource type="AudioStream" uid="uid://d3n4dmko6wlv5" path="res://SFX/zapsplat_household_book_artists_sketch_pad_page_slide_turn_001_50090.mp3" id="40_c8xh2"]
 [ext_resource type="AudioStream" uid="uid://c7sctym2tcpg6" path="res://SFX/zapsplat_foley_luggage_small_thick_fabric_bag_zipper_zip_001_89087.mp3" id="43_322wp"]
+[ext_resource type="Script" path="res://Scripts/Main/abilityScoresMenu.gd" id="45_iueho"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6c3ct"]
 font = ExtResource("29_5m42f")
@@ -157,6 +158,13 @@ shadow_offset = Vector2(0, 2)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h0sdj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cqmx8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ejg6n"]
+font = ExtResource("29_5m42f")
+font_size = 60
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -762,7 +770,7 @@ texture_hover = ExtResource("19_75qmj")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Settings" type="Control" parent="UI" node_paths=PackedStringArray("settingsButton", "historyButton", "muteButton", "cassetteTapeButton", "historyBook", "bookQuitTop", "bookQuitBottom", "sfxPlayer", "bookPlayer")]
+[node name="Settings" type="Control" parent="UI" node_paths=PackedStringArray("settingsButton", "historyButton", "muteButton", "cassetteTapeButton", "historyBook", "bookQuitTop", "bookQuitBottom", "sfxPlayer", "bookPlayer", "abilityScoreButton")]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -780,6 +788,7 @@ bookQuitTop = NodePath("Book/BookQuitButtonTop")
 bookQuitBottom = NodePath("Book/BookQuitButtonBottom")
 sfxPlayer = NodePath("AudioStreamPlayer")
 bookPlayer = NodePath("AudioStreamPlayer2")
+abilityScoreButton = NodePath("AbilityScores")
 
 [node name="CassetteTape" type="TextureButton" parent="UI/Settings"]
 visible = false
@@ -954,6 +963,33 @@ stream = ExtResource("39_dd3qm")
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="UI/Settings"]
 stream = ExtResource("40_c8xh2")
 
+[node name="AbilityScores" type="TextureButton" parent="UI/Settings"]
+visible = false
+self_modulate = Color(0.252952, 0.0678406, 0.914063, 1)
+z_index = -1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 25.0
+offset_right = 78.0
+offset_bottom = 100.0
+pivot_offset = Vector2(37, 37)
+disabled = true
+texture_normal = ExtResource("31_0ks4u")
+texture_disabled = ExtResource("32_qrw2c")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UI/Settings/AbilityScores"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 14.0
+offset_right = 68.0
+offset_bottom = 60.0
+text = "16"
+label_settings = SubResource("LabelSettings_ejg6n")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Control" type="Control" parent="UI"]
 anchors_preset = 0
 offset_left = 3756.0
@@ -985,6 +1021,35 @@ offset_left = 132.0
 offset_right = 285.0
 offset_bottom = 137.0
 flat = true
+
+[node name="AbilityScoresMenu" type="Control" parent="UI" node_paths=PackedStringArray("otherGroups", "backButton")]
+anchors_preset = 0
+offset_top = 1024.0
+offset_right = 576.0
+offset_bottom = 2048.0
+script = ExtResource("45_iueho")
+otherGroups = [NodePath("../GameMenu"), NodePath("../CustomRollSwitch"), NodePath("../Settings"), NodePath("../Control")]
+backButton = NodePath("BackButton")
+
+[node name="TransGround" type="ColorRect" parent="UI/AbilityScoresMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.807843)
+
+[node name="BackButton" type="Button" parent="UI/AbilityScoresMenu"]
+offset_left = 64.0
+offset_top = 9.0
+offset_right = 224.0
+offset_bottom = 79.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_6eeqn")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Back"
 
 [connection signal="pressed" from="UI/StartMenu/VBoxContainer/Start" to="UI/StartMenu" method="_onStartPressed"]
 [connection signal="pressed" from="UI/StartMenu/VBoxContainer/Credits" to="UI/StartMenu" method="_onCreditsPressed"]
@@ -1029,6 +1094,8 @@ flat = true
 [connection signal="pressed" from="UI/Settings/Book/BookQuitButtonTop" to="UI/Settings" method="_onButtonPressed"]
 [connection signal="pressed" from="UI/Settings/Book/BookQuitButtonBottom" to="UI/Settings" method="_onButtonPressed"]
 [connection signal="visibility_changed" from="UI/Settings/History" to="UI/Settings/History" method="_onVisibilityChanged"]
+[connection signal="pressed" from="UI/Settings/AbilityScores" to="UI/AbilityScoresMenu" method="_onAbilityScoresPressed"]
 [connection signal="pressed" from="UI/Control/Button" to="UI/GameMenu" method="_onDiceBagPressed"]
 [connection signal="pressed" from="UI/Control/Button2" to="UI/GameMenu" method="_onDiceBagPressed"]
 [connection signal="pressed" from="UI/Control/Button3" to="UI/GameMenu" method="_onDiceBagPressed"]
+[connection signal="pressed" from="UI/AbilityScoresMenu/BackButton" to="UI/AbilityScoresMenu" method="_onAbilityScoresPressed"]

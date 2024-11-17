@@ -201,6 +201,7 @@ func MainStarted() -> void:
 	
 	if settings.rolledUp:
 		settings.historyButton.disabled = false
+		settings.abilityScoreButton.disabled = false
 
 func SmollDice(diceType: int) -> void:
 	var tween: Tween = create_tween().set_parallel()
