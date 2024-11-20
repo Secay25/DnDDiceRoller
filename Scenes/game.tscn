@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://c8b5c468jx7e3"]
+[gd_scene load_steps=68 format=3 uid="uid://c8b5c468jx7e3"]
 
 [ext_resource type="Script" path="res://Scripts/Main/startMenu.gd" id="1_7a75a"]
 [ext_resource type="Texture2D" uid="uid://c55uyci3e3rp5" path="res://Art/Background/Background.png" id="1_q573a"]
@@ -171,6 +171,11 @@ font = ExtResource("29_5m42f")
 font_size = 50
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xfl0d"]
+font = ExtResource("29_5m42f")
+font_size = 200
+shadow_size = 0
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -981,7 +986,6 @@ offset_bottom = 100.0
 pivot_offset = Vector2(37, 37)
 disabled = true
 texture_normal = ExtResource("31_0ks4u")
-texture_disabled = ExtResource("32_qrw2c")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -1150,6 +1154,17 @@ size_flags_horizontal = 3
 size_flags_vertical = 6
 text = "6"
 label_settings = SubResource("LabelSettings_mj5i8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TotalRollText" type="Label" parent="UI/AbilityScoresMenu"]
+layout_mode = 0
+offset_left = 143.0
+offset_top = 162.0
+offset_right = 443.0
+offset_bottom = 312.0
+text = "???"
+label_settings = SubResource("LabelSettings_xfl0d")
 horizontal_alignment = 1
 vertical_alignment = 1
 

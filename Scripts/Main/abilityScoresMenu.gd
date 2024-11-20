@@ -9,8 +9,10 @@ extends Control
 	$Dice/BottomLeftDie/BottomLeftLabel,
 	]
 @onready var history: Control = $"../Settings/History"
+@onready var totalRolledLabel: Label = $TotalRollText
 var isInMenu: bool = false
 var isTweening: bool = false
+var neat: int = 0
 const ROLLINGDURATION: float = .5 # in seconds
 const INACTIVEPOSY: float = 1024.0
 const RED: Color = Color.FIREBRICK
@@ -30,6 +32,7 @@ func SwitchOtherGroups(isVisible: bool = false) -> void:
 
 func _onAbilityScoresPressed() -> void:
 	if !isTweening:
+		$"../GameMenu/AudioStreamPlayer".play()
 		isTweening = true
 		var tween: Tween = create_tween().set_parallel()
 		var duration: float = ROLLINGDURATION * Global.BoolSign(!Global.animationSkip)
@@ -47,13 +50,14 @@ func _onAbilityScoresPressed() -> void:
 		tween.chain().tween_callback(func() -> void: 
 			isTweening = false
 			backButton.disabled = false
-			)
+		)
 
 func _onDiePressed() -> void:
 	var rolledNumbers: Array[int] = [0,0,0,0]
 	var redUsed: bool = false
 	var blueUsed: bool = false
 	var totalAmount: int = 0
+	$"../GameMenu/AudioStreamPlayer2".play()
 	
 	for i: int in range(rolledNumbers.size()):
 		rolledNumbers[i] = randi_range(1,6)
@@ -70,6 +74,22 @@ func _onDiePressed() -> void:
 	
 	totalAmount -= lowestNumber
 	lowestLabel.get_parent().self_modulate = GRAY
+	totalRolledLabel.text = str(totalAmount)
+	
+	if totalAmount > 9:
+		if neat == 0:
+			history.AddEntry(Global.D6DICE,totalAmount,"(16)",RED)
+		elif neat == 1:
+			history.AddEntry(Global.D6DICE,totalAmount,"(16)",BLUE)
+		else:
+			history.AddEntry(Global.D6DICE,totalAmount,"(16)",GREEN)
+		
+		neat += 1
+		
+		if neat >= 3:
+			neat = 0
+	else:
+		history.AddEntry(Global.D6DICE,totalAmount,"(16)",GRAY)
 	
 	for label: Label in labels:
 		if label != lowestLabel:

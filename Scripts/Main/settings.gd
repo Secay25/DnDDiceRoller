@@ -48,6 +48,8 @@ const CASSETTETAPEPRESSEDDISABLED: Texture2D\
 
 #region overridden methods
 func _ready() -> void:
+	abilityScoreButton.self_modulate = Color.DIM_GRAY
+	
 	if !Global.sfx:
 		muteButton.set_pressed_no_signal(true)
 		muteButton.texture_normal = SPEAKERPRESSED
@@ -78,6 +80,7 @@ func ChangeSprites(imageNormal: Texture2D,imageHover: Texture2D,turnOn: bool = t
 func _onCogwheelPressed() -> void:
 	var rollOutDuration = ROLLOUTDUR * int(!Global.animationSkip)
 	var tween: Tween = create_tween()
+	abilityScoreButton.self_modulate = Color.DIM_GRAY
 	
 	if Global.sfx:
 		sfxPlayer.play()
@@ -124,6 +127,13 @@ func _onCogwheelPressed() -> void:
 			set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(settingsButton,"rotation",FULLROT,rollOutDuration).set_trans(Tween.TRANS_QUINT)
 		tween.chain().tween_callback(ChangeSprites.bind(COGWHEELNORMAL,COGWHEELHOVER,false))
+	
+	tween.chain().tween_callback(func() -> void: 
+		if abilityScoreButton.disabled:
+			abilityScoreButton.self_modulate = Color.DIM_GRAY
+			else:
+				abilityScoreButton.self_modulate = Color.NAVY_BLUE
+	)
 
 func _onSpeakerPressed() -> void:
 	if Global.sfx:

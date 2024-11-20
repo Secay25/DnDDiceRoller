@@ -202,6 +202,7 @@ func MainStarted() -> void:
 	if settings.rolledUp:
 		settings.historyButton.disabled = false
 		settings.abilityScoreButton.disabled = false
+		settings.abilityScoreButton.self_modulate = Color.NAVY_BLUE
 
 func SmollDice(diceType: int) -> void:
 	var tween: Tween = create_tween().set_parallel()
